@@ -1,15 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { TemplateNameWrapper } from './TemplateName.styled'
 
-const TemplateName = () => (
+const TemplateName = () => {
+    
+    return (
     <TemplateNameWrapper>
         TemplateName Component
     </TemplateNameWrapper>
-)
-
-TemplateName.propTypes = {}
-
-TemplateName.defaultProps = {}
+)}
 
 export default TemplateName
