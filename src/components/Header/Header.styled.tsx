@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink as NavLinkRouter } from 'react-router-dom'
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -35,5 +36,27 @@ export const MenuBtn = styled.button`
 
   @media screen and (min-width: 768px) {
     display: none;
+  }
+`
+
+export const NavList = styled.ul`
+  display: flex;
+  gap: 32px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+
+export const NavLink = styled(NavLinkRouter)`
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: ${({ theme }) => theme.colors.grey};
+
+  &.active {
+    color: ${({ theme }) => theme.colors.accent};
   }
 `
