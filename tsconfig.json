@@ -25,8 +25,8 @@
       "components/*": ["components/*"],
       "services/*": ["services/*"],
       "store/*": ["store/*"],
-      "utils/*": ["utils/*"],
-      "hooks/*": ["hooks/*"]
+      "hooks/*": ["hooks/*"],
+      "icons/*": ["icons/*"]
     }
   },
   "include": ["src"],

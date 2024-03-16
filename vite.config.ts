@@ -10,8 +10,8 @@ export default defineConfig({
       components: '/src/components',
       services: '/src/services',
       store: '/src/store',
-      utils: '/src/utils',
       hooks: '/src/hooks',
+      icons: '/src/icons',
     },
   },
 })

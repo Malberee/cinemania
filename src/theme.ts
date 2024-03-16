@@ -1,6 +1,6 @@
 const theme = {
   colors: {
-    light: {
+    dark: {
       background: '#111111',
       accent: '#F87719',
       secondaryBlack: '#282828',
@@ -8,7 +8,10 @@ const theme = {
       white: '#ffffff',
       secondaryText: '#f8f8f8',
     },
-    dark: {},
+    light: {
+      background: '#ffffff',
+      secondaryText: '#282828',
+    },
   },
   text: {
     desktop: {
