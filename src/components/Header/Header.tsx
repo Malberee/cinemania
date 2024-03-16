@@ -11,7 +11,7 @@ const Header: FC<HeaderProps> = () => {
   return (
     <HeaderWrapper>
       <LogoWrapper>
-        <Logo width={32} height={32} />
+        <Logo />
       </LogoWrapper>
       <MenuBtn onClick={() => setIsOpen(true)}>Menu</MenuBtn>
       <ThemeSwitcher />
