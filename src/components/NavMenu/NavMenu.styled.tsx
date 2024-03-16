@@ -8,7 +8,7 @@ export const Backdrop = styled.div`
   height: 100%;
   width: 100%;
 
-  background-color: #00000050;
+  background-color: ${({ theme }) => theme.colors.backdrop};
 `
 
 export const NavMenuWrapper = styled.div`
@@ -27,9 +27,11 @@ export const NavMenuWrapper = styled.div`
 export const NavList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 24px;
 `
 
-export const NavItem = styled.li`
+export const NavLink = styled.a`
+  display: block;
   text-transform: uppercase;
+  padding: 12px;
+  cursor: pointer;
 `

@@ -11,9 +11,11 @@ export const HeaderWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
 `
 
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled.a`
   width: 32px;
   height: 32px;
+
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     width: 48px;
@@ -25,7 +27,10 @@ export const MenuBtn = styled.button`
   border: none;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.grey};
+
   text-transform: uppercase;
+  font-weight: 500;
+
   cursor: pointer;
 
   @media screen and (min-width: 768px) {

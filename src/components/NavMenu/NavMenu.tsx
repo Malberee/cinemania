@@ -1,5 +1,10 @@
 import React, { FC, MouseEvent } from 'react'
-import { NavMenuWrapper, Backdrop, NavList, NavItem } from './NavMenu.styled'
+import {
+  NavMenuWrapper,
+  Backdrop,
+  NavList,
+  NavLink,
+} from './NavMenu.styled'
 import { NavMenuProps } from './NavMenu.types'
 import Logo from 'icons/Logo'
 
@@ -16,15 +21,15 @@ const NavMenu: FC<NavMenuProps> = ({ closeMenu }) => {
         <Logo width={32} height={32} />
         <nav>
           <NavList>
-            <NavItem>
-              <a>Home</a>
-            </NavItem>
-            <NavItem>
-              <a>Catalog</a>
-            </NavItem>
-            <NavItem>
-              <a>My library</a>
-            </NavItem>
+            <li>
+              <NavLink>Home</NavLink>
+            </li>
+            <li>
+              <NavLink>Catalog</NavLink>
+            </li>
+            <li>
+              <NavLink>My library</NavLink>
+            </li>
           </NavList>
         </nav>
       </NavMenuWrapper>

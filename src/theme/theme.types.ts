@@ -7,6 +7,7 @@ export interface IColors {
   grey: string
   white: string
   secondaryText: string
+  backdrop: string
 }
 
 export interface ITheme {

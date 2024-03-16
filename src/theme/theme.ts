@@ -38,6 +38,7 @@ export const light: IColors = {
   grey: '#595959',
   white: '#ffffff',
   secondaryText: '#282828',
+  backdrop: 'rgba(0, 0, 0, 0.2)',
 }
 
 export const dark: IColors = {
@@ -47,4 +48,5 @@ export const dark: IColors = {
   grey: '#b7b7b7',
   white: '#000000',
   secondaryText: '#f8f8f8',
+  backdrop: 'rgba(0, 0, 0, 0.2)',
 }
