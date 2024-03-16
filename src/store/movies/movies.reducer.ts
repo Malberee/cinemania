@@ -1,13 +1,8 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
-import { fetchMovies } from './movies.operations'
+import { fetchGenres, fetchMovies } from './movies.operations'
 
-const entities = createReducer(
-  { entities: [], page: 0, total_pages: 0 },
-  (builder) =>
-    builder.addCase(
-      fetchMovies.fulfilled,
-      (_, action) => action.payload.results
-    )
+const entities = createReducer([], (builder) =>
+  builder.addCase(fetchMovies.fulfilled, (_, action) => action.payload.results)
 )
 
 const page = createReducer(0, (builder) =>
@@ -34,11 +29,20 @@ const isLoading = createReducer(false, (builder) =>
 const error = createReducer(null, (builder) =>
   builder
     .addCase(fetchMovies.pending, () => null)
-    .addCase(fetchMovies.rejected, (_, action) => action.payload)
+    .addCase(fetchMovies.rejected, (_, action) => {
+      console.log('text')
+
+      return action.payload
+    })
+)
+
+const genres = createReducer([], (builder) =>
+  builder.addCase(fetchGenres.fulfilled, (_, action) => action.payload)
 )
 
 export default combineReducers({
   entities,
+  genres,
   isLoading,
   error,
   page,

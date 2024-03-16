@@ -10,10 +10,12 @@
 			"withStory": false,
 			"withLazy": false,
 			"withIndex": true,
+			"withTypes": true,
 			"customTemplates": {
 				"index": "templates/default/index.ts",
 				"component": "templates/default/TemplateName.tsx",
-				"style": "templates/default/TemplateName.styled.tsx"
+				"style": "templates/default/TemplateName.styled.tsx",
+				"types": "templates/default/TemplateName.types.ts"
 			}
 		}
 	}

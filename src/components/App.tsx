@@ -1,22 +1,30 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import './App.scss'
 import { useEffect } from 'react'
-import { fetchMovies } from '../redux/movies/movies.operations'
-import { selectMovies } from '../redux/movies/movies.selectors'
+import Button from './Button'
+import { moviesOperations, moviesSelectors } from 'store/movies'
+import MovieList from './MovieList'
+import { useAppDispatch } from 'hooks/useAppDispatch'
 
 const App = () => {
-  const dispatch = useDispatch()
-  const movies = useSelector(selectMovies)
+  const dispatch = useAppDispatch()
+  const movies = useSelector(moviesSelectors.selectMovies)
 
   useEffect(() => {
     console.log(movies)
   }, [movies])
 
   useEffect(() => {
-    dispatch(fetchMovies({ type: 'byQuery', query: 'marvel' }))
+    dispatch(moviesOperations.fetchMovies({ type: 'popular' }))
+    dispatch(moviesOperations.fetchGenres())
   }, [dispatch])
 
-  return <></>
+  return (
+    <>
+      {/* <MovieList movies={movies} /> */}
+      <Button isBordered>Button</Button>
+    </>
+  )
 }
 
 export default App

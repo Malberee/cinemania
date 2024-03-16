@@ -1,21 +1,27 @@
 import axios from 'axios'
+import { PayloadCreatorProps } from 'store/movies/movies.types'
+
+axios.defaults.baseURL = 'https://api.themoviedb.org/3'
+axios.defaults.params = {
+  api_key: '3cfc4cc3ed7c09ed117ed148c7a04c75',
+}
 
 export const fetchMovies = async (
-  type: 'popular' | 'byQuery' | 'queue' | 'watched',
+  type: PayloadCreatorProps['type'],
   query?: string
 ) => {
-  console.log('type: ', type)
-  axios.defaults.baseURL = 'https://api.themoviedb.org/3'
   const endpoints = {
-    popular:
-      'https://api.themoviedb.org/3/movie/popular?api_key=3cfc4cc3ed7c09ed117ed148c7a04c75',
-    byQuery: `https://api.themoviedb.org/3/search/movie?query=marvel&api_key=3cfc4cc3ed7c09ed117ed148c7a04c75`,
+    popular: '/movie/popular',
+    byQuery: `/search/movie?query=${query}`,
     queue: '',
     watched: '',
   }
-
-  const movies = await axios.get(endpoints[type])
-  console.log('movies: ', movies)
+  const movies = await axios.get(endpoints[type] || 'undefined')
 
   return movies
+}
+
+export const fetchGenres = async () => {
+  const genres = await axios.get('/genre/movie/list')
+  return genres
 }
