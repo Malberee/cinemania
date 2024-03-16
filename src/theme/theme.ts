@@ -44,7 +44,7 @@ export const dark: IColors = {
   background: '#111111',
   accent: '#F87719',
   secondaryBlack: '#282828',
-  grey: '#595959',
-  white: '#ffffff',
+  grey: '#b7b7b7',
+  white: '#000000',
   secondaryText: '#f8f8f8',
 }

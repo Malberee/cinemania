@@ -1,12 +1,7 @@
-import React, { FC } from 'react'
-import { MoonWrapper } from './Moon.styled'
-import { MoonProps } from './Moon.types'
-
-const Moon: FC<MoonProps> = () => {
+const Moon = () => {
   return (
     <svg
-      width="15"
-      height="15"
+      height="100%"
       viewBox="0 0 15 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

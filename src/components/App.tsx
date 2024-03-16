@@ -6,6 +6,7 @@ import { moviesOperations, moviesSelectors } from 'store/movies'
 import MovieList from './MovieList'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import ThemeSwitcher from './ThemeSwitcher'
+import Header from './Header'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -18,11 +19,7 @@ const App = () => {
 
   return (
     <>
-      {/* <MovieList movies={movies} /> */}
-      <Button size="lg" isBordered>
-        Button
-      </Button>
-      <ThemeSwitcher />
+      <Header />
     </>
   )
 }
