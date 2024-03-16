@@ -18,8 +18,8 @@ const ThemeSwitcherThumb: FC<ThemeSwitcherThumbProps> = () => {
       <path
         d="M14.1765 3.57422C17.0554 6.65093 17.0446 11.6508 14.1523 14.7418"
         stroke="url(#paint0_linear_403_9)"
-        stroke-width="1.2"
-        stroke-linecap="round"
+        strokeWidth="1.2"
+        strokeLinecap="round"
       />
       <defs>
         <linearGradient
@@ -30,8 +30,8 @@ const ThemeSwitcherThumb: FC<ThemeSwitcherThumbProps> = () => {
           y2="5.2955"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FFC226" />
-          <stop offset="1" stop-color="#F84119" />
+          <stop stopColor="#FFC226" />
+          <stop offset="1" stopColor="#F84119" />
         </linearGradient>
       </defs>
     </svg>

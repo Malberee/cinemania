@@ -26,7 +26,8 @@
       "services/*": ["services/*"],
       "store/*": ["store/*"],
       "hooks/*": ["hooks/*"],
-      "icons/*": ["icons/*"]
+      "icons/*": ["icons/*"],
+      "theme/*": ["theme/*"]
     }
   },
   "include": ["src"],

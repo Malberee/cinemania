@@ -14,6 +14,8 @@ export const ThemeSwitcherWrapper = styled.label`
   background: ${(props) => props.theme.gradients.linearGradientUp};
   border-radius: 100px;
 
+  cursor: pointer;
+
   input {
     position: absolute;
     appearance: none;

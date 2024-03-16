@@ -12,10 +12,6 @@ const App = () => {
   const movies = useSelector(moviesSelectors.selectMovies)
 
   useEffect(() => {
-    console.log(movies)
-  }, [movies])
-
-  useEffect(() => {
     dispatch(moviesOperations.fetchMovies({ type: 'popular' }))
     dispatch(moviesOperations.fetchGenres())
   }, [dispatch])
