@@ -22,8 +22,13 @@ export interface ITheme {
     linearGradientDown: string
   }
   staticColors: {
-    grey: string,
+    grey: string
     white: string
+  }
+  media: {
+    desktop: string
+    tablet: string
+    mobile: string
   }
   toggleTheme: () => void
 }

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Rating } from 'react-simple-star-rating'
 
-export const MovieWrapper = styled.div`
+export const MovieWrapper = styled.li`
   position: relative;
   width: 280px;
   height: 406px;
@@ -33,6 +34,14 @@ export const StarWrapper = styled.span`
   display: inline-block;
   padding: 0 2px;
   width: 18px;
+  height: 14px;
+
+  & span {
+    background-color: #fff !important;
+  }
+`
+
+export const RatingStar = styled(Rating)`
   height: 14px;
 `
 

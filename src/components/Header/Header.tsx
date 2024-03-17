@@ -3,6 +3,7 @@ import {
   HeaderWrapper,
   MenuBtn,
   LogoWrapper,
+  Nav,
   NavList,
   NavLink,
 } from './Header.styled'
@@ -20,7 +21,7 @@ const Header: FC<HeaderProps> = () => {
         <Logo />
       </LogoWrapper>
       <MenuBtn onClick={() => setIsOpen(true)}>Menu</MenuBtn>
-      <nav>
+      <Nav>
         <NavList>
           <li>
             <NavLink to="/">Home</NavLink>
@@ -32,7 +33,7 @@ const Header: FC<HeaderProps> = () => {
             <NavLink to="/library">My library</NavLink>
           </li>
         </NavList>
-      </nav>
+      </Nav>
       <ThemeSwitcher />
       {isOpen && <NavMenu closeMenu={() => setIsOpen(false)} />}
     </HeaderWrapper>

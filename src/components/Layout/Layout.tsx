@@ -3,6 +3,7 @@ import { LayoutWrapper } from './Layout.styled'
 import { LayoutProps } from './Layout.types'
 import Header from 'components/Header'
 import { Outlet } from 'react-router-dom'
+import Footer from 'components/Footer'
 
 const Layout: FC<LayoutProps> = () => {
   return (
@@ -11,6 +12,7 @@ const Layout: FC<LayoutProps> = () => {
       <main>
         <Outlet />
       </main>
+      <Footer />
     </LayoutWrapper>
   )
 }

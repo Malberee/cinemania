@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
-import { Rating } from 'react-simple-star-rating'
 import {
   MovieWrapper,
   MovieInner,
   StarWrapper,
   InfoWrapper,
   GreyText,
+  RatingStar,
 } from './Movie.styled'
 import { useGenres } from 'hooks/useGenres'
 import { MovieProps } from './Movie.types'
@@ -28,33 +28,35 @@ const Movie: FC<MovieProps> = ({ movie }) => {
 
   return (
     <MovieWrapper>
-      <img
-        src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-        alt=""
-      />
-      <MovieInner>
-        <InfoWrapper>
-          <p>{movie.title.toUpperCase()} </p>
-          <GreyText>
-            {formattedGenres()} | {year}
-          </GreyText>
-        </InfoWrapper>
-        <Rating
-          initialValue={Math.round((movie.vote_average / 2) * 2) / 2}
-          readonly
-          allowFraction
-          fillIcon={
-            <StarWrapper>
-              <Star />
-            </StarWrapper>
-          }
-          emptyIcon={
-            <StarWrapper>
-              <StarEmpty />
-            </StarWrapper>
-          }
+      <a>
+        <img
+          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+          alt=""
         />
-      </MovieInner>
+        <MovieInner>
+          <InfoWrapper>
+            <p>{movie.title.toUpperCase()} </p>
+            <GreyText>
+              {formattedGenres()} | {year}
+            </GreyText>
+          </InfoWrapper>
+          <RatingStar
+            initialValue={Math.round((movie.vote_average / 2) * 2) / 2}
+            readonly
+            allowFraction
+            fillIcon={
+              <StarWrapper>
+                <Star />
+              </StarWrapper>
+            }
+            emptyIcon={
+              <StarWrapper>
+                <StarEmpty />
+              </StarWrapper>
+            }
+          />
+        </MovieInner>
+      </a>
     </MovieWrapper>
   )
 }

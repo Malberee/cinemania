@@ -1,5 +1,6 @@
-import './App.scss'
+// import './App.scss'
 import { Route, Routes } from 'react-router-dom'
+import GlobalStyles from './global'
 import Catalog from 'pages/Catalog'
 import Home from 'pages/Home'
 import Library from 'pages/Library'
@@ -8,6 +9,7 @@ import Layout from './Layout'
 const App = () => {
   return (
     <>
+      <GlobalStyles />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
