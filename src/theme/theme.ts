@@ -29,6 +29,10 @@ export const common: Omit<ITheme, 'colors' | 'toggleTheme'> = {
     linearGradientDown:
       'linear-gradient(145deg, #f84119 0%, rgba(248, 159, 25, 0.68) 100%)',
   },
+  staticColors: {
+    grey: '#b7b7b7',
+    white: '#ffffff'
+  },
 }
 
 export const light: IColors = {

@@ -4,8 +4,8 @@ import { LogoProps } from './Logo.types'
 const Logo: FC<LogoProps> = ({ width, height }) => {
   return (
     <svg
-      width={width || 'auto'}
-      height={height || 'auto'}
+      width={width}
+      height={height}
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

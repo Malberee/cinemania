@@ -5,8 +5,6 @@ import { StarEmptyProps } from './StarEmpty.types'
 const StarEmpty: FC<StarEmptyProps> = () => {
   return (
     <svg
-      width="auto"
-      height="auto"
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

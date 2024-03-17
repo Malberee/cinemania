@@ -11,13 +11,14 @@ export const MovieWrapper = styled.div`
 
 export const MovieInner = styled.div`
   position: absolute;
-  top: 0;
+  bottom: 0;
 
   display: flex;
-  align-items: end;
+  align-items: flex-end;
+  justify-content: space-between;
 
-  height: 100%;
   width: 100%;
+  height: 100%;
   padding: 16px 12px;
 
   color: white;
@@ -33,4 +34,14 @@ export const StarWrapper = styled.span`
   padding: 0 2px;
   width: 18px;
   height: 14px;
+`
+
+export const InfoWrapper = styled.div`
+  font-size: ${({ theme }) => theme.text.mobile.sm}px;
+  font-weight: 500;
+`
+
+export const GreyText = styled.p`
+  color: ${({ theme }) => theme.staticColors.grey};
+  margin-top: 10px;
 `

@@ -21,5 +21,9 @@ export interface ITheme {
     linearGradientUp: string
     linearGradientDown: string
   }
+  staticColors: {
+    grey: string,
+    white: string
+  }
   toggleTheme: () => void
 }
