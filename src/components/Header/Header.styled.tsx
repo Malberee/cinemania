@@ -12,7 +12,7 @@ export const HeaderWrapper = styled.header`
   background-color: ${({ theme }) => theme.colors.white};
 `
 
-export const LogoWrapper = styled.a(({ theme }) => {
+export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {
   const { tablet } = theme.media
 
   return css`
