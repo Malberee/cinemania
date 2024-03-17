@@ -4,6 +4,7 @@ export const Backdrop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 
   display: flex;
   justify-content: center;
