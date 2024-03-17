@@ -7,13 +7,16 @@ import Library from 'pages/Library'
 import Layout from './Layout'
 import Modal from './Modal'
 import { useState } from 'react'
+import Button from './Button'
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>OPEN MODAL</button>
+      <Button isBordered onClick={() => setIsOpen(true)}>
+        OPEN MODAL
+      </Button>
       {isOpen && (
         <Modal onClose={() => setIsOpen(false)}>tsfsdfsdfsfsdfsdf</Modal>
       )}
