@@ -1,4 +1,4 @@
-import { combineReducers, createReducer } from '@reduxjs/toolkit'
+import { PayloadAction, combineReducers, createReducer } from '@reduxjs/toolkit'
 import { fetchGenres, fetchMovies } from './movies.operations'
 
 const entities = createReducer([], (builder) =>
@@ -26,14 +26,10 @@ const isLoading = createReducer(false, (builder) =>
     .addCase(fetchMovies.rejected, () => false)
 )
 
-const error = createReducer(null, (builder) =>
+const error = createReducer<null | string>(null, (builder) =>
   builder
     .addCase(fetchMovies.pending, () => null)
-    .addCase(fetchMovies.rejected, (_, action) => {
-      console.log('text')
-
-      return action.payload
-    })
+    .addCase(fetchMovies.rejected, (_, action) => action.payload)
 )
 
 const genres = createReducer([], (builder) =>

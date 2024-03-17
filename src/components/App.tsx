@@ -5,10 +5,18 @@ import Catalog from 'pages/Catalog'
 import Home from 'pages/Home'
 import Library from 'pages/Library'
 import Layout from './Layout'
+import Modal from './Modal'
+import { useState } from 'react'
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <>
+      <button onClick={() => setIsOpen(true)}>OPEN MODAL</button>
+      {isOpen && (
+        <Modal onClose={() => setIsOpen(false)}>tsfsdfsdfsfsdfsdf</Modal>
+      )}
       <GlobalStyles />
       <Routes>
         <Route path="/" element={<Layout />}>
