@@ -5,8 +5,8 @@ import { StarProps } from './Star.types'
 const Star: FC<StarProps> = () => {
   return (
     <svg
-      width="16"
-      height="16"
+      width="auto"
+      height="auto"
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -1,10 +1,5 @@
 import React, { FC, MouseEvent } from 'react'
-import {
-  NavMenuWrapper,
-  Backdrop,
-  NavList,
-  NavLink,
-} from './NavMenu.styled'
+import { NavMenuWrapper, Backdrop, NavList, NavLink } from './NavMenu.styled'
 import { NavMenuProps } from './NavMenu.types'
 import Logo from 'icons/Logo'
 
@@ -22,13 +17,19 @@ const NavMenu: FC<NavMenuProps> = ({ closeMenu }) => {
         <nav>
           <NavList>
             <li>
-              <NavLink>Home</NavLink>
+              <NavLink to="/" onClick={closeMenu}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink>Catalog</NavLink>
+              <NavLink to="/catalog" onClick={closeMenu}>
+                Catalog
+              </NavLink>
             </li>
             <li>
-              <NavLink>My library</NavLink>
+              <NavLink to="/library" onClick={closeMenu}>
+                My library
+              </NavLink>
             </li>
           </NavList>
         </nav>

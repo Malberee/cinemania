@@ -1,9 +1,11 @@
 import styled from 'styled-components'
+import { NavLink as NavLinkRouter } from 'react-router-dom'
 
 export const Backdrop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 
   height: 100%;
   width: 100%;
@@ -29,9 +31,17 @@ export const NavList = styled.ul`
   flex-direction: column;
 `
 
-export const NavLink = styled.a`
+export const NavLink = styled(NavLinkRouter)`
   display: block;
-  text-transform: uppercase;
   padding: 12px;
+  
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: ${({ theme }) => theme.colors.secondaryText};
   cursor: pointer;
+
+  &.active {
+    color: ${({ theme }) => theme.colors.accent};
+  }
 `

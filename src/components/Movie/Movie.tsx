@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Rating } from 'react-simple-star-rating'
-import { MovieWrapper, MovieInner } from './Movie.styled'
+import { MovieWrapper, MovieInner, StarWrapper } from './Movie.styled'
 import { useGenres } from 'hooks/useGenres'
 import { MovieProps } from './Movie.types'
 import StarEmpty from 'icons/StarEmpty'
@@ -17,14 +17,21 @@ const Movie: FC<MovieProps> = ({ movie }) => {
       />
       <MovieInner>
         <p>{movie.title}</p>
-        {genres.join(', ').slice(0, -1)}
+        <p>{genres.join(', ').slice(0, -1)}</p>
         <Rating
-          size={15}
           initialValue={Math.round((movie.vote_average / 2) * 2) / 2}
-          allowHover={false}
+          readonly
           allowFraction
-          fillIcon={<Star />}
-          emptyIcon={<StarEmpty />}
+          fillIcon={
+            <StarWrapper>
+              <Star />
+            </StarWrapper>
+          }
+          emptyIcon={
+            <StarWrapper>
+              <StarEmpty />
+            </StarWrapper>
+          }
         />
       </MovieInner>
     </MovieWrapper>
