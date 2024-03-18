@@ -33,6 +33,7 @@ export const MovieInfoRow = styled.li`
   gap: 12px;
 `
 export const MovieInfoItem = styled.p<{ color: 'grey' | 'white' }>`
+  flex: 1;
   color: ${({ theme, color }) =>
     theme.colors[color === 'white' ? 'text' : color]};
 `

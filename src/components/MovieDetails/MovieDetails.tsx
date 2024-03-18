@@ -15,7 +15,7 @@ import { useGenres } from 'hooks/useGenres'
 import Button from 'components/Button'
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
-  const genres = useGenres(movie.genre_ids).join(' ').slice(0, -1)
+  const genres = useGenres(movie.genre_ids).join(' ')
 
   return (
     <MovieDetailsWrapper>

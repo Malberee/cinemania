@@ -13,6 +13,7 @@ export const Backdrop = styled.div`
   height: 100vh;
 
   background-color: ${({ theme }) => theme.colors.backdrop};
+  overflow: scroll;
 `
 
 export const ModalWrapper = styled.div(({ theme }) => {
