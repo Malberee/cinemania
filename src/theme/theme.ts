@@ -50,6 +50,7 @@ export const common: Omit<ITheme, 'colors' | 'toggleTheme'> = {
 
 export const light: IColors = {
   background: '#ffffff',
+  secondaryBackground: '#ffffff',
   accent: '#F87719',
   secondaryBlack: '#282828',
   grey: '#595959',
@@ -61,6 +62,7 @@ export const light: IColors = {
 
 export const dark: IColors = {
   background: '#111111',
+  secondaryBackground: '#000000',
   accent: '#F87719',
   secondaryBlack: '#282828',
   grey: '#b7b7b7',

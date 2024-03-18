@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 export const Backdrop = styled.div`
   position: fixed;
   top: 0;
-  z-index: 1;
+  left: 0;
 
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@ export const Backdrop = styled.div`
   height: 100vh;
 
   background-color: ${({ theme }) => theme.colors.backdrop};
-  overflow: scroll;
+  overflow-y: auto;
 `
 
 export const ModalWrapper = styled.div(({ theme }) => {
@@ -21,6 +21,7 @@ export const ModalWrapper = styled.div(({ theme }) => {
 
   return css`
     position: relative;
+    margin: auto;
     padding: 52px 16px;
     border-radius: 16px;
     background-color: ${({ theme }) => theme.colors.background};

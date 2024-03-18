@@ -7,9 +7,9 @@ export const HeaderWrapper = styled.header`
   align-items: center;
 
   width: 100%;
-  padding: 20px 8px;
+  padding: 15px 20px;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.secondaryBackground};
 `
 
 export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {

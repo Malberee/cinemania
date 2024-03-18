@@ -2,6 +2,7 @@ type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
 export interface IColors {
   background: string
+  secondaryBackground: string
   accent: string
   secondaryBlack: string
   grey: string
