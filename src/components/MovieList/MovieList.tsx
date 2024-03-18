@@ -1,14 +1,26 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { MovieListWrapper } from './MovieList.styled'
 import Movie from '../Movie/Movie'
 import { MovieListProps } from './MovieList.types'
+import { Movie as IMovie } from 'types'
+import Modal from 'components/Modal'
+import MovieDetails from 'components/MovieDetails'
 
 const MovieList: FC<MovieListProps> = ({ movies }) => {
+  const [currentMovie, setCurrentMovie] = useState<null | IMovie>(null)
+
+  const selectMovie = (movie: IMovie) => setCurrentMovie(movie)
+
   return (
     <MovieListWrapper>
       {movies.map((movie) => (
-        <Movie movie={movie} key={movie.id} />
+        <Movie movie={movie} key={movie.id} selectMovie={selectMovie} />
       ))}
+      {currentMovie && (
+        <Modal onClose={() => setCurrentMovie(null)}>
+          <MovieDetails movie={currentMovie} />
+        </Modal>
+      )}
     </MovieListWrapper>
   )
 }

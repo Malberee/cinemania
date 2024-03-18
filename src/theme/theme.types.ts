@@ -5,9 +5,10 @@ export interface IColors {
   accent: string
   secondaryBlack: string
   grey: string
-  white: string
+  text: string
   secondaryText: string
   backdrop: string
+  black: string
 }
 
 export interface ITheme {

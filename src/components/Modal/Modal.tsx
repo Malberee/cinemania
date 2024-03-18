@@ -1,7 +1,10 @@
 import React, { FC, MouseEvent, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { Backdrop, ModalWrapper, CloseBtn } from './Modal.styled'
 import { ModalProps } from './Modal.types'
 import Close from 'icons/Close'
+
+const modalRoot = document.getElementById('modal-root')!
 
 const Modal: FC<ModalProps> = ({ children, onClose }) => {
   const handleClick = (e: MouseEvent<HTMLElement>) => {
@@ -17,7 +20,7 @@ const Modal: FC<ModalProps> = ({ children, onClose }) => {
     }
   }, [])
 
-  return (
+  return createPortal(
     <Backdrop onClick={handleClick}>
       <ModalWrapper>
         <CloseBtn onClick={onClose}>
@@ -25,7 +28,8 @@ const Modal: FC<ModalProps> = ({ children, onClose }) => {
         </CloseBtn>
         {children}
       </ModalWrapper>
-    </Backdrop>
+    </Backdrop>,
+    modalRoot
   )
 }
 

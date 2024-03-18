@@ -53,9 +53,10 @@ export const light: IColors = {
   accent: '#F87719',
   secondaryBlack: '#282828',
   grey: '#595959',
-  white: '#ffffff',
+  text: '#000000',
   secondaryText: '#282828',
   backdrop: 'rgba(0, 0, 0, 0.2)',
+  black: '#000000',
 }
 
 export const dark: IColors = {
@@ -63,7 +64,8 @@ export const dark: IColors = {
   accent: '#F87719',
   secondaryBlack: '#282828',
   grey: '#b7b7b7',
-  white: '#000000',
+  text: '#ffffff',
   secondaryText: '#f8f8f8',
   backdrop: 'rgba(0, 0, 0, 0.2)',
+  black: '#ffffff',
 }

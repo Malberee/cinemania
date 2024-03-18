@@ -1,5 +1,6 @@
 import { Movie } from "types";
 
 export interface MovieProps {
-    movie: Movie
+  movie: Movie
+  selectMovie: (movie: Movie) => void
 }

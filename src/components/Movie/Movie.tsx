@@ -12,7 +12,7 @@ import { MovieProps } from './Movie.types'
 import StarEmpty from 'icons/StarEmpty'
 import Star from 'icons/Star'
 
-const Movie: FC<MovieProps> = ({ movie }) => {
+const Movie: FC<MovieProps> = ({ movie, selectMovie }) => {
   const genres = useGenres(movie.genre_ids)
 
   const year = new Date(movie.release_date).getFullYear()
@@ -28,7 +28,7 @@ const Movie: FC<MovieProps> = ({ movie }) => {
 
   return (
     <MovieWrapper>
-      <a>
+      <a onClick={() => selectMovie(movie)}>
         <img
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
           alt=""
