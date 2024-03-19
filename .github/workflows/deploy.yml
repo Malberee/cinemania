@@ -20,10 +20,12 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install -g yarn
 
       - name: Build project
-        run: yarn build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
