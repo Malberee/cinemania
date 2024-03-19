@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const ContainerWrapper = styled.div(({ theme }) => {
+const ContainerWrapper = styled.div(({ theme }) => {
   const { tablet, desktop } = theme.media
 
   return css`
@@ -16,3 +16,5 @@ export const ContainerWrapper = styled.div(({ theme }) => {
     }
   `
 })
+
+export default ContainerWrapper

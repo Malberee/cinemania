@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components'
-import { ContainerWrapper as ContainerStyles } from 'components/Container/Container.styled'
 import { NavLink as NavLinkRouter } from 'react-router-dom'
+import Container from 'components/Container'
 
 export const HeaderWrapper = styled.header`
   background-color: ${({ theme }) => theme.colors.secondaryBackground};
 `
 
-export const Container = styled(ContainerStyles)`
+export const HeaderContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: center;
