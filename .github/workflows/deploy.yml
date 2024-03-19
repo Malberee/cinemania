@@ -7,31 +7,36 @@ on:
 
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 'v20.10.0'
+          registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies
+      - name: Install Yarn
         run: npm install -g yarn
 
-      - name: Build project
+      - name: Build lib
         run: |
           yarn install --frozen-lockfile
           yarn build
 
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
+      - name: Rebuild production node_modules
+        run: |
+          yarn install --production --frozen-lockfile
+          ls node_modules
+
+      - name: artifact
+        uses: actions/upload-artifact@v3
         with:
-          name: production-files
-          path: ./dist
+          name: dist
+          path: |
+            lib
+            node_modules
 
   deploy:
     name: Deploy
