@@ -11,12 +11,12 @@ export const FooterWrapper = styled.footer(({ theme }) => {
     text-align: center;
     background-color: ${({ theme }) => theme.colors.background};
 
-    @media (${tablet} <= width) {
+    @media (width >= ${tablet}) {
       padding: 40px 12px;
       font-size: ${({ theme }) => theme.text.tablet.md}px;
     }
 
-    @media (${desktop} <= width) {
+    @media (width >= ${desktop}) {
       padding: 80px 12px;
     }
   `

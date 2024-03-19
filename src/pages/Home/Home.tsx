@@ -24,9 +24,7 @@ const Home: FC<HomeProps> = () => {
         )}
       </HomeSection>
       <HomeSection title="Upcoming this month">
-        {!isLoading && movie && (
-          <MovieDetails movie={movie} />
-        )}
+        {!isLoading && movie && <MovieDetails movie={movie} />}
       </HomeSection>
       {selectedMovie && (
         <Modal onClose={() => setSelectedMovie(null)}>

@@ -8,6 +8,10 @@ export const MovieWrapper = styled.li`
 
   border-radius: 5px;
   overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
 `
 
 export const MovieInner = styled.div`

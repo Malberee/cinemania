@@ -1,50 +1,27 @@
 import React, { FC } from 'react'
 import {
   MovieDetailsWrapper,
-  MoviePosterWrapper,
+  MoviePoster,
   MovieTitle,
-  MovieInfoList,
-  MovieInfoRow,
-  MovieInfoItem,
-  VoteSpan,
-  AboutTitle,
-  About,
+  MovieInfo,
+  MovieAbout,
 } from './MovieDetails.styled'
 import { MovieDetailsProps } from './MovieDetails.types'
-import { useGenres } from 'hooks/useGenres'
 import Button from 'components/Button'
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
-  const genres = useGenres(movie.genre_ids).join(' ')
-
   return (
     <MovieDetailsWrapper>
-      <MoviePosterWrapper>
-        <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
-      </MoviePosterWrapper>
+      <MoviePoster
+        src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+      />
       <MovieTitle>{movie.title}</MovieTitle>
-      <MovieInfoList>
-        <MovieInfoRow>
-          <MovieInfoItem color="grey">Vote / Votes</MovieInfoItem>
-          <MovieInfoItem color="grey">
-            <VoteSpan>{movie.vote_average.toFixed(1)}</VoteSpan> /{' '}
-            <VoteSpan>{movie.vote_count}</VoteSpan>
-          </MovieInfoItem>
-        </MovieInfoRow>
-        <MovieInfoRow>
-          <MovieInfoItem color="grey">Popularity</MovieInfoItem>
-          <MovieInfoItem color="white">
-            {movie.popularity.toFixed(1)}
-          </MovieInfoItem>
-        </MovieInfoRow>
-        <MovieInfoRow>
-          <MovieInfoItem color="grey">Genre</MovieInfoItem>
-          <MovieInfoItem color="white">{genres}</MovieInfoItem>
-        </MovieInfoRow>
-      </MovieInfoList>
-      <AboutTitle>About</AboutTitle>
-      <About>{movie.overview}</About>
-      <Button isBordered>Add to library</Button>
+      <MovieInfo></MovieInfo>
+      <MovieAbout>
+        <h4>About</h4>
+        <p>{movie.overview}</p>
+      </MovieAbout>
+      <Button>Add to my library</Button>
     </MovieDetailsWrapper>
   )
 }

@@ -1,15 +1,17 @@
 import styled, { css } from 'styled-components'
+import { ContainerWrapper as ContainerStyles } from 'components/Container/Container.styled'
 import { NavLink as NavLinkRouter } from 'react-router-dom'
 
 export const HeaderWrapper = styled.header`
+  background-color: ${({ theme }) => theme.colors.secondaryBackground};
+`
+
+export const Container = styled(ContainerStyles)`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  width: 100%;
   padding: 15px 20px;
-
-  background-color: ${({ theme }) => theme.colors.secondaryBackground};
 `
 
 export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {
@@ -21,7 +23,7 @@ export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {
 
     cursor: pointer;
 
-    @media (${tablet} <= width) {
+    @media (width >= ${tablet}) {
       width: 48px;
       height: 48px;
     }
@@ -41,7 +43,7 @@ export const MenuBtn = styled.button(({ theme }) => {
 
     cursor: pointer;
 
-    @media (${tablet} <= width) {
+    @media (width >= ${tablet}) {
       display: none;
     }
   `
@@ -53,7 +55,7 @@ export const Nav = styled.nav(({ theme }) => {
   return css`
     display: none;
 
-    @media (${tablet} <= width) {
+    @media (width >= ${tablet}) {
       display: flex;
     }
   `

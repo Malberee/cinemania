@@ -29,7 +29,7 @@ export const ThemeSwitcherWrapper = styled.label(({ theme }) => {
       rotate: -180deg;
     }
 
-    @media (${tablet} <= width) {
+    @media (width >= ${tablet}) {
       width: 60px;
       height: 24px;
       padding: 3px;
@@ -50,7 +50,7 @@ export const Thumb = styled.div(({ theme }) => {
 
     transition: all 200ms ease-in-out;
 
-    @media (${tablet} <= width) {
+    @media (width >= ${tablet}) {
       top: 3px;
       right: 3px;
 

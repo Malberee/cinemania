@@ -6,6 +6,7 @@ import {
   Nav,
   NavList,
   NavLink,
+  Container,
 } from './Header.styled'
 import { HeaderProps } from './Header.types'
 import ThemeSwitcher from 'components/ThemeSwitcher'
@@ -17,24 +18,26 @@ const Header: FC<HeaderProps> = () => {
 
   return (
     <HeaderWrapper>
-      <LogoWrapper to="/">
-        <Logo />
-      </LogoWrapper>
-      <MenuBtn onClick={() => setIsOpen(true)}>Menu</MenuBtn>
-      <Nav>
-        <NavList>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/catalog">Catalog</NavLink>
-          </li>
-          <li>
-            <NavLink to="/library">My library</NavLink>
-          </li>
-        </NavList>
-      </Nav>
-      <ThemeSwitcher />
+      <Container>
+        <LogoWrapper to="/">
+          <Logo />
+        </LogoWrapper>
+        <MenuBtn onClick={() => setIsOpen(true)}>Menu</MenuBtn>
+        <Nav>
+          <NavList>
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/catalog">Catalog</NavLink>
+            </li>
+            <li>
+              <NavLink to="/library">My library</NavLink>
+            </li>
+          </NavList>
+        </Nav>
+        <ThemeSwitcher />
+      </Container>
       {isOpen && <NavMenu closeMenu={() => setIsOpen(false)} />}
     </HeaderWrapper>
   )

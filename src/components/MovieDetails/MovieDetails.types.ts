@@ -1,5 +1,5 @@
-import { Movie } from 'types'
+import { Movie } from "types";
 
 export interface MovieDetailsProps {
-  movie: Movie
+    movie: Movie
 }

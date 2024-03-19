@@ -4,7 +4,8 @@ import Movie from '../Movie/Movie'
 import { MovieListProps } from './MovieList.types'
 import { Movie as IMovie } from 'types'
 import Modal from 'components/Modal'
-import MovieDetails from 'components/MovieDetails'
+import MovieDetails from 'components/MovieDetailsModal'
+import Container from 'components/Container'
 
 const MovieList: FC<MovieListProps> = ({ movies }) => {
   const [currentMovie, setCurrentMovie] = useState<null | IMovie>(null)
@@ -12,16 +13,18 @@ const MovieList: FC<MovieListProps> = ({ movies }) => {
   const selectMovie = (movie: IMovie) => setCurrentMovie(movie)
 
   return (
-    <MovieListWrapper>
-      {movies.map((movie) => (
-        <Movie movie={movie} key={movie.id} selectMovie={selectMovie} />
-      ))}
-      {currentMovie && (
-        <Modal onClose={() => setCurrentMovie(null)}>
-          <MovieDetails movie={currentMovie} />
-        </Modal>
-      )}
-    </MovieListWrapper>
+    <Container>
+      <MovieListWrapper>
+        {movies.map((movie) => (
+          <Movie movie={movie} key={movie.id} selectMovie={selectMovie} />
+        ))}
+        {currentMovie && (
+          <Modal onClose={() => setCurrentMovie(null)}>
+            <MovieDetails movie={currentMovie} />
+          </Modal>
+        )}
+      </MovieListWrapper>
+    </Container>
   )
 }
 

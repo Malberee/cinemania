@@ -15,6 +15,10 @@ export const Backdrop = styled.div`
 
   background-color: ${({ theme }) => theme.colors.backdrop};
   overflow-y: auto;
+
+  @media (width >= 768px) {
+    padding: 32px;
+  }
 `
 
 export const ModalWrapper = styled.div(({ theme }) => {
@@ -28,11 +32,12 @@ export const ModalWrapper = styled.div(({ theme }) => {
     border-radius: 16px;
     background-color: ${({ theme }) => theme.colors.background};
 
-    @media (${tablet} <= width) {
+    @media (width >= ${tablet}) {
       padding: 44px;
     }
 
-    @media (${desktop} <= width) {
+    @media (width >= ${desktop}) {
+      max-width: 846px;
       padding: 60px;
     }
   `
@@ -61,12 +66,12 @@ export const CloseBtn = styled.button(({ theme }) => {
       cursor: pointer;
     }
 
-    @media (${tablet} <= width) {
+    @media (width >= ${tablet}) {
       top: 24px;
       right: 24px;
     }
 
-    @media (${desktop} <= width) {
+    @media (width >= ${desktop}) {
       top: 40px;
       right: 40px;
     }
