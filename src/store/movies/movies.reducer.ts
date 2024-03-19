@@ -1,7 +1,9 @@
-import { PayloadAction, combineReducers, createReducer } from '@reduxjs/toolkit'
+import { combineReducers, createReducer } from '@reduxjs/toolkit'
 import { fetchGenres, fetchMovies } from './movies.operations'
+import { Movie } from 'types'
+import { Genre } from './movies.types'
 
-const entities = createReducer([], (builder) =>
+const entities = createReducer<Movie[]>([], (builder) =>
   builder.addCase(fetchMovies.fulfilled, (_, action) => action.payload.results)
 )
 
@@ -32,7 +34,7 @@ const error = createReducer<null | string>(null, (builder) =>
     .addCase(fetchMovies.rejected, (_, action) => action.payload)
 )
 
-const genres = createReducer([], (builder) =>
+const genres = createReducer<Genre[]>([], (builder) =>
   builder.addCase(fetchGenres.fulfilled, (_, action) => action.payload)
 )
 

@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent } from 'react'
+import { FC, MouseEvent } from 'react'
 import { NavMenuWrapper, Backdrop, NavList, NavLink } from './NavMenu.styled'
 import { NavMenuProps } from './NavMenu.types'
 import Logo from 'icons/Logo'

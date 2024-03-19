@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { LayoutWrapper } from './Layout.styled'
 import { LayoutProps } from './Layout.types'
 import Header from 'components/Header'

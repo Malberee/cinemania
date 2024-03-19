@@ -1,16 +1,16 @@
-import React, { FC, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import { CatalogWrapper } from './Catalog.styled'
 import { CatalogProps } from './Catalog.types'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { moviesOperations } from 'store/movies'
 import MovieList from 'components/MovieList'
-import { useSelector } from 'react-redux'
 import { selectIsLoading, selectMovies } from 'store/movies/movies.selectors'
+import useAppSelector from 'hooks/useAppSelector'
 
 const Catalog: FC<CatalogProps> = () => {
   const dispatch = useAppDispatch()
-  const movies = useSelector(selectMovies)
-  const isLoading = useSelector(selectIsLoading)
+  const movies = useAppSelector(selectMovies)
+  const isLoading = useAppSelector(selectIsLoading)
 
   useEffect(() => {
     dispatch(moviesOperations.fetchMovies({ type: 'popular' }))

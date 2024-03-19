@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent, useEffect } from 'react'
+import { FC, MouseEvent, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { Backdrop, ModalWrapper, CloseBtn } from './Modal.styled'
 import { ModalProps } from './Modal.types'

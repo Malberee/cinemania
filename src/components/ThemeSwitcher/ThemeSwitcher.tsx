@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { ThemeSwitcherWrapper, Thumb } from './ThemeSwitcher.styled'
 import { ThemeSwitcherProps } from './ThemeSwitcher.types'
 import ThemeSwitcherThumb from 'icons/ThemeSwitcherThumb'

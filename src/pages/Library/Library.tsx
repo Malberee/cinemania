@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { LibraryWrapper } from './Library.styled'
 import { LibraryProps } from './Library.types'
 

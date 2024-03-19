@@ -33,6 +33,7 @@ export const ModalWrapper = styled.div(({ theme }) => {
     background-color: ${({ theme }) => theme.colors.background};
 
     @media (width >= ${tablet}) {
+      max-width: 704px;
       padding: 44px;
     }
 

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import {
   HeaderWrapper,
   MenuBtn,
@@ -6,7 +6,7 @@ import {
   Nav,
   NavList,
   NavLink,
-  Container,
+  HeaderContainer,
 } from './Header.styled'
 import { HeaderProps } from './Header.types'
 import ThemeSwitcher from 'components/ThemeSwitcher'
@@ -18,7 +18,7 @@ const Header: FC<HeaderProps> = () => {
 
   return (
     <HeaderWrapper>
-      <Container>
+      <HeaderContainer>
         <LogoWrapper to="/">
           <Logo />
         </LogoWrapper>
@@ -37,7 +37,7 @@ const Header: FC<HeaderProps> = () => {
           </NavList>
         </Nav>
         <ThemeSwitcher />
-      </Container>
+      </HeaderContainer>
       {isOpen && <NavMenu closeMenu={() => setIsOpen(false)} />}
     </HeaderWrapper>
   )

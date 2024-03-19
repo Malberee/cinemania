@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import { MovieListWrapper } from './MovieList.styled'
 import Movie from '../Movie/Movie'
 import { MovieListProps } from './MovieList.types'

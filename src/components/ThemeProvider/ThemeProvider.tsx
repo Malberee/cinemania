@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { ThemeProvider as Provider } from 'styled-components'
 import { ThemeProviderProps, ThemeVariants } from './ThemeProvider.types'
 import * as themes from 'theme/theme'
