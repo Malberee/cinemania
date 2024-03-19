@@ -5,17 +5,16 @@ export const MovieDetailsWrapper = styled.div`
 `
 
 export const MoviePosterWrapper = styled.div`
-  width: 248px;
-  height: 315px;
+  max-width: 248px;
+  max-height: 315px;
   margin-bottom: 22px;
   border-radius: 5px;
   overflow: hidden;
 `
 
 export const MovieTitle = styled.h2`
-  max-width: 248px;
+  /* max-width: 248px; */
   margin-bottom: 29px;
-  text-align: justify;
   font-size: ${({ theme }) => theme.text.mobile.lg}px;
   color: ${({ theme }) => theme.colors.text};
 `
@@ -24,7 +23,6 @@ export const MovieInfoList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-width: 248px;
   margin-bottom: 20px;
 `
 export const MovieInfoRow = styled.li`
@@ -53,7 +51,6 @@ export const AboutTitle = styled.h3`
 `
 
 export const About = styled.p`
-  max-width: 248px;
   margin-bottom: 16px;
   font-weight: 400;
   line-height: 20px;

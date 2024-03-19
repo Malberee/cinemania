@@ -5,11 +5,12 @@ import { useAppDispatch } from 'hooks/useAppDispatch'
 import { moviesOperations } from 'store/movies'
 import MovieList from 'components/MovieList'
 import { useSelector } from 'react-redux'
-import { selectMovies } from 'store/movies/movies.selectors'
+import { selectIsLoading, selectMovies } from 'store/movies/movies.selectors'
 
 const Catalog: FC<CatalogProps> = () => {
   const dispatch = useAppDispatch()
   const movies = useSelector(selectMovies)
+  const isLoading = useSelector(selectIsLoading)
 
   useEffect(() => {
     dispatch(moviesOperations.fetchMovies({ type: 'popular' }))
@@ -18,7 +19,7 @@ const Catalog: FC<CatalogProps> = () => {
 
   return (
     <CatalogWrapper>
-      <MovieList movies={movies} />
+      {isLoading ? 'LOADING' : <MovieList movies={movies} />}
     </CatalogWrapper>
   )
 }

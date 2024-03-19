@@ -15,6 +15,10 @@ export default createGlobalStyle`
         box-sizing: inherit;
     }
 
+    li {
+        list-style: none;
+    }
+
     body, input, button {
         font-family: "Roboto", sans-serif;
     }

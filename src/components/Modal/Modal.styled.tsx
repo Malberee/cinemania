@@ -11,6 +11,7 @@ export const Backdrop = styled.div`
 
   width: 100vw;
   height: 100vh;
+  padding: 20px;
 
   background-color: ${({ theme }) => theme.colors.backdrop};
   overflow-y: auto;
@@ -21,6 +22,7 @@ export const ModalWrapper = styled.div(({ theme }) => {
 
   return css`
     position: relative;
+    width: 100%;
     margin: auto;
     padding: 52px 16px;
     border-radius: 16px;
