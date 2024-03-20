@@ -9,10 +9,11 @@ axios.defaults.params = {
 export const fetchMovies = async (
   type: PayloadCreatorProps['type'],
   query?: string
-) => {
+  ) => {
   const endpoints = {
     popular: '/movie/popular',
     byQuery: `/search/movie?query=${query}`,
+    upcoming: '/movie/upcoming',
     queue: '',
     watched: '',
   }

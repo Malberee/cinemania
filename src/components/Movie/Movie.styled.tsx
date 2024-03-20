@@ -6,6 +6,8 @@ export const MovieWrapper = styled.li(({ theme }) => {
 
   return css`
     position: relative;
+
+    min-width: 100%;
     height: 406px;
 
     border-radius: 5px;
@@ -22,6 +24,7 @@ export const MovieWrapper = styled.li(({ theme }) => {
     }
 
     @media (width >= ${tablet}) {
+      min-width: auto;
       max-width: 224px;
       height: 325px;
     }
