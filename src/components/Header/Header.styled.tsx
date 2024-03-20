@@ -11,7 +11,8 @@ export const HeaderContainer = styled(Container)`
   justify-content: space-between;
   align-items: center;
 
-  padding: 15px 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 `
 
 export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {

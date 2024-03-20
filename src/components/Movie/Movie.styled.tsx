@@ -1,18 +1,37 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Rating } from 'react-simple-star-rating'
 
-export const MovieWrapper = styled.li`
-  position: relative;
-  width: 280px;
-  height: 406px;
+export const MovieWrapper = styled.li(({ theme }) => {
+  const { desktop, tablet } = theme.media
 
-  border-radius: 5px;
-  overflow: hidden;
+  return css`
+    position: relative;
+    height: 406px;
 
-  img {
-    object-fit: cover;
-  }
-`
+    border-radius: 5px;
+    overflow: hidden;
+
+    transition: scale 100ms linear;
+
+    &:hover {
+      scale: 1.02;
+    }
+
+    img {
+      object-fit: cover;
+    }
+
+    @media (width >= ${tablet}) {
+      max-width: 224px;
+      height: 325px;
+    }
+
+    @media (width >= ${desktop}) {
+      max-width: 394px;
+      height: 574px;
+    }
+  `
+})
 
 export const MovieInner = styled.div`
   position: absolute;
@@ -34,25 +53,51 @@ export const MovieInner = styled.div`
   );
 `
 
-export const StarWrapper = styled.span`
-  display: inline-block;
-  padding: 0 2px;
-  width: 18px;
-  height: 14px;
+export const StarWrapper = styled.span(({ theme }) => {
+  const { desktop, tablet } = theme.media
 
-  & span {
-    background-color: #fff !important;
-  }
-`
+  return css`
+    display: inline-block;
+    padding: 0 2px;
+    width: 18px;
+    height: 14px;
 
-export const RatingStar = styled(Rating)`
-  height: 14px;
-`
+    @media (width >= ${tablet}) {
+      width: 14px;
+      height: 10px;
+    }
 
-export const InfoWrapper = styled.div`
-  font-size: ${({ theme }) => theme.text.mobile.sm}px;
-  font-weight: 500;
-`
+    @media (width >= ${desktop}) {
+      width: 22px;
+      height: 18px;
+    }
+  `
+})
+
+export const RatingStar = styled(Rating)(({ theme }) => {
+  const { desktop } = theme.media
+
+  return css`
+    height: 14px;
+
+    @media (width >= ${desktop}) {
+      height: 18px;
+    }
+  `
+})
+
+export const InfoWrapper = styled.div(({ theme }) => {
+  const { desktop } = theme.media
+
+  return css`
+    font-size: ${theme.text.mobile.sm}px;
+    font-weight: 500;
+
+    @media (width >= ${desktop}) {
+      font-size: ${theme.text.desktop.md}px;
+    }
+  `
+})
 
 export const GreyText = styled.p`
   color: ${({ theme }) => theme.staticColors.grey};

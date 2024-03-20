@@ -16,15 +16,6 @@ const Movie: FC<MovieProps> = ({ movie, selectMovie }) => {
   const genres = useGenres(movie.genre_ids)
 
   const year = new Date(movie.release_date).getFullYear()
-  const formattedGenres = () => {
-    const string = genres.join(', ').slice(0, -1)
-
-    if (string.length >= 18) {
-      return string.slice(0, 18) + '...'
-    }
-
-    return string
-  }
 
   return (
     <MovieWrapper>
@@ -37,7 +28,7 @@ const Movie: FC<MovieProps> = ({ movie, selectMovie }) => {
           <InfoWrapper>
             <p>{movie.title.toUpperCase()} </p>
             <GreyText>
-              {formattedGenres()} | {year}
+              {genres.slice(0, 2).join(', ')} | {year}
             </GreyText>
           </InfoWrapper>
           <RatingStar

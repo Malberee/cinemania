@@ -8,6 +8,7 @@ import Modal from 'components/Modal'
 import { Movie as MovieType } from 'types'
 import MovieDetails from 'components/MovieDetails'
 import useAppSelector from 'hooks/useAppSelector'
+import Container from 'components/Container'
 
 const Home: FC<HomeProps> = () => {
   const [selectedMovie, setSelectedMovie] = useState<null | MovieType>(null)
@@ -18,14 +19,16 @@ const Home: FC<HomeProps> = () => {
 
   return (
     <HomeWrapper>
-      <HomeSection title="Weekly trends" link="/catalog">
-        {!isLoading && movie && (
-          <Movie movie={movie} selectMovie={selectMovie} />
-        )}
-      </HomeSection>
-      <HomeSection title="Upcoming this month">
-        {!isLoading && movie && <MovieDetails movie={movie} />}
-      </HomeSection>
+      <Container>
+        <HomeSection title="Weekly trends" link="/catalog">
+          {!isLoading && movie && (
+            <Movie movie={movie} selectMovie={selectMovie} />
+          )}
+        </HomeSection>
+        <HomeSection title="Upcoming this month">
+          {!isLoading && movie && <MovieDetails movie={movie} />}
+        </HomeSection>
+      </Container>
       {selectedMovie && (
         <Modal onClose={() => setSelectedMovie(null)}>
           <MovieDetails movie={selectedMovie} />

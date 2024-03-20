@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const MovieDetailsWrapper = styled.div``
 
 export const MoviePoster = styled.img`
-  width: 280px;
   height: 402px;
+  margin-bottom: 24px;
   border-radius: 5px;
   object-fit: cover;
 `
@@ -34,5 +34,6 @@ export const MovieAbout = styled.div`
 
   p {
     font-size: ${({ theme }) => theme.text.mobile.md}px;
+    line-height: 20px;
   }
 `
