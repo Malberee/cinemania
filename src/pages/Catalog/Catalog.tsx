@@ -6,6 +6,7 @@ import { moviesOperations } from 'store/movies'
 import MovieList from 'components/MovieList'
 import { selectIsLoading, selectMovies } from 'store/movies/movies.selectors'
 import useAppSelector from 'hooks/useAppSelector'
+import SearchBar from 'components/SearchBar'
 
 const Catalog: FC<CatalogProps> = () => {
   const dispatch = useAppDispatch()
@@ -19,6 +20,7 @@ const Catalog: FC<CatalogProps> = () => {
 
   return (
     <CatalogWrapper>
+      <SearchBar />
       {isLoading ? 'LOADING' : <MovieList movies={movies} />}
     </CatalogWrapper>
   )

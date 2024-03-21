@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const MovieDetailsModalWrapper = styled.div`
+export const MovieDetailsWrapper = styled.div`
   font-weight: 500;
 `
 

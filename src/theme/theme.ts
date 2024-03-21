@@ -59,6 +59,7 @@ export const light: IColors = {
   backdrop: 'rgba(0, 0, 0, 0.2)',
   black: '#000000',
   voteSpanBackground: '#f8f8f8',
+  selectBackground: '#f8f8f8',
 }
 
 export const dark: IColors = {
@@ -72,4 +73,5 @@ export const dark: IColors = {
   backdrop: 'rgba(0, 0, 0, 0.2)',
   black: '#ffffff',
   voteSpanBackground: '#ffffff',
+  selectBackground: '#1c1c1c'
 }

@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import {
-  MovieDetailsModalWrapper,
+  MovieDetailsWrapper,
   MoviePoster,
   MovieTitle,
   MovieInfoList,
@@ -8,17 +8,17 @@ import {
   MovieInfoItem,
   AboutTitle,
   About,
-} from './MovieDetailsModal.styled'
-import { MovieDetailsModalProps } from './MovieDetailsModal.types'
+} from './MovieDetails.styled'
+import { MovieDetailsProps } from './MovieDetails.types'
 import { useGenres } from 'hooks/useGenres'
 import Button from 'components/Button'
 import VoteSpan from 'components/VoteSpan'
 
-const MovieDetailsModal: FC<MovieDetailsModalProps> = ({ movie }) => {
+const MovieDetailsModal: FC<MovieDetailsProps> = ({ movie }) => {
   const genres = useGenres(movie.genre_ids).join(' ')
 
   return (
-    <MovieDetailsModalWrapper>
+    <MovieDetailsWrapper>
         <MoviePoster
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
         />
@@ -45,7 +45,7 @@ const MovieDetailsModal: FC<MovieDetailsModalProps> = ({ movie }) => {
       <AboutTitle>About</AboutTitle>
       <About>{movie.overview}</About>
       <Button isBordered>Add to library</Button>
-    </MovieDetailsModalWrapper>
+    </MovieDetailsWrapper>
   )
 }
 

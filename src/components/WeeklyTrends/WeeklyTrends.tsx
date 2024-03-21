@@ -12,7 +12,7 @@ import { selectMovies } from 'store/movies/movies.selectors'
 import Movie from 'components/Movie'
 import Modal from 'components/Modal'
 import { Movie as IMovie } from 'types'
-import MovieDetailsModal from 'components/MovieDetailsModal'
+import MovieDetailsModal from 'components/MovieDetails'
 
 const WeeklyTrends: FC<WeeklyTrendsProps> = () => {
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null)

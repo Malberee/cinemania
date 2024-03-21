@@ -4,7 +4,7 @@ import Movie from '../Movie/Movie'
 import { MovieListProps } from './MovieList.types'
 import { Movie as IMovie } from 'types'
 import Modal from 'components/Modal'
-import MovieDetails from 'components/MovieDetailsModal'
+import MovieDetails from 'components/MovieDetails'
 import Container from 'components/Container'
 
 const MovieList: FC<MovieListProps> = ({ movies }) => {

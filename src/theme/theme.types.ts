@@ -11,6 +11,7 @@ export interface IColors {
   backdrop: string
   black: string
   voteSpanBackground: string
+  selectBackground: string
 }
 
 export interface ITheme {

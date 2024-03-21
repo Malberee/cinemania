@@ -1,5 +1,5 @@
 import { Movie } from 'types'
 
-export interface MovieDetailsModalProps {
+export interface MovieDetailsProps {
   movie: Movie
 }
