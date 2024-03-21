@@ -13,7 +13,6 @@ export const MoviePoster = styled.img`
 `
 
 export const MovieTitle = styled.h2`
-  /* max-width: 248px; */
   margin-bottom: 29px;
   font-size: ${({ theme }) => theme.text.mobile.lg}px;
   color: ${({ theme }) => theme.colors.text};
@@ -34,13 +33,6 @@ export const MovieInfoItem = styled.p<{ color: 'grey' | 'white' }>`
   flex: 1;
   color: ${({ theme, color }) =>
     theme.colors[color === 'white' ? 'text' : color]};
-`
-
-export const VoteSpan = styled.span`
-  padding: 1px 4px;
-  background-color: ${({ theme }) => theme.colors.black};
-  color: ${({ theme }) => theme.colors.background};
-  border-radius: 5px;
 `
 
 export const AboutTitle = styled.h3`

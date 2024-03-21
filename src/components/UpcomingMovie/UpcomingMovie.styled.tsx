@@ -38,6 +38,17 @@ export const UpcomingTitle = styled.h4(({ theme }) => {
   `
 })
 
+export const UpcomingMovieInner = styled.div(({ theme }) => {
+  const { desktop } = theme.media
+
+  return css`
+    @media (width >= ${desktop}) {
+      display: flex;
+      gap: 16px;
+    }
+  `
+})
+
 export const MoviePoster = styled.picture(({ theme }) => {
   const { desktop, tablet } = theme.media
 
@@ -62,18 +73,71 @@ export const MoviePoster = styled.picture(({ theme }) => {
   `
 })
 
-export const MovieTitle = styled.h3`
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  font-size: ${({ theme }) => theme.text.mobile.lg}px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.text};
-`
+export const MovieTitle = styled.h3(({ theme }) => {
+  const { desktop, tablet } = theme.media
 
-export const MovieInfo = styled.ul`
-  margin-bottom: 20px;
-`
+  return css`
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: ${({ theme }) => theme.text.mobile.lg}px;
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.text};
 
+    @media (width >= ${tablet}) {
+      font-size: ${theme.text.desktop.lg}px;
+    }
+
+    @media (width >= ${desktop}) {
+      font-size: 32px;
+    }
+  `
+})
+
+export const MovieInfo = styled.ul(({ theme }) => {
+  const { desktop, tablet } = theme.media
+
+  return css`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 12px;
+
+    margin-bottom: 20px;
+
+    font-weight: 500;
+
+    @media (${desktop} > width >= ${tablet}) {
+      grid-template-columns: repeat(4, 1fr);
+
+      li:nth-child(1),
+      li:nth-child(2),
+      li:nth-child(5),
+      li:nth-child(6) {
+        order: 0;
+      }
+
+      li:nth-child(3),
+      li:nth-child(4) {
+        order: 1;
+      }
+
+      li:nth-child(7),
+      li:nth-child(8) {
+        order: 3;
+      }
+    }
+
+    @media (width >= ${desktop}) {
+    }
+  `
+})
+
+export const MovieInfoItem = styled.li<{ color?: 'accent' | 'text' }>(
+  ({ theme, color }) => {
+    return css`
+      color: ${theme.colors[color || 'grey']};
+    `
+  }
+)
 export const MovieAbout = styled.div`
   margin-bottom: 20px;
   color: ${({ theme }) => theme.colors.grey};

@@ -10,6 +10,7 @@ export interface IColors {
   secondaryText: string
   backdrop: string
   black: string
+  voteSpanBackground: string
 }
 
 export interface ITheme {

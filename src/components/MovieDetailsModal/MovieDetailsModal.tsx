@@ -6,13 +6,13 @@ import {
   MovieInfoList,
   MovieInfoRow,
   MovieInfoItem,
-  VoteSpan,
   AboutTitle,
   About,
 } from './MovieDetailsModal.styled'
 import { MovieDetailsModalProps } from './MovieDetailsModal.types'
 import { useGenres } from 'hooks/useGenres'
 import Button from 'components/Button'
+import VoteSpan from 'components/VoteSpan'
 
 const MovieDetailsModal: FC<MovieDetailsModalProps> = ({ movie }) => {
   const genres = useGenres(movie.genre_ids).join(' ')

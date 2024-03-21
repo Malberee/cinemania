@@ -58,16 +58,18 @@ export const light: IColors = {
   secondaryText: '#282828',
   backdrop: 'rgba(0, 0, 0, 0.2)',
   black: '#000000',
+  voteSpanBackground: '#f8f8f8',
 }
 
 export const dark: IColors = {
   background: '#111111',
   secondaryBackground: '#000000',
   accent: '#F87719',
-  secondaryBlack: '#282828',
+  secondaryBlack: '#111111',
   grey: '#b7b7b7',
   text: '#ffffff',
   secondaryText: '#f8f8f8',
   backdrop: 'rgba(0, 0, 0, 0.2)',
   black: '#ffffff',
+  voteSpanBackground: '#ffffff',
 }
