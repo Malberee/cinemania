@@ -4,13 +4,14 @@ export const SelectWrapper = styled.div`
   position: relative;
 `
 
-export const SelectTrigger = styled.div(({ theme }) => {
+export const SelectTrigger = styled.button(({ theme }) => {
   return css`
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 22px;
 
+    width: 100%;
     padding: 12px 20px;
 
     font-size: ${theme.text.mobile.md}px;
@@ -18,7 +19,10 @@ export const SelectTrigger = styled.div(({ theme }) => {
 
     border-radius: 8px;
     border: solid 1px ${theme.colors.grey};
+    background-color: transparent;
     color: ${theme.colors.grey};
+
+    cursor: pointer;
 
     transition: border-color 100ms linear;
 
@@ -73,14 +77,17 @@ export const OptionList = styled.ul<{ $isOpen: boolean }>(
 export const OptionItem = styled.li<{ $isSelected: boolean }>(
   ({ theme, $isSelected }) => {
     return css`
-      font-size: ${$isSelected ? 18 : theme.text.mobile.md}px;
-      color: ${$isSelected ? theme.colors.accent : theme.colors.text};
-
-      transition: all 100ms linear;
-
       a {
         display: inline-block;
+
         padding: 6px 0;
+
+        font-size: ${$isSelected ? 18 : theme.text.mobile.md}px;
+        text-decoration: none;
+
+        color: ${$isSelected ? theme.colors.accent : theme.colors.text};
+
+        transition: all 100ms linear;
       }
     `
   }

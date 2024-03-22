@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import {
   SelectWrapper,
   SelectTrigger,
@@ -23,12 +23,6 @@ const Select: FC<SelectProps> = ({
 
   const toggleOpen = () => {
     setIsOpen(!isOpen)
-  }
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      toggleOpen()
-    }
   }
 
   const ref = useOutsideClick(() => setIsOpen(false))
@@ -59,12 +53,7 @@ const Select: FC<SelectProps> = ({
 
   return (
     <SelectWrapper ref={ref}>
-      <SelectTrigger
-        onClick={toggleOpen}
-        onKeyDown={handleKeyDown}
-        tabIndex={0}
-        role="button"
-      >
+      <SelectTrigger onClick={toggleOpen}>
         {selectedOptions.length ? formattedSelectedOptions : placeholder}
         <ChevronWrapper $isOpen={isOpen}>
           <Chevron />
@@ -75,8 +64,11 @@ const Select: FC<SelectProps> = ({
           <OptionItem
             $isSelected={selectedOptions.includes(option.value)}
             key={option.value}
+            onClick={() => handleSelect(option.value)}
           >
-            <a onClick={() => handleSelect(option.value)}>{option.label}</a>
+            <a tabIndex={0} href="#">
+              {option.label}
+            </a>
           </OptionItem>
         ))}
       </OptionList>
