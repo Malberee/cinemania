@@ -19,9 +19,9 @@ const MovieDetailsModal: FC<MovieDetailsProps> = ({ movie }) => {
 
   return (
     <MovieDetailsWrapper>
-        <MoviePoster
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-        />
+      <MoviePoster
+        src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+      />
       <MovieTitle>{movie.title}</MovieTitle>
       <MovieInfoList>
         <MovieInfoRow>
@@ -44,7 +44,7 @@ const MovieDetailsModal: FC<MovieDetailsProps> = ({ movie }) => {
       </MovieInfoList>
       <AboutTitle>About</AboutTitle>
       <About>{movie.overview}</About>
-      <Button isBordered>Add to library</Button>
+      <Button $isBordered>Add to library</Button>
     </MovieDetailsWrapper>
   )
 }

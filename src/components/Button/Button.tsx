@@ -5,7 +5,7 @@ import { ButtonProps } from './Button.types'
 const Button: FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <ButtonWrapper {...props}>
-      <span>{children}</span>
+      {props.$isIconOnly ? children : <span>{children}</span>}
     </ButtonWrapper>
   )
 }

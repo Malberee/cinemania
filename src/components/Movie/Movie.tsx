@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, KeyboardEvent } from 'react'
 import {
   MovieWrapper,
   MovieInner,
@@ -17,37 +17,46 @@ const Movie: FC<MovieProps> = ({ movie, selectMovie }) => {
 
   const year = new Date(movie.release_date).getFullYear()
 
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      selectMovie(movie)
+    }
+  }
+
   return (
-    <MovieWrapper>
-      <a onClick={() => selectMovie(movie)}>
-        <img
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-          alt=""
+    <MovieWrapper
+      onClick={() => selectMovie(movie)}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="link"
+    >
+      <img
+        src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+        alt=""
+      />
+      <MovieInner>
+        <InfoWrapper>
+          <p>{movie.title.toUpperCase()} </p>
+          <GreyText>
+            {genres.slice(0, 2).join(', ')} | {year}
+          </GreyText>
+        </InfoWrapper>
+        <RatingStar
+          initialValue={Math.round((movie.vote_average / 2) * 2) / 2}
+          readonly
+          allowFraction
+          fillIcon={
+            <StarWrapper>
+              <Star />
+            </StarWrapper>
+          }
+          emptyIcon={
+            <StarWrapper>
+              <StarEmpty />
+            </StarWrapper>
+          }
         />
-        <MovieInner>
-          <InfoWrapper>
-            <p>{movie.title.toUpperCase()} </p>
-            <GreyText>
-              {genres.slice(0, 2).join(', ')} | {year}
-            </GreyText>
-          </InfoWrapper>
-          <RatingStar
-            initialValue={Math.round((movie.vote_average / 2) * 2) / 2}
-            readonly
-            allowFraction
-            fillIcon={
-              <StarWrapper>
-                <Star />
-              </StarWrapper>
-            }
-            emptyIcon={
-              <StarWrapper>
-                <StarEmpty />
-              </StarWrapper>
-            }
-          />
-        </MovieInner>
-      </a>
+      </MovieInner>
     </MovieWrapper>
   )
 }
