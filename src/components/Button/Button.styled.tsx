@@ -18,7 +18,11 @@ export const ButtonWrapper = styled.button<Omit<ButtonProps, 'children'>>(
       font-size: ${fontSizes[size]}px;
       font-weight: 500;
 
-      color: ${$isIconOnly ? theme.colors.text : theme.colors.secondaryText};
+      color: ${$isIconOnly
+        ? theme.colors.text
+        : $isBordered
+        ? theme.colors.secondaryText
+        : theme.colors.background};
 
       cursor: pointer;
 

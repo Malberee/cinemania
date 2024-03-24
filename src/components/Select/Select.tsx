@@ -1,7 +1,9 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, MouseEvent, useEffect, useState } from 'react'
 import {
   SelectWrapper,
   SelectTrigger,
+  IconsWrapper,
+  CloseWrapper,
   ChevronWrapper,
   OptionList,
   OptionItem,
@@ -9,11 +11,13 @@ import {
 import { SelectProps } from './Select.types'
 import Chevron from 'icons/Chevron'
 import { useOutsideClick } from 'hooks/useOutsideClick'
+import Close from 'icons/Close'
 
 const Select: FC<SelectProps> = ({
   placeholder,
   options,
   isSingleValue,
+  isClearable,
   onValueChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,23 +25,33 @@ const Select: FC<SelectProps> = ({
     []
   )
 
-  const toggleOpen = () => {
+  const toggleOpen = (e: MouseEvent) => {
+    e.stopPropagation()
+
     setIsOpen(!isOpen)
+  }
+
+  const clearSelected = (e: MouseEvent) => {
+    e.stopPropagation()
+
+    setSelectedOptions([])
   }
 
   const ref = useOutsideClick(() => setIsOpen(false))
 
   const handleSelect = (value: string | number) => {
+    if (isSingleValue && selectedOptions.includes(value)) {
+      setSelectedOptions([])
+      return
+    }
     if (isSingleValue) {
       setSelectedOptions([value])
       return
     }
-
     if (!selectedOptions.includes(value)) {
       setSelectedOptions([...selectedOptions, value])
       return
     }
-
     setSelectedOptions(selectedOptions.filter((option) => option !== value))
   }
 
@@ -53,11 +67,18 @@ const Select: FC<SelectProps> = ({
 
   return (
     <SelectWrapper ref={ref}>
-      <SelectTrigger onClick={toggleOpen}>
+      <SelectTrigger onClick={toggleOpen} type="button">
         {selectedOptions.length ? formattedSelectedOptions : placeholder}
-        <ChevronWrapper $isOpen={isOpen}>
-          <Chevron />
-        </ChevronWrapper>
+        <IconsWrapper>
+          {isClearable && selectedOptions.length > 0 && (
+            <CloseWrapper onClick={clearSelected}>
+              <Close />
+            </CloseWrapper>
+          )}
+          <ChevronWrapper $isOpen={isOpen}>
+            <Chevron />
+          </ChevronWrapper>
+        </IconsWrapper>
       </SelectTrigger>
       <OptionList $isOpen={isOpen}>
         {options.map((option) => (

@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 export const SelectWrapper = styled.div`
   position: relative;
+  display: flex;
 `
 
 export const SelectTrigger = styled.button(({ theme }) => {
@@ -32,6 +33,23 @@ export const SelectTrigger = styled.button(({ theme }) => {
     }
   `
 })
+
+export const IconsWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+`
+
+export const CloseWrapper = styled.button`
+  width: 16px;
+  height: 16px;
+  padding: 0;
+
+  border: none;
+  color: ${({ theme }) => theme.colors.grey};
+  background-color: transparent;
+
+  cursor: pointer;
+`
 
 export const ChevronWrapper = styled.div<{ $isOpen: boolean }>(
   ({ $isOpen }) => {
@@ -78,7 +96,7 @@ export const OptionItem = styled.li<{ $isSelected: boolean }>(
   ({ theme, $isSelected }) => {
     return css`
       a {
-        display: inline-block;
+        display: block;
 
         padding: 6px 0;
 
@@ -88,6 +106,10 @@ export const OptionItem = styled.li<{ $isSelected: boolean }>(
         color: ${$isSelected ? theme.colors.accent : theme.colors.text};
 
         transition: all 100ms linear;
+
+        &:hover {
+          color: ${theme.colors.accent};
+        }
       }
     `
   }
