@@ -33,6 +33,7 @@ const gradients = {
 const staticColors = {
   grey: '#b7b7b7',
   white: '#ffffff',
+  darkBg: '#111111'
 }
 
 const media = {

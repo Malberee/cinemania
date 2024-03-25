@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { LayoutWrapper } from './Layout.styled'
+import { LayoutWrapper, Main } from './Layout.styled'
 import { LayoutProps } from './Layout.types'
 import Header from 'components/Header'
 import { Outlet } from 'react-router-dom'
@@ -9,9 +9,9 @@ const Layout: FC<LayoutProps> = () => {
   return (
     <LayoutWrapper>
       <Header />
-      <main>
+      <Main>
         <Outlet />
-      </main>
+      </Main>
       <Footer />
     </LayoutWrapper>
   )

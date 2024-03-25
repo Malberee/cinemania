@@ -8,18 +8,14 @@ axios.defaults.params = {
 
 export const fetchMovies = async (
   type: PayloadCreatorProps['type'],
-  query?: {
-    query: string
-    genre: string[]
-    year: string[]
-  }
+  filters?: PayloadCreatorProps['filters']
 ) => {
   const endpoints = {
     popular: '/movie/popular',
-    byQuery: `/discover/movie?with_genres=${query?.genre.join(
-      ','
-    )}&primary_release_year=${query?.year.join(',')}&with_text_query
-=${query?.query}`,
+    byQuery: `/discover/movie?with_genres=${
+      filters?.genre?.join(',') || ''
+    }&primary_release_year=${filters?.year?.join(',') || ''}&with_text_query
+=${filters?.query}`,
     upcoming: '/movie/upcoming',
     queue: '',
     watched: '',

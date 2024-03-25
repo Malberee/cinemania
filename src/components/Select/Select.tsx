@@ -10,7 +10,7 @@ import {
 } from './Select.styled'
 import { SelectProps } from './Select.types'
 import Chevron from 'icons/Chevron'
-import { useOutsideClick } from 'hooks/useOutsideClick'
+import useOutsideClick from 'hooks/useOutsideClick'
 import Close from 'icons/Close'
 
 const Select: FC<SelectProps> = ({
@@ -67,7 +67,7 @@ const Select: FC<SelectProps> = ({
 
   return (
     <SelectWrapper ref={ref}>
-      <SelectTrigger onClick={toggleOpen} type="button">
+      <SelectTrigger onClick={toggleOpen}>
         {selectedOptions.length ? formattedSelectedOptions : placeholder}
         <IconsWrapper>
           {isClearable && selectedOptions.length > 0 && (

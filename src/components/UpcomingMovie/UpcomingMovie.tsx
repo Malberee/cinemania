@@ -13,7 +13,7 @@ import { UpcomingMovieProps } from './UpcomingMovie.types'
 import { Movie } from 'types'
 import { fetchMovies } from 'services/movies-api'
 import Button from 'components/Button'
-import { useGenres } from 'hooks/useGenres'
+import useGenres from 'hooks/useGenres'
 import VoteSpan from 'components/VoteSpan'
 
 const UpcomingMovie: FC<UpcomingMovieProps> = () => {

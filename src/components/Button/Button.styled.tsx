@@ -22,7 +22,7 @@ export const ButtonWrapper = styled.button<Omit<ButtonProps, 'children'>>(
         ? theme.colors.text
         : $isBordered
         ? theme.colors.secondaryText
-        : theme.colors.background};
+        : theme.staticColors.darkBg};
 
       cursor: pointer;
 

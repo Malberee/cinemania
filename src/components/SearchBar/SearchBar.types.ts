@@ -1,12 +1,12 @@
 export interface SearchBarProps {}
 
 export interface State {
-  year: string
-  genre: string[]
   query: string
+  year: number[]
+  genre: number[]
 }
 
 export interface Action {
   type: keyof State
-  value: string | string[]
+  value: (string | number) | (string | number)[]
 }

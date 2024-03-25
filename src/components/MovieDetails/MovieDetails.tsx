@@ -10,7 +10,7 @@ import {
   About,
 } from './MovieDetails.styled'
 import { MovieDetailsProps } from './MovieDetails.types'
-import { useGenres } from 'hooks/useGenres'
+import useGenres from 'hooks/useGenres'
 import Button from 'components/Button'
 import VoteSpan from 'components/VoteSpan'
 

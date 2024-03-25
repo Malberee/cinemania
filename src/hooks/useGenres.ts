@@ -1,7 +1,7 @@
 import { moviesSelectors } from 'store/movies'
 import useAppSelector from './useAppSelector'
 
-export const useGenres = (genre_ids: number[]): string[] => {
+const useGenres = (genre_ids: number[]): string[] => {
   const genreList = useAppSelector(moviesSelectors.selectGenreList)
 
   const genres = genreList
@@ -10,3 +10,5 @@ export const useGenres = (genre_ids: number[]): string[] => {
 
   return genres
 }
+
+export default useGenres

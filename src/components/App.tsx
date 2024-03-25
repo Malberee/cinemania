@@ -7,13 +7,17 @@ import Layout from './Layout'
 import { useEffect } from 'react'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { moviesOperations } from 'store/movies'
+import useAppSelector from 'hooks/useAppSelector'
+import { selectGenreList } from 'store/movies/movies.selectors'
 
 const App = () => {
   const dispatch = useAppDispatch()
+  const genres = useAppSelector(selectGenreList)
 
   useEffect(() => {
-    dispatch(moviesOperations.fetchMovies({ type: 'popular' }))
-    dispatch(moviesOperations.fetchGenres())
+    if (!genres.length) {
+      dispatch(moviesOperations.fetchGenres())
+    }
   }, [dispatch])
 
   return (

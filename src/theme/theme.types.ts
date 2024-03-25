@@ -28,6 +28,7 @@ export interface ITheme {
   staticColors: {
     grey: string
     white: string
+    darkBg: string
   }
   media: {
     desktop: string

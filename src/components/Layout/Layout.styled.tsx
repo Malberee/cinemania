@@ -6,3 +6,7 @@ export const LayoutWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `
+
+export const Main = styled.main`
+  flex: 1;
+`

@@ -5,7 +5,7 @@ export const SelectWrapper = styled.div`
   display: flex;
 `
 
-export const SelectTrigger = styled.button(({ theme }) => {
+export const SelectTrigger = styled.div(({ theme }) => {
   return css`
     display: flex;
     justify-content: space-between;

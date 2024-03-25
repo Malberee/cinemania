@@ -1,4 +1,4 @@
-import { FC, FormEvent, memo, useCallback, useEffect, useReducer } from 'react'
+import { FC, FormEvent, memo, useCallback, useReducer } from 'react'
 import { Input, SearchBarWrapper } from './SearchBar.styled'
 import { Action, SearchBarProps, State } from './SearchBar.types'
 import useAppSelector from 'hooks/useAppSelector'
@@ -8,21 +8,23 @@ import Button from 'components/Button'
 import Search from 'icons/Search'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { moviesOperations } from 'store/movies'
+import useYears from 'hooks/useYears'
+import { useSearchParams } from 'react-router-dom'
 
 const reducer = (state: State, action: Action) => {
   return { ...state, [action.type]: action.value }
 }
 
 const SearchBar: FC<SearchBarProps> = memo(() => {
-  const [state, dispatchFilters] = useReducer(reducer, {
-    year: '',
+  const [filters, dispatchFilters] = useReducer(reducer, {
+    year: [],
     genre: [],
     query: '',
   })
   const genres = useAppSelector(selectGenreList)
-  const dispatch = useAppDispatch()
-  const year = new Date().getFullYear()
-  const years = Array.from(new Array(90), (_, index) => year - index)
+  const years = useYears(1930, new Date().getFullYear())
+  const [searchParams, setSearchParams] = useSearchParams()
+
   const optionsYears = years.map((year) =>
     Object.assign({ value: year, label: year })
   )
@@ -30,19 +32,18 @@ const SearchBar: FC<SearchBarProps> = memo(() => {
     Object.assign({ value: genre.id, label: genre.name })
   )
 
-  const handleChange = (type: keyof State, value: string) => {
+  const handleChange = (type: keyof State, value: Action['value']) => {
     dispatchFilters({ type, value })
   }
 
-  useEffect(() => {
-    console.log(state)
-  }, [state])
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    console.log('text')
 
-    dispatch(moviesOperations.fetchMovies({ type: 'byQuery', query: state }))
+    setSearchParams({
+      query: filters.query,
+      year: filters.year.join(','),
+      genre: filters.genre.join(','),
+    })
   }
 
   return (
@@ -70,6 +71,7 @@ const SearchBar: FC<SearchBarProps> = memo(() => {
       <Input
         placeholder="Search"
         name="query"
+        defaultValue={searchParams.get('query') || ''}
         onChange={(e) => handleChange('query', e.target.value)}
         tabIndex={0}
       />

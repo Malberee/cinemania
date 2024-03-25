@@ -7,7 +7,7 @@ import {
   GreyText,
   RatingStar,
 } from './Movie.styled'
-import { useGenres } from 'hooks/useGenres'
+import useGenres from 'hooks/useGenres'
 import { MovieProps } from './Movie.types'
 import StarEmpty from 'icons/StarEmpty'
 import Star from 'icons/Star'
