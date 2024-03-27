@@ -1,10 +1,10 @@
 import { HomeWrapper } from './Home.styled'
-import Container from 'components/Container'
 import WeeklyTrends from 'components/WeeklyTrends'
 import UpcomingMovie from 'components/UpcomingMovie'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { useEffect } from 'react'
 import { moviesOperations } from 'store/movies'
+import Hero from 'components/Hero'
 
 const Home = () => {
   const dispatch = useAppDispatch()
@@ -15,10 +15,9 @@ const Home = () => {
 
   return (
     <HomeWrapper>
-      <Container>
-        <WeeklyTrends />
-        <UpcomingMovie />
-      </Container>
+      <Hero />
+      <WeeklyTrends />
+      <UpcomingMovie />
     </HomeWrapper>
   )
 }

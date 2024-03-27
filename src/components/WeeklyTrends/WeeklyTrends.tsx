@@ -13,6 +13,7 @@ import Movie from 'components/Movie'
 import Modal from 'components/Modal'
 import { Movie as IMovie } from 'types'
 import MovieDetailsModal from 'components/MovieDetails'
+import Container from 'components/Container'
 
 const WeeklyTrends: FC<WeeklyTrendsProps> = () => {
   const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null)
@@ -24,20 +25,22 @@ const WeeklyTrends: FC<WeeklyTrendsProps> = () => {
 
   return (
     <WeeklyTrendsWrapper>
-      <TrendsHeader>
-        <TrendsTitle>Weekly trends</TrendsTitle>
-        <Link to="/catalog">See all</Link>
-      </TrendsHeader>
-      <TrendsList>
-        {movies.map((movie) => (
-          <Movie movie={movie} selectMovie={handleSelect} key={movie.id} />
-        ))}
-      </TrendsList>
-      {selectedMovie && (
-        <Modal onClose={() => setSelectedMovie(null)}>
-          <MovieDetailsModal movie={selectedMovie} />
-        </Modal>
-      )}
+      <Container>
+        <TrendsHeader>
+          <TrendsTitle>Weekly trends</TrendsTitle>
+          <Link to="/catalog">See all</Link>
+        </TrendsHeader>
+        <TrendsList>
+          {movies.map((movie) => (
+            <Movie movie={movie} selectMovie={handleSelect} key={movie.id} />
+          ))}
+        </TrendsList>
+        {selectedMovie && (
+          <Modal onClose={() => setSelectedMovie(null)}>
+            <MovieDetailsModal movie={selectedMovie} />
+          </Modal>
+        )}
+      </Container>
     </WeeklyTrendsWrapper>
   )
 }
