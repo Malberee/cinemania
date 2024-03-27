@@ -77,7 +77,7 @@ export const StarWrapper = styled.span(({ theme }) => {
   `
 })
 
-export const RatingStar = styled(Rating)(({ theme }) => {
+export const RatingStars = styled(Rating)(({ theme }) => {
   const { desktop } = theme.media
 
   return css`

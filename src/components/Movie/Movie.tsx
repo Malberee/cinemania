@@ -5,7 +5,7 @@ import {
   StarWrapper,
   InfoWrapper,
   GreyText,
-  RatingStar,
+  RatingStars,
 } from './Movie.styled'
 import useGenres from 'hooks/useGenres'
 import { MovieProps } from './Movie.types'
@@ -41,7 +41,7 @@ const Movie: FC<MovieProps> = ({ movie, selectMovie }) => {
             {genres.slice(0, 2).join(', ')} | {year}
           </GreyText>
         </InfoWrapper>
-        <RatingStar
+        <RatingStars
           initialValue={Math.round((movie.vote_average / 2) * 2) / 2}
           readonly
           allowFraction
