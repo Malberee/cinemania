@@ -17,7 +17,7 @@ import Button from 'components/Button'
 import Star from 'icons/Star'
 import StarEmpty from 'icons/StarEmpty'
 
-const Hero: FC<HeroProps> = () => {
+const Hero: FC<HeroProps> = ({ selectMovie }) => {
   const movies = useAppSelector(selectMovies)
   const isLoading = useAppSelector(selectIsLoading)
 
@@ -53,7 +53,7 @@ const Hero: FC<HeroProps> = () => {
               </MovieOverview>
               <ButtonsWrapper>
                 <Button>Watch trailer</Button>
-                <Button $isBordered $isColorless>
+                <Button $isBordered $isColorless onClick={() => selectMovie(movie)}>
                   More details
                 </Button>
               </ButtonsWrapper>

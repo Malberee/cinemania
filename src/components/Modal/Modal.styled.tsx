@@ -14,6 +14,7 @@ export const Backdrop = styled.div`
   padding: 20px;
 
   background-color: ${({ theme }) => theme.colors.backdrop};
+  backdrop-filter: blur(2px);
   overflow-y: auto;
 
   @media (width >= 768px) {
@@ -26,19 +27,19 @@ export const ModalWrapper = styled.div(({ theme }) => {
 
   return css`
     position: relative;
-    width: 100%;
+    width: 280px;
     margin: auto;
     padding: 52px 16px;
     border-radius: 16px;
     background-color: ${({ theme }) => theme.colors.background};
 
     @media (width >= ${tablet}) {
-      max-width: 704px;
+      width: 704px;
       padding: 44px;
     }
 
     @media (width >= ${desktop}) {
-      max-width: 846px;
+      width: 846px;
       padding: 60px;
     }
   `

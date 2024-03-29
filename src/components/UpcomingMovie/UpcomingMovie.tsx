@@ -25,7 +25,7 @@ const UpcomingMovie: FC<UpcomingMovieProps> = () => {
     const getMovie = async () => {
       const movies = await fetchMovies('upcoming')
 
-      setUpcomingMovie(movies.data.results[0])
+      setUpcomingMovie(movies.data.results[1])
     }
     getMovie()
   }, [])

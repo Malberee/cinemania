@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC } from 'react'
 import {
   WeeklyTrendsWrapper,
   TrendsHeader,
@@ -10,18 +10,10 @@ import { WeeklyTrendsProps } from './WeeklyTrends.types'
 import useAppSelector from 'hooks/useAppSelector'
 import { selectMovies } from 'store/movies/movies.selectors'
 import Movie from 'components/Movie'
-import Modal from 'components/Modal'
-import { Movie as IMovie } from 'types'
-import MovieDetailsModal from 'components/MovieDetails'
 import Container from 'components/Container'
 
-const WeeklyTrends: FC<WeeklyTrendsProps> = () => {
-  const [selectedMovie, setSelectedMovie] = useState<IMovie | null>(null)
+const WeeklyTrends: FC<WeeklyTrendsProps> = ({ selectMovie }) => {
   const movies = useAppSelector(selectMovies).slice(0, 3)
-
-  const handleSelect = (movie: IMovie) => {
-    setSelectedMovie(movie)
-  }
 
   return (
     <WeeklyTrendsWrapper>
@@ -32,14 +24,9 @@ const WeeklyTrends: FC<WeeklyTrendsProps> = () => {
         </TrendsHeader>
         <TrendsList>
           {movies.map((movie) => (
-            <Movie movie={movie} selectMovie={handleSelect} key={movie.id} />
+            <Movie movie={movie} selectMovie={selectMovie} key={movie.id} />
           ))}
         </TrendsList>
-        {selectedMovie && (
-          <Modal onClose={() => setSelectedMovie(null)}>
-            <MovieDetailsModal movie={selectedMovie} />
-          </Modal>
-        )}
       </Container>
     </WeeklyTrendsWrapper>
   )
