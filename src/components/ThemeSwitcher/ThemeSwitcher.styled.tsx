@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
+import { breakpoints, gradients } from 'theme/theme'
 
-export const ThemeSwitcherWrapper = styled.label(({ theme }) => {
-  const { tablet } = theme.media
+export const ThemeSwitcherWrapper = styled.label(() => {
+  const { tablet } = breakpoints
 
   return css`
     position: relative;
@@ -14,7 +15,7 @@ export const ThemeSwitcherWrapper = styled.label(({ theme }) => {
     height: 18px;
     padding: 2.5px;
 
-    background: ${(props) => props.theme.gradients.linearGradientUp};
+    background: ${gradients.linearGradientUp};
     border-radius: 100px;
 
     cursor: pointer;
@@ -37,8 +38,8 @@ export const ThemeSwitcherWrapper = styled.label(({ theme }) => {
   `
 })
 
-export const Thumb = styled.div(({ theme }) => {
-  const { tablet } = theme.media
+export const Thumb = styled.div(() => {
+  const { tablet } = breakpoints
 
   return css`
     position: absolute;

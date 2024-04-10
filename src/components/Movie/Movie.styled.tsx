@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components'
 import { Rating } from 'react-simple-star-rating'
+import { breakpoints, staticColors, typography } from 'theme/theme'
 
-export const MovieWrapper = styled.li(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const MovieWrapper = styled.li(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     position: relative;
@@ -56,8 +57,8 @@ export const MovieInner = styled.div`
   );
 `
 
-export const StarWrapper = styled.span(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const StarWrapper = styled.span(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     display: inline-block;
@@ -77,8 +78,8 @@ export const StarWrapper = styled.span(({ theme }) => {
   `
 })
 
-export const RatingStars = styled(Rating)(({ theme }) => {
-  const { desktop } = theme.media
+export const RatingStars = styled(Rating)(() => {
+  const { desktop } = breakpoints
 
   return css`
     height: 14px;
@@ -89,20 +90,20 @@ export const RatingStars = styled(Rating)(({ theme }) => {
   `
 })
 
-export const InfoWrapper = styled.div(({ theme }) => {
-  const { desktop } = theme.media
+export const InfoWrapper = styled.div(() => {
+  const { desktop } = breakpoints
 
   return css`
-    font-size: ${theme.text.mobile.sm}px;
+    font-size: ${typography.mobile.sm}px;
     font-weight: 500;
 
     @media (width >= ${desktop}) {
-      font-size: ${theme.text.desktop.md}px;
+      font-size: ${typography.desktop.md}px;
     }
   `
 })
 
 export const GreyText = styled.p`
-  color: ${({ theme }) => theme.staticColors.grey};
+  color: ${staticColors.grey};
   margin-top: 10px;
 `

@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
+import { breakpoints, typography } from 'theme/theme'
 
-export const UpcomingMovieWrapper = styled.div(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const UpcomingMovieWrapper = styled.div(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     padding: 16px 0 12px 0;
@@ -16,30 +17,30 @@ export const UpcomingMovieWrapper = styled.div(({ theme }) => {
   `
 })
 
-export const UpcomingTitle = styled.h4(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const UpcomingTitle = styled.h4(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     margin-bottom: 24px;
 
     text-transform: uppercase;
-    font-size: ${({ theme }) => theme.text.mobile.md};
+    font-size: ${typography.mobile.md};
     font-weight: 500;
 
     color: ${({ theme }) => theme.colors.text};
 
     @media (width >= ${tablet}) {
-      font-size: ${({ theme }) => theme.text.tablet.lg}px;
+      font-size: ${typography.tablet.lg}px;
     }
 
     @media (width >= ${desktop}) {
-      font-size: ${({ theme }) => theme.text.desktop.lg}px;
+      font-size: ${typography.desktop.lg}px;
     }
   `
 })
 
-export const UpcomingMovieInner = styled.div(({ theme }) => {
-  const { desktop } = theme.media
+export const UpcomingMovieInner = styled.div(() => {
+  const { desktop } = breakpoints
 
   return css`
     @media (width >= ${desktop}) {
@@ -49,8 +50,8 @@ export const UpcomingMovieInner = styled.div(({ theme }) => {
   `
 })
 
-export const MoviePoster = styled.picture(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const MoviePoster = styled.picture(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     img {
@@ -74,17 +75,17 @@ export const MoviePoster = styled.picture(({ theme }) => {
 })
 
 export const MovieTitle = styled.h3(({ theme }) => {
-  const { desktop, tablet } = theme.media
+  const { desktop, tablet } = breakpoints
 
   return css`
     margin-bottom: 20px;
     text-transform: uppercase;
-    font-size: ${({ theme }) => theme.text.mobile.lg}px;
+    font-size: ${typography.mobile.lg}px;
     font-weight: 500;
     color: ${({ theme }) => theme.colors.text};
 
     @media (width >= ${tablet}) {
-      font-size: ${theme.text.desktop.lg}px;
+      font-size: ${typography.desktop.lg}px;
     }
 
     @media (width >= ${desktop}) {
@@ -93,8 +94,8 @@ export const MovieTitle = styled.h3(({ theme }) => {
   `
 })
 
-export const MovieInfo = styled.ul(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const MovieInfo = styled.ul(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     display: grid;
@@ -150,7 +151,7 @@ export const MovieAbout = styled.div`
   }
 
   p {
-    font-size: ${({ theme }) => theme.text.mobile.md}px;
+    font-size: ${typography.mobile.md}px;
     line-height: 20px;
   }
 `

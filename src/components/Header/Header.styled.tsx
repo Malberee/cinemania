@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { NavLink as NavLinkRouter } from 'react-router-dom'
 import Container from 'components/Container'
+import { breakpoints } from 'theme/theme'
 
 export const HeaderWrapper = styled.header`
   background-color: ${({ theme }) => theme.colors.secondaryBackground};
@@ -15,8 +16,8 @@ export const HeaderContainer = styled(Container)`
   padding-bottom: 15px;
 `
 
-export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {
-  const { tablet } = theme.media
+export const LogoWrapper = styled(NavLinkRouter)(() => {
+  const { tablet } = breakpoints
 
   return css`
     width: 32px;
@@ -31,8 +32,8 @@ export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {
   `
 })
 
-export const MenuBtn = styled.button(({ theme }) => {
-  const { tablet } = theme.media
+export const MenuBtn = styled.button(() => {
+  const { tablet } = breakpoints
 
   return css`
     border: none;
@@ -50,8 +51,8 @@ export const MenuBtn = styled.button(({ theme }) => {
   `
 })
 
-export const Nav = styled.nav(({ theme }) => {
-  const { tablet } = theme.media
+export const Nav = styled.nav(() => {
+  const { tablet } = breakpoints
 
   return css`
     display: none;

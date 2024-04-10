@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { breakpoints } from 'theme/theme'
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -22,8 +23,8 @@ export const Backdrop = styled.div`
   }
 `
 
-export const ModalWrapper = styled.div(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const ModalWrapper = styled.div(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     position: relative;
@@ -45,8 +46,8 @@ export const ModalWrapper = styled.div(({ theme }) => {
   `
 })
 
-export const CloseBtn = styled.button(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const CloseBtn = styled.button(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     position: absolute;

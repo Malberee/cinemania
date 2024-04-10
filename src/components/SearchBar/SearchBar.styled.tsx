@@ -1,5 +1,6 @@
 import Container from 'components/Container'
 import styled, { css } from 'styled-components'
+import { breakpoints, typography } from 'theme/theme'
 
 export const SearchBarWrapper = styled(Container)`
   display: flex;
@@ -12,13 +13,13 @@ export const SearchBarWrapper = styled(Container)`
 `
 
 export const Input = styled.input(({ theme }) => {
-  const { desktop, tablet } = theme.media
+  const { tablet } = breakpoints
 
   return css`
     flex: 4;
     padding: 12px 20px;
 
-    font-size: ${theme.text.mobile.md}px;
+    font-size: ${typography.mobile.md}px;
     font-weight: 500;
 
     border-radius: 8px;
@@ -34,7 +35,7 @@ export const Input = styled.input(({ theme }) => {
     }
 
     &::placeholder {
-      font-size: ${theme.text.mobile.md}px;
+      font-size: ${typography.mobile.md}px;
       font-weight: 500;
       color: ${theme.colors.grey};
     }

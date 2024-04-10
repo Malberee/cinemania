@@ -1,8 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import styled, { css } from 'styled-components'
+import { breakpoints, typography } from 'theme/theme'
 
-export const WeeklyTrendsWrapper = styled.div(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const WeeklyTrendsWrapper = styled.div(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     padding: 40px 0 16px 0;
@@ -17,8 +18,8 @@ export const WeeklyTrendsWrapper = styled.div(({ theme }) => {
   `
 })
 
-export const TrendsHeader = styled.div(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const TrendsHeader = styled.div(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     display: flex;
@@ -26,15 +27,15 @@ export const TrendsHeader = styled.div(({ theme }) => {
 
     margin-bottom: 24px;
 
-    font-size: ${({ theme }) => theme.text.mobile.md};
+    font-size: ${typography.mobile.md};
     font-weight: 500;
 
     @media (width >= ${tablet}) {
-      font-size: ${({ theme }) => theme.text.tablet.lg}px;
+      font-size: ${typography.tablet.lg}px;
     }
 
     @media (width >= ${desktop}) {
-      font-size: ${({ theme }) => theme.text.desktop.lg}px;
+      font-size: ${typography.desktop.lg}px;
     }
   `
 })
@@ -49,8 +50,8 @@ export const Link = styled(NavLink)`
   color: ${({ theme }) => theme.colors.accent};
 `
 
-export const TrendsList = styled.ul(({ theme }) => {
-  const { tablet } = theme.media
+export const TrendsList = styled.ul(() => {
+  const { tablet } = breakpoints
 
   return css`
     display: flex;

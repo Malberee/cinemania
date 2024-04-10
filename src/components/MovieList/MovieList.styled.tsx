@@ -1,5 +1,6 @@
 import Container from 'components/Container'
 import styled, { css } from 'styled-components'
+import { breakpoints, typography } from 'theme/theme'
 
 export const MovieListWrapper = styled.ul`
   display: flex;
@@ -9,24 +10,24 @@ export const MovieListWrapper = styled.ul`
 `
 
 export const MovieListContainer = styled(Container)`
-  height: 100%;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
 export const NotFoundText = styled.p(({ theme }) => {
-  const { desktop, tablet } = theme.media
+  const { desktop, tablet } = breakpoints
 
   return css`
     text-align: center;
     line-height: 28px;
-    font-size: ${theme.text.mobile.lg}px;
+    font-size: ${typography.mobile.lg}px;
     color: ${theme.colors.text};
 
     @media (width >= ${tablet}) {
       line-height: 32px;
-      font-size: ${theme.text.tablet.lg}px;
+      font-size: ${typography.tablet.lg}px;
     }
 
     @media (width >= ${desktop}) {

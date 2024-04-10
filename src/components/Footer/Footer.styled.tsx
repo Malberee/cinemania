@@ -1,23 +1,24 @@
 import Container from 'components/Container'
 import styled, { css } from 'styled-components'
+import { breakpoints, typography } from 'theme/theme'
 
 export const FooterWrapper = styled.footer`
-  font-size: ${({ theme }) => theme.text.mobile.md}px;
+  font-size: ${typography.mobile.md}px;
   line-height: 20px;
   color: ${({ theme }) => theme.colors.grey};
   text-align: center;
   background-color: ${({ theme }) => theme.colors.background};
 `
 
-export const FooterContainer = styled(Container)(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const FooterContainer = styled(Container)(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     padding: 28px 12px;
 
     @media (width >= ${tablet}) {
       padding: 40px 12px;
-      font-size: ${({ theme }) => theme.text.tablet.md}px;
+      font-size: ${typography.tablet.md}px;
     }
 
     @media (width >= ${desktop}) {

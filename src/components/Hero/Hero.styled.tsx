@@ -1,8 +1,9 @@
 import { Rating } from 'react-simple-star-rating'
 import styled, { css } from 'styled-components'
+import { breakpoints, staticColors, typography } from 'theme/theme'
 
-export const HeroWrapper = styled.div(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const HeroWrapper = styled.div(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     position: relative;
@@ -19,8 +20,8 @@ export const HeroWrapper = styled.div(({ theme }) => {
   `
 })
 
-export const MoviePoster = styled.img(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const MoviePoster = styled.img(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     position: absolute;
@@ -38,8 +39,8 @@ export const MoviePoster = styled.img(({ theme }) => {
   `
 })
 
-export const HeroInner = styled.div(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const HeroInner = styled.div(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     position: absolute;
@@ -62,27 +63,27 @@ export const HeroInner = styled.div(({ theme }) => {
   `
 })
 
-export const MovieTitle = styled.h2(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const MovieTitle = styled.h2(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     margin-bottom: 12px;
     font-weight: 700;
     font-size: 32px;
-    color: ${({ theme }) => theme.staticColors.white};
+    color: ${staticColors.white};
 
     @media (width >= ${tablet}) {
       font-size: 44px;
     }
 
     @media (width >= ${desktop}) {
-      font-size: ${theme.text.desktop.xl}px;
+      font-size: ${typography.desktop.xl}px;
     }
   `
 })
 
-export const RatingStars = styled(Rating)(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const RatingStars = styled(Rating)(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     height: 16px;
@@ -100,8 +101,8 @@ export const RatingStars = styled(Rating)(({ theme }) => {
   `
 })
 
-export const StarWrapper = styled.span(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const StarWrapper = styled.span(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     display: inline-block;
@@ -121,14 +122,14 @@ export const StarWrapper = styled.span(({ theme }) => {
   `
 })
 
-export const MovieOverview = styled.p(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const MovieOverview = styled.p(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     width: 177px;
     margin-bottom: 20px;
-    font-size: ${theme.text.mobile.md}px;
-    color: ${theme.staticColors.white};
+    font-size: ${typography.mobile.md}px;
+    color: ${staticColors.white};
 
     @media (width >= ${tablet}) {
       width: 254px;
@@ -138,7 +139,7 @@ export const MovieOverview = styled.p(({ theme }) => {
     @media (width >= ${desktop}) {
       width: 367px;
       margin-bottom: 36px;
-      font-size: ${theme.text.desktop.sm}px;
+      font-size: ${typography.desktop.sm}px;
     }
   `
 })

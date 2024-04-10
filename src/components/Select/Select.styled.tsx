@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { typography } from 'theme/theme'
 
 export const SelectWrapper = styled.div`
   position: relative;
@@ -15,7 +16,7 @@ export const SelectTrigger = styled.div(({ theme }) => {
     width: 100%;
     padding: 12px 20px;
 
-    font-size: ${theme.text.mobile.md}px;
+    font-size: ${typography.mobile.md}px;
     font-weight: 500;
 
     border-radius: 8px;
@@ -100,7 +101,7 @@ export const OptionItem = styled.li<{ $isSelected: boolean }>(
 
         padding: 6px 0;
 
-        font-size: ${$isSelected ? 18 : theme.text.mobile.md}px;
+        font-size: ${$isSelected ? 18 : typography.mobile.md}px;
         text-decoration: none;
 
         color: ${$isSelected ? theme.colors.accent : theme.colors.text};

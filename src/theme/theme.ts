@@ -1,6 +1,6 @@
 import { IColors, ITheme } from './theme.types'
 
-const text = {
+export const typography = {
   desktop: {
     xs: 14,
     sm: 16,
@@ -24,29 +24,22 @@ const text = {
   },
 }
 
-const gradients = {
+export const gradients = {
   linearGradientUp: 'linear-gradient(145deg, #ffc226 0%, #f84119 100%)',
   linearGradientDown:
     'linear-gradient(145deg, #f84119 0%, rgba(248, 159, 25, 0.68) 100%)',
 }
 
-const staticColors = {
+export const staticColors = {
   grey: '#b7b7b7',
   white: '#ffffff',
   darkBg: '#111111'
 }
 
-const media = {
+export const breakpoints = {
   desktop: '1280px',
   tablet: '768px',
   mobile: '320px',
-}
-
-export const common: Omit<ITheme, 'colors' | 'toggleTheme'> = {
-  text,
-  gradients,
-  staticColors,
-  media,
 }
 
 export const light: IColors = {

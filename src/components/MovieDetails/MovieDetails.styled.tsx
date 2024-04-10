@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
+import { breakpoints, typography } from 'theme/theme'
 
-export const MovieDetailsWrapper = styled.div(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const MovieDetailsWrapper = styled.div(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     font-weight: 500;
@@ -13,8 +14,8 @@ export const MovieDetailsWrapper = styled.div(({ theme }) => {
   `
 })
 
-export const MoviePoster = styled.img(({ theme }) => {
-  const { desktop, tablet } = theme.media
+export const MoviePoster = styled.img(() => {
+  const { desktop, tablet } = breakpoints
 
   return css`
     height: 315px;
@@ -36,32 +37,32 @@ export const MoviePoster = styled.img(({ theme }) => {
 })
 
 export const MovieTitle = styled.h2(({ theme }) => {
-  const { desktop, tablet } = theme.media
+  const { tablet } = breakpoints
 
   return css`
     margin-bottom: 29px;
-    font-size: ${theme.text.mobile.lg}px;
+    font-size: ${typography.mobile.lg}px;
     color: ${theme.colors.text};
 
     @media (width >= ${tablet}) {
       margin-bottom: 26px;
-      font-size: ${theme.text.tablet.lg}px;
+      font-size: ${typography.tablet.lg}px;
     }
   `
 })
 
-export const MovieInfoList = styled.ul(({ theme }) => {
-  const { desktop } = theme.media
+export const MovieInfoList = styled.ul(() => {
+  const { desktop } = breakpoints
 
   return css`
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 20px;
-    font-size: ${theme.text.mobile.md}px;
+    font-size: ${typography.mobile.md}px;
 
     @media (width >= ${desktop}) {
-      font-size: ${theme.text.desktop.sm}px;
+      font-size: ${typography.desktop.sm}px;
     }
   `
 })
@@ -79,32 +80,32 @@ export const MovieInfoItem = styled.p<{ color: 'grey' | 'white' }>`
 `
 
 export const AboutTitle = styled.h3(({ theme }) => {
-  const { desktop } = theme.media
+  const { desktop } = breakpoints
 
   return css`
     margin-bottom: 12px;
     text-transform: uppercase;
-    font-size: ${theme.text.mobile.md}px;
+    font-size: ${typography.mobile.md}px;
     color: ${theme.colors.grey};
 
     @media (width >= ${desktop}) {
-      font-size: ${theme.text.desktop.sm}px;
+      font-size: ${typography.desktop.sm}px;
     }
   `
 })
 
 export const About = styled.p(({ theme }) => {
-  const { desktop } = theme.media
+  const { desktop } = breakpoints
 
   return css`
     margin-bottom: 16px;
     font-weight: 400;
     line-height: 20px;
-    font-size: ${theme.text.mobile.sm}px;
+    font-size: ${typography.mobile.sm}px;
     color: ${theme.colors.secondaryText};
 
     @media (width >= ${desktop}) {
-      font-size: ${theme.text.desktop.xs}px;
+      font-size: ${typography.desktop.xs}px;
     }
   `
 })

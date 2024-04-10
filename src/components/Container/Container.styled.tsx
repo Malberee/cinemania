@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components'
+import { breakpoints } from 'theme/theme'
 
-const ContainerWrapper = styled.div(({ theme }) => {
-  const { tablet, desktop } = theme.media
+const ContainerWrapper = styled.div(() => {
+  const { tablet, desktop } = breakpoints
 
   return css`
     margin: 0 auto;
