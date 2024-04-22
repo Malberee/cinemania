@@ -31,7 +31,11 @@ export const ButtonWrapper = styled.button<Omit<ButtonProps, 'children'>>(
     return css`
       position: relative;
 
-      padding: ${$isIconOnly ? '13px' : '12px 24px'};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: ${$isIconOnly ? '11px' : '12px 24px'};
 
       font-size: ${typography.mobile.sm}px;
       font-weight: 500;

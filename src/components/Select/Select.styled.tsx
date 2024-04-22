@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { typography } from 'theme/theme'
+import { breakpoints, typography } from 'theme/theme'
 
 export const SelectWrapper = styled.div`
   position: relative;
@@ -7,6 +7,8 @@ export const SelectWrapper = styled.div`
 `
 
 export const SelectTrigger = styled.div(({ theme }) => {
+  const { tablet } = breakpoints
+
   return css`
     display: flex;
     justify-content: space-between;
@@ -14,7 +16,7 @@ export const SelectTrigger = styled.div(({ theme }) => {
     gap: 22px;
 
     width: 100%;
-    padding: 12px 20px;
+    padding: 11px 20px;
 
     font-size: ${typography.mobile.md}px;
     font-weight: 500;
@@ -31,6 +33,10 @@ export const SelectTrigger = styled.div(({ theme }) => {
     &:focus {
       border-color: ${theme.colors.accent};
       outline: none;
+    }
+
+    @media (width >= ${tablet}) {
+      padding: 13px 20px;
     }
   `
 })
