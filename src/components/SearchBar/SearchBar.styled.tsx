@@ -36,7 +36,7 @@ export const SearchBarWrapper = styled.div(() => {
     }
 
     @media (width >= ${desktop}) {
-      /* max-width: 600px; */
+      max-width: 600px;
     }
   `
 })

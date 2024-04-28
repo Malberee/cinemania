@@ -53,7 +53,7 @@ const Hero: FC<HeroProps> = ({ selectMovie }) => {
               </MovieOverview>
               <ButtonsWrapper>
                 <Button>Watch trailer</Button>
-                <Button $isBordered $isColorless onClick={() => selectMovie(movie)}>
+                <Button $isBordered $isColorless onClick={() => selectMovie(movie.id)}>
                   More details
                 </Button>
               </ButtonsWrapper>

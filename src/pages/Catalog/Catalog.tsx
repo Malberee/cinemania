@@ -4,18 +4,15 @@ import { CatalogProps } from './Catalog.types'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { moviesOperations } from 'store/movies'
 import MovieList from 'components/MovieList'
-import {
-  selectIsLoading,
-  selectMovies,
-} from 'store/movies/movies.selectors'
+import { selectIsLoading, selectMovies } from 'store/movies/movies.selectors'
 import useAppSelector from 'hooks/useAppSelector'
 import SearchBar from 'components/SearchBar'
-import { useSearchParams } from 'react-router-dom'
+import { Outlet, useSearchParams } from 'react-router-dom'
 import Hero from 'components/Hero'
 
 const Catalog: FC<CatalogProps> = () => {
   const dispatch = useAppDispatch()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams] = useSearchParams()
   const movies = useAppSelector(selectMovies)
   const isLoading = useAppSelector(selectIsLoading)
 
@@ -45,6 +42,7 @@ const Catalog: FC<CatalogProps> = () => {
       <Hero />
       <SearchBar />
       {isLoading ? 'LOADING' : <MovieList movies={movies} />}
+      <Outlet />
     </CatalogWrapper>
   )
 }

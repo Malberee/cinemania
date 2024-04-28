@@ -67,7 +67,7 @@ const Select: FC<SelectProps> = ({
 
   return (
     <SelectWrapper ref={ref}>
-      <SelectTrigger onClick={toggleOpen}>
+      <SelectTrigger onClick={toggleOpen} role="combobox">
         {selectedOptions.length ? formattedSelectedOptions : placeholder}
         <IconsWrapper>
           {isClearable && selectedOptions.length > 0 && (
@@ -80,16 +80,16 @@ const Select: FC<SelectProps> = ({
           </ChevronWrapper>
         </IconsWrapper>
       </SelectTrigger>
-      <OptionList $isOpen={isOpen}>
+      <OptionList $isOpen={isOpen} role="listbox">
         {options.map((option) => (
           <OptionItem
             $isSelected={selectedOptions.includes(option.value)}
             key={option.value}
             onClick={() => handleSelect(option.value)}
+            tabIndex={0}
+            role="option"
           >
-            <a tabIndex={0} href="#">
-              {option.label}
-            </a>
+            {option.label}
           </OptionItem>
         ))}
       </OptionList>

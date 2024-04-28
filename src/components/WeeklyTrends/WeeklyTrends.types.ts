@@ -1,5 +1,3 @@
-import { Movie } from 'types'
-
 export interface WeeklyTrendsProps {
-  selectMovie: (movie: Movie) => void
+  selectMovie: (movieId: number) => void
 }

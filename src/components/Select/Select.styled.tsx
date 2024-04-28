@@ -6,7 +6,7 @@ export const SelectWrapper = styled.div`
   display: flex;
 `
 
-export const SelectTrigger = styled.div(({ theme }) => {
+export const SelectTrigger = styled.button(({ theme }) => {
   const { tablet } = breakpoints
 
   return css`
@@ -102,21 +102,17 @@ export const OptionList = styled.ul<{ $isOpen: boolean }>(
 export const OptionItem = styled.li<{ $isSelected: boolean }>(
   ({ theme, $isSelected }) => {
     return css`
-      a {
-        display: block;
+      padding: 6px 0;
 
-        padding: 6px 0;
+      font-size: ${$isSelected ? 18 : typography.mobile.md}px;
+      text-decoration: none;
 
-        font-size: ${$isSelected ? 18 : typography.mobile.md}px;
-        text-decoration: none;
+      color: ${$isSelected ? theme.colors.accent : theme.colors.text};
 
-        color: ${$isSelected ? theme.colors.accent : theme.colors.text};
+      transition: all 100ms linear;
 
-        transition: all 100ms linear;
-
-        &:hover {
-          color: ${theme.colors.accent};
-        }
+      &:hover {
+        color: ${theme.colors.accent};
       }
     `
   }

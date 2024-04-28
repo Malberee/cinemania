@@ -10,12 +10,11 @@ import {
   About,
 } from './MovieDetails.styled'
 import { MovieDetailsProps } from './MovieDetails.types'
-import useGenres from 'hooks/useGenres'
 import Button from 'components/Button'
 import VoteSpan from 'components/VoteSpan'
 
-const MovieDetailsModal: FC<MovieDetailsProps> = ({ movie }) => {
-  const genres = useGenres(movie.genre_ids).join(' ')
+const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
+  const genres = movie.genres?.map((genre) => genre.name).join(' ')
 
   return (
     <MovieDetailsWrapper>
@@ -51,4 +50,4 @@ const MovieDetailsModal: FC<MovieDetailsProps> = ({ movie }) => {
   )
 }
 
-export default MovieDetailsModal
+export default MovieDetails

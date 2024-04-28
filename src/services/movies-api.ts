@@ -25,7 +25,14 @@ export const fetchMovies = async (
   return movies
 }
 
+export const fetchMovieById = async (id: string) => {
+  const movie = await axios.get(`movie/${id}`)
+
+  return movie.data
+}
+
 export const fetchGenres = async () => {
   const genres = await axios.get('/genre/movie/list')
+
   return genres
 }
