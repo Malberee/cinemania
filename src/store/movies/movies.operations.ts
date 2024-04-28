@@ -18,6 +18,20 @@ export const fetchMovies = createAsyncThunk<
   }
 })
 
+export const fetchTrendingMovies = createAsyncThunk(
+  'movies/fetchTrendingMovies',
+  async (_, { rejectWithValue }) => {
+    try {
+      const movies = await moviesAPI.fetchMovies('popular')
+
+      return movies.data
+    } catch (error) {
+      const err = error as AxiosError
+      return rejectWithValue(err.message)
+    }
+  }
+)
+
 export const fetchGenres = createAsyncThunk('movies/fetchGenres', async () => {
   const genres = await moviesAPI.fetchGenres()
 

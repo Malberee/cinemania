@@ -8,6 +8,7 @@ import { Movie } from 'types'
 import { fetchMovieById } from 'services/movies-api'
 import { Oval } from 'react-loader-spinner'
 import { useTheme } from 'styled-components'
+import Loader from 'components/Loader'
 
 const MovieDetailsModal: FC<MovieDetailsModalProps> = () => {
   const [movie, setMovie] = useState<null | Movie>(null)
@@ -36,13 +37,9 @@ const MovieDetailsModal: FC<MovieDetailsModalProps> = () => {
   return (
     <Modal>
       {(isLoading && (
-        <LoaderWrapper>
-          <Oval
-            color={theme.colors.accent}
-            secondaryColor={theme.colors.accent}
-          />
+        <Loader>
           <LoadingText>Loading...</LoadingText>
-        </LoaderWrapper>
+        </Loader>
       )) ||
         (isError && <Navigate to="/" />) ||
         (movie && <MovieDetails movie={movie} />)}

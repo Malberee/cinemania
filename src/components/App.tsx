@@ -16,6 +16,8 @@ const App = () => {
   const genres = useAppSelector(selectGenreList)
 
   useEffect(() => {
+    dispatch(moviesOperations.fetchTrendingMovies())
+
     if (!genres.length) {
       dispatch(moviesOperations.fetchGenres())
     }

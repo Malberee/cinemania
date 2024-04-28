@@ -1,6 +1,7 @@
 import { RootState } from "store/types"
 
 export const selectMovies = (state: RootState) => state.movies.entities
+export const selectTrendingMovies = (state: RootState) => state.movies.trendingMovies
 export const selectTotalPages = (state: RootState) => state.movies.totalPages
 export const selectCurrentPage = (state: RootState) => state.movies.page
 export const selectGenreList = (state: RootState) => state.movies.genres
