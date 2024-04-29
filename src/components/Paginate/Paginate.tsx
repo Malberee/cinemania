@@ -21,8 +21,8 @@ const Paginate: FC<PaginateProps> = ({ totalPages }) => {
         marginPagesDisplayed={1}
         breakLabel="..."
         containerClassName="container"
-        pageClassName="page"
-        activeClassName="active"
+        pageLinkClassName="page"
+        activeLinkClassName='active'
         nextClassName="arrowBtn"
         previousClassName="arrowBtn"
         breakClassName="break"
