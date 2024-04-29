@@ -8,13 +8,11 @@ import {
 } from './WeeklyTrends.styled'
 import { WeeklyTrendsProps } from './WeeklyTrends.types'
 import useAppSelector from 'hooks/useAppSelector'
-import {
-  selectIsLoading,
-  selectTrendingMovies,
-} from 'store/movies/movies.selectors'
+
 import Movie from 'components/Movie'
 import Container from 'components/Container'
 import Loader from 'components/Loader'
+import { selectIsLoading, selectTrendingMovies } from 'store/trendingMovies/trendingMovies.selectors'
 
 const WeeklyTrends: FC<WeeklyTrendsProps> = ({ selectMovie }) => {
   const movies = useAppSelector(selectTrendingMovies).slice(0, 3)

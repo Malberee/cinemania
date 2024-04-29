@@ -1,13 +1,11 @@
 import { FC, useEffect, useState } from 'react'
-import { LoaderWrapper, LoadingText } from './MovieDetailsModal.styled'
+import { LoadingText } from './MovieDetailsModal.styled'
 import { MovieDetailsModalProps } from './MovieDetailsModal.types'
 import Modal from 'components/Modal'
 import MovieDetails from 'components/MovieDetails'
 import { Navigate, useParams } from 'react-router-dom'
 import { Movie } from 'types'
 import { fetchMovieById } from 'services/movies-api'
-import { Oval } from 'react-loader-spinner'
-import { useTheme } from 'styled-components'
 import Loader from 'components/Loader'
 
 const MovieDetailsModal: FC<MovieDetailsModalProps> = () => {
@@ -15,7 +13,6 @@ const MovieDetailsModal: FC<MovieDetailsModalProps> = () => {
   const [isError, setIsError] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const { movieId } = useParams()
-  const theme = useTheme()
 
   useEffect(() => {
     const fetchMovie = async () => {

@@ -19,6 +19,7 @@ import Container from 'components/Container'
 import Loader from 'components/Loader'
 
 const UpcomingMovie: FC<UpcomingMovieProps> = () => {
+  
   const [upcomingMovie, setUpcomingMovie] = useState<null | Movie>(null)
   const [isLoading, setIsLoading] = useState(false)
   const genres = useGenres(upcomingMovie?.genre_ids || []).join(', ')

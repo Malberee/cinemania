@@ -10,13 +10,14 @@ import { moviesOperations } from 'store/movies'
 import useAppSelector from 'hooks/useAppSelector'
 import { selectGenreList } from 'store/movies/movies.selectors'
 import MovieDetailsModal from './MovieDetailsModal'
+import { trendingMoviesOperations } from 'store/trendingMovies'
 
 const App = () => {
   const dispatch = useAppDispatch()
   const genres = useAppSelector(selectGenreList)
 
   useEffect(() => {
-    dispatch(moviesOperations.fetchTrendingMovies())
+    dispatch(trendingMoviesOperations.fetchTrendingMovies())
 
     if (!genres.length) {
       dispatch(moviesOperations.fetchGenres())

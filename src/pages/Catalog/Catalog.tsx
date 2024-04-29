@@ -33,12 +33,15 @@ const Catalog: FC<CatalogProps> = () => {
   }, [dispatch])
 
   useEffect(() => {
-    if (!query || !year?.length || !genre?.length) return
+    if (!query && !year?.length && !genre?.length) {
+      dispatch(moviesOperations.fetchMovies({ type: 'popular' }))
+      return
+    }
 
     dispatch(
       moviesOperations.fetchMovies({
         type: 'byQuery',
-        filters: { query, year, genre },
+        filters: { query: query || '', year, genre },
       })
     )
   }, [searchParams])

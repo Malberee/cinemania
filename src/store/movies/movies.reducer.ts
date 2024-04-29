@@ -1,14 +1,10 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
-import { fetchGenres, fetchMovies, fetchTrendingMovies } from './movies.operations'
+import { fetchGenres, fetchMovies } from './movies.operations'
 import { Movie } from 'types'
 import { Genre } from './movies.types'
 
 const entities = createReducer<Movie[]>([], (builder) =>
   builder.addCase(fetchMovies.fulfilled, (_, action) => action.payload.results)
-)
-
-const trendingMovies = createReducer<Movie[]>([], (builder) =>
-  builder.addCase(fetchTrendingMovies.fulfilled, (_, action) => action.payload.results)
 )
 
 const page = createReducer(0, (builder) =>
@@ -43,7 +39,6 @@ const genres = createReducer<Genre[]>([], (builder) =>
 )
 
 export default combineReducers({
-  trendingMovies,
   entities,
   genres,
   isLoading,

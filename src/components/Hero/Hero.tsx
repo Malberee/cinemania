@@ -11,16 +11,12 @@ import {
 } from './Hero.styled'
 import { HeroProps } from './Hero.types'
 import useAppSelector from 'hooks/useAppSelector'
-import {
-  selectIsLoading,
-  selectTrendingMovies,
-} from 'store/movies/movies.selectors'
 import Container from 'components/Container'
 import Button from 'components/Button'
 import Star from 'icons/Star'
 import StarEmpty from 'icons/StarEmpty'
-import { useTheme } from 'styled-components'
 import Loader from 'components/Loader'
+import { selectIsLoading, selectTrendingMovies } from 'store/trendingMovies/trendingMovies.selectors'
 
 const Hero: FC<HeroProps> = ({ selectMovie }) => {
   const movies = useAppSelector(selectTrendingMovies)
