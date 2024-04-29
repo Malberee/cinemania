@@ -16,24 +16,5 @@ export interface IColors {
 
 export interface ITheme {
   colors: IColors
-  text: {
-    desktop: Record<Size, number>
-    tablet: Record<Size, number>
-    mobile: Record<Size, number>
-  }
-  gradients: {
-    linearGradientUp: string
-    linearGradientDown: string
-  }
-  staticColors: {
-    grey: string
-    white: string
-    darkBg: string
-  }
-  media: {
-    desktop: string
-    tablet: string
-    mobile: string
-  }
   toggleTheme: () => void
 }

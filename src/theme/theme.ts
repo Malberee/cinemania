@@ -1,4 +1,4 @@
-import { IColors, ITheme } from './theme.types'
+import { IColors } from './theme.types'
 
 export const typography = {
   desktop: {

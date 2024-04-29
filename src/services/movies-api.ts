@@ -8,7 +8,8 @@ axios.defaults.params = {
 
 export const fetchMovies = async (
   type: PayloadCreatorProps['type'],
-  filters?: PayloadCreatorProps['filters']
+  filters?: PayloadCreatorProps['filters'],
+  page?: number
 ) => {
   const endpoints = {
     popular: '/movie/popular',
@@ -20,7 +21,7 @@ export const fetchMovies = async (
     queue: '',
     watched: '',
   }
-  const movies = await axios.get(endpoints[type] || 'undefined')
+  const movies = (await axios.get(`${endpoints[type]}?page=${page || 1}` || 'undefined'))
 
   return movies
 }

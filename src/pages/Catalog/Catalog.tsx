@@ -16,6 +16,7 @@ const Catalog: FC<CatalogProps> = () => {
   const [searchParams] = useSearchParams()
   const movies = useAppSelector(selectMovies)
   const isLoading = useAppSelector(selectIsLoading)
+  const page = Number(searchParams.get('page')) || 1
   const navigate = useNavigate()
 
   const query = searchParams.get('query')
@@ -28,13 +29,13 @@ const Catalog: FC<CatalogProps> = () => {
 
   useEffect(() => {
     if (!query && !year?.length && !genre?.length) {
-      dispatch(moviesOperations.fetchMovies({ type: 'popular' }))
+      dispatch(moviesOperations.fetchMovies({ type: 'popular', page }))
     }
   }, [dispatch])
 
   useEffect(() => {
     if (!query && !year?.length && !genre?.length) {
-      dispatch(moviesOperations.fetchMovies({ type: 'popular' }))
+      dispatch(moviesOperations.fetchMovies({ type: 'popular', page }))
       return
     }
 
@@ -42,6 +43,7 @@ const Catalog: FC<CatalogProps> = () => {
       moviesOperations.fetchMovies({
         type: 'byQuery',
         filters: { query: query || '', year, genre },
+        page,
       })
     )
   }, [searchParams])

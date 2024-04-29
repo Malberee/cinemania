@@ -7,6 +7,7 @@ export type PayloadCreatorProps = {
     genre?: string[]
     year?: string[]
   }
+  page?: number
 }
 
 export type MoviesResponse = {

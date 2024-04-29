@@ -12,7 +12,10 @@ import useAppSelector from 'hooks/useAppSelector'
 import Movie from 'components/Movie'
 import Container from 'components/Container'
 import Loader from 'components/Loader'
-import { selectIsLoading, selectTrendingMovies } from 'store/trendingMovies/trendingMovies.selectors'
+import {
+  selectIsLoading,
+  selectTrendingMovies,
+} from 'store/trendingMovies/trendingMovies.selectors'
 
 const WeeklyTrends: FC<WeeklyTrendsProps> = ({ selectMovie }) => {
   const movies = useAppSelector(selectTrendingMovies).slice(0, 3)
@@ -28,7 +31,7 @@ const WeeklyTrends: FC<WeeklyTrendsProps> = ({ selectMovie }) => {
         {(isLoading && <Loader />) || (
           <TrendsList>
             {movies.map((movie) => (
-              <Movie movie={movie} selectMovie={selectMovie} key={movie.id} />
+              <Movie movie={movie} key={movie.id} />
             ))}
           </TrendsList>
         )}

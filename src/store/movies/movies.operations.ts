@@ -7,9 +7,10 @@ export const fetchMovies = createAsyncThunk<
   MoviesResponse,
   PayloadCreatorProps,
   { rejectValue: string }
->('movies/fetchMovies', async ({ type, filters }, { rejectWithValue }) => {
+>('movies/fetchMovies', async ({ type, filters, page }, { rejectWithValue }) => {
+  console.log("page: ", page);
   try {
-    const movies = await moviesAPI.fetchMovies(type, filters)
+    const movies = await moviesAPI.fetchMovies(type, filters, page)
 
     return movies.data
   } catch (error) {

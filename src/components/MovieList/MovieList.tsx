@@ -6,23 +6,35 @@ import {
 } from './MovieList.styled'
 import Movie from '../Movie/Movie'
 import { MovieListProps } from './MovieList.types'
+import Paginate from 'components/Paginate'
+import useAppSelector from 'hooks/useAppSelector'
+import {
+  selectCurrentPage,
+  selectTotalPages,
+} from 'store/movies/movies.selectors'
 
 const MovieList: FC<MovieListProps> = ({ movies }) => {
+  const currentPage = useAppSelector(selectCurrentPage)
+  const totalPages = useAppSelector(selectTotalPages)
+
   return (
-    <MovieListContainer>
-      {movies.length > 0 ? (
-        <MovieListWrapper>
-          {movies.map((movie) => (
-            <Movie movie={movie} key={movie.id} />
-          ))}
-        </MovieListWrapper>
-      ) : (
-        <NotFoundText>
-          OOPS... <br /> We are very sorry! <br /> We don’t have any results
-          matching your search.
-        </NotFoundText>
-      )}
-    </MovieListContainer>
+    <>
+      <MovieListContainer>
+        {movies.length > 0 ? (
+          <MovieListWrapper>
+            {movies.map((movie) => (
+              <Movie movie={movie} key={movie.id} />
+            ))}
+          </MovieListWrapper>
+        ) : (
+          <NotFoundText>
+            OOPS... <br /> We are very sorry! <br /> We don’t have any results
+            matching your search.
+          </NotFoundText>
+        )}
+      </MovieListContainer>
+      <Paginate totalPages={totalPages} />
+    </>
   )
 }
 
