@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom'
 
 const Paginate: FC<PaginateProps> = ({ totalPages }) => {
   const [searchParams, setSearchParams] = useSearchParams()
+  const currentPage = Number(searchParams.get('page')) || 1
 
   const handleChangePage = (page: number) => {
     setSearchParams({ page: `${page + 1}` })
@@ -16,13 +17,13 @@ const Paginate: FC<PaginateProps> = ({ totalPages }) => {
     <PaginateWrapper>
       <ReactPaginate
         pageCount={totalPages > 1000 ? 1000 : totalPages}
-        initialPage={Number(searchParams.get('page')) - 1 || 0}
+        initialPage={currentPage - 1}
         pageRangeDisplayed={3}
         marginPagesDisplayed={1}
         breakLabel="..."
         containerClassName="container"
         pageLinkClassName="page"
-        activeLinkClassName='active'
+        activeLinkClassName="active"
         nextClassName="arrowBtn"
         previousClassName="arrowBtn"
         breakClassName="break"
