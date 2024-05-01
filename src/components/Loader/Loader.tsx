@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { LoaderWrapper } from './Loader.styled'
 import { LoaderProps } from './Loader.types'
 import { Oval } from 'react-loader-spinner'

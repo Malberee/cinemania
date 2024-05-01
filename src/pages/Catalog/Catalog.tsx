@@ -7,7 +7,7 @@ import MovieList from 'components/MovieList'
 import { selectIsLoading, selectMovies } from 'store/movies/movies.selectors'
 import useAppSelector from 'hooks/useAppSelector'
 import SearchBar from 'components/SearchBar'
-import { Outlet, useNavigate, useSearchParams } from 'react-router-dom'
+import { Outlet, useSearchParams } from 'react-router-dom'
 import Hero from 'components/Hero'
 import Loader from 'components/Loader'
 
@@ -17,15 +17,11 @@ const Catalog: FC<CatalogProps> = () => {
   const movies = useAppSelector(selectMovies)
   const isLoading = useAppSelector(selectIsLoading)
   const page = Number(searchParams.get('page')) || 1
-  const navigate = useNavigate()
 
   const query = searchParams.get('query')
   const year = searchParams.get('year')?.split(',')
   const genre = searchParams.get('genre')?.split(',')
 
-  const handleSelect = (movieId: number) => {
-    navigate(`${movieId}`)
-  }
 
   useEffect(() => {
     if (!query && !year?.length && !genre?.length) {
@@ -44,7 +40,7 @@ const Catalog: FC<CatalogProps> = () => {
 
   return (
     <CatalogWrapper>
-      <Hero selectMovie={handleSelect} />
+      <Hero />
       <SearchBar />
       {isLoading ? <Loader /> : <MovieList movies={movies} />}
       <Outlet />
