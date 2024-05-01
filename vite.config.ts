@@ -8,6 +8,7 @@ export default defineConfig({
   server: {
     host: true,
   },
+  base: '/cinemania/',
   resolve: {
     alias: {
       components: '/src/components',
