@@ -1,3 +1,1 @@
-export interface HeroProps {
-  selectMovie: (movieId: number) => void
-}
+export interface HeroProps {}

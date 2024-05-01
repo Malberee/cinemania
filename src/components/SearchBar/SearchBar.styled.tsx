@@ -76,7 +76,7 @@ export const Input = styled.input(({ theme }) => {
   `
 })
 
-export const SearchButton = styled(Button)(({ theme }) => {
+export const SearchButton = styled(Button)(() => {
   const { tablet } = breakpoints
 
   return css`

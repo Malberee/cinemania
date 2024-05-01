@@ -16,11 +16,16 @@ import Button from 'components/Button'
 import Star from 'icons/Star'
 import StarEmpty from 'icons/StarEmpty'
 import Loader from 'components/Loader'
-import { selectIsLoading, selectTrendingMovies } from 'store/trendingMovies/trendingMovies.selectors'
+import {
+  selectIsLoading,
+  selectTrendingMovies,
+} from 'store/trendingMovies/trendingMovies.selectors'
+import { useNavigate } from 'react-router-dom'
 
-const Hero: FC<HeroProps> = ({ selectMovie }) => {
+const Hero: FC<HeroProps> = () => {
   const movies = useAppSelector(selectTrendingMovies)
   const isLoading = useAppSelector(selectIsLoading)
+  const navigate = useNavigate()
 
   const movie = movies[0]
 
@@ -58,7 +63,7 @@ const Hero: FC<HeroProps> = ({ selectMovie }) => {
                   <Button
                     $isBordered
                     $isColorless
-                    onClick={() => selectMovie(movie.id)}
+                    onClick={() => navigate(movie.id.toString())}
                   >
                     More details
                   </Button>

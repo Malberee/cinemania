@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { breakpoints, typography } from 'theme/theme'
 
 export const MovieDetailsWrapper = styled.div(() => {
-  const { desktop, tablet } = breakpoints
+  const { tablet } = breakpoints
 
   return css`
     font-weight: 500;

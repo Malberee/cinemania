@@ -1,16 +1,32 @@
 import Container from 'components/Container'
 import styled, { css } from 'styled-components'
-import { gradients, typography } from 'theme/theme'
+import { breakpoints, gradients, typography } from 'theme/theme'
 
 export const PaginateWrapper = styled(Container)(({ theme }) => {
+  const { tablet, desktop } = breakpoints
+
   return css`
     display: flex;
     justify-content: center;
+
+    margin-top: 20px;
+
+    @media (width >= ${tablet}) {
+      margin-top: 44px;
+    }
+
+    @media (width >= ${desktop}) {
+      margin-top: 60px;
+    }
 
     .container {
       display: flex;
       align-items: center;
       gap: 8px;
+
+      @media (width >= ${tablet}) {
+        gap: 16px;
+      }
     }
 
     .page {
@@ -26,6 +42,12 @@ export const PaginateWrapper = styled(Container)(({ theme }) => {
       border-radius: 100vw;
 
       font-size: ${typography.mobile.xs}px;
+
+      @media (width >= ${tablet}) {
+        width: 40px;
+        height: 40px;
+        font-size: ${typography.tablet.sm}px;
+      }
     }
 
     .active {
@@ -37,6 +59,11 @@ export const PaginateWrapper = styled(Container)(({ theme }) => {
     .arrowBtn {
       width: 20px;
       height: 20px;
+
+      @media (width >= ${tablet}) {
+        width: 28px;
+        height: 28px;
+      }
     }
 
     .break {
@@ -44,18 +71,21 @@ export const PaginateWrapper = styled(Container)(({ theme }) => {
       justify-content: center;
       align-items: center;
 
-      width: 24px;
-      height: 24px;
-
       color: ${theme.colors.grey};
 
       font-size: ${typography.mobile.xs}px;
+
+      @media (width >= ${tablet}) {
+        font-size: ${typography.tablet.sm}px;
+      }
     }
   `
 })
 
 export const ArrowButton = styled.button<{ direction: 'prev' | 'next' }>(
-  ({ direction }) => {
+  ({ direction, theme }) => {
+    const { tablet } = breakpoints
+
     return css`
       width: 20px;
       height: 20px;
@@ -63,9 +93,18 @@ export const ArrowButton = styled.button<{ direction: 'prev' | 'next' }>(
 
       border: none;
       background-color: transparent;
-      color: white;
+      color: ${theme.colors.arrowPaginate};
 
       rotate: ${direction === 'prev' ? 90 : 270}deg;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      @media (width >= ${tablet}) {
+        width: 28px;
+        height: 28px;
+      }
     `
   }
 )

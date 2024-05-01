@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import {
   MovieListWrapper,
   MovieListContainer,
@@ -9,12 +9,10 @@ import { MovieListProps } from './MovieList.types'
 import Paginate from 'components/Paginate'
 import useAppSelector from 'hooks/useAppSelector'
 import {
-  selectCurrentPage,
   selectTotalPages,
 } from 'store/movies/movies.selectors'
 
 const MovieList: FC<MovieListProps> = ({ movies }) => {
-  const currentPage = useAppSelector(selectCurrentPage)
   const totalPages = useAppSelector(selectTotalPages)
 
   return (

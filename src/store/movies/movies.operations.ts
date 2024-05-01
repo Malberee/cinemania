@@ -7,17 +7,19 @@ export const fetchMovies = createAsyncThunk<
   MoviesResponse,
   PayloadCreatorProps,
   { rejectValue: string }
->('movies/fetchMovies', async ({ type, filters, page }, { rejectWithValue }) => {
-  console.log("page: ", page);
-  try {
-    const movies = await moviesAPI.fetchMovies(type, filters, page)
+>(
+  'movies/fetchMovies',
+  async ({ type, filters, page }, { rejectWithValue }) => {
+    try {
+      const movies = await moviesAPI.fetchMovies(type, filters, page)
 
-    return movies.data
-  } catch (error) {
-    const err = error as AxiosError
-    return rejectWithValue(err.message)
+      return movies.data
+    } catch (error) {
+      const err = error as AxiosError
+      return rejectWithValue(err.message)
+    }
   }
-})
+)
 
 export const fetchGenres = createAsyncThunk('movies/fetchGenres', async () => {
   const genres = await moviesAPI.fetchGenres()

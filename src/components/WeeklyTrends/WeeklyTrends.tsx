@@ -17,7 +17,7 @@ import {
   selectTrendingMovies,
 } from 'store/trendingMovies/trendingMovies.selectors'
 
-const WeeklyTrends: FC<WeeklyTrendsProps> = ({ selectMovie }) => {
+const WeeklyTrends: FC<WeeklyTrendsProps> = () => {
   const movies = useAppSelector(selectTrendingMovies).slice(0, 3)
   const isLoading = useAppSelector(selectIsLoading)
 

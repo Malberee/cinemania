@@ -74,7 +74,7 @@ export const MoviePoster = styled.picture(() => {
   `
 })
 
-export const MovieTitle = styled.h3(({ theme }) => {
+export const MovieTitle = styled.h3(() => {
   const { desktop, tablet } = breakpoints
 
   return css`

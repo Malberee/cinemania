@@ -1,3 +1,1 @@
-export interface WeeklyTrendsProps {
-  selectMovie: (movieId: number) => void
-}
+export interface WeeklyTrendsProps {}

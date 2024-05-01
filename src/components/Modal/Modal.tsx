@@ -12,7 +12,7 @@ const Modal: FC<ModalProps> = ({ children }) => {
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     if (e.target !== e.currentTarget) return
-    navigate(-1)
+    navigate('..')
   }
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Modal: FC<ModalProps> = ({ children }) => {
   return createPortal(
     <Backdrop onClick={handleClick}>
       <ModalWrapper>
-        <CloseBtn onClick={() => navigate(-1)}>
+        <CloseBtn onClick={() => navigate('..')}>
           <Close />
         </CloseBtn>
         {children}

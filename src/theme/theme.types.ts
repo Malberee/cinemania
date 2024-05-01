@@ -1,5 +1,3 @@
-type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-
 export interface IColors {
   background: string
   secondaryBackground: string
@@ -12,6 +10,7 @@ export interface IColors {
   black: string
   voteSpanBackground: string
   selectBackground: string
+  arrowPaginate: string
 }
 
 export interface ITheme {
