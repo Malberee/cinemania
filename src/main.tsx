@@ -8,7 +8,7 @@ import { HashRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <HashRouter basename="/cinemania/">
+    <HashRouter >
       <ThemeProvider>
         <Provider store={store}>
           <App />
