@@ -2,8 +2,6 @@ import styled, { css } from 'styled-components'
 import { breakpoints, typography } from 'theme/theme'
 
 export const NotFoundWrapper = styled.div(() => {
-  const { tablet, desktop } = breakpoints
-
   return css`
     height: 100%;
     display: flex;
