@@ -60,14 +60,12 @@ const Select: FC<SelectProps> = ({
     .join(', ')
 
   useEffect(() => {
-    if (onValueChange) {
-      onValueChange(selectedOptions)
-    }
-  }, [selectedOptions, onValueChange])
+    onValueChange?.(selectedOptions)
+  }, [selectedOptions])
 
   return (
     <SelectWrapper ref={ref}>
-      <SelectTrigger onClick={toggleOpen} role="combobox">
+      <SelectTrigger onClick={toggleOpen} role="combobox" type="button">
         {selectedOptions.length ? formattedSelectedOptions : placeholder}
         <IconsWrapper>
           {isClearable && selectedOptions.length > 0 && (

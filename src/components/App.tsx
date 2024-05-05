@@ -9,7 +9,6 @@ import { useAppDispatch } from 'hooks/useAppDispatch'
 import { moviesOperations } from 'store/movies'
 import useAppSelector from 'hooks/useAppSelector'
 import { selectGenreList } from 'store/movies/movies.selectors'
-import MovieDetailsModal from './MovieDetailsModal'
 import { trendingMoviesOperations } from 'store/trendingMovies'
 
 const App = () => {
@@ -29,15 +28,9 @@ const App = () => {
       <GlobalStyles />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />}>
-            <Route path=":movieId" element={<MovieDetailsModal />} />
-          </Route>
-          <Route path="catalog" element={<Catalog />}>
-            <Route path=":movieId" element={<MovieDetailsModal />} />
-          </Route>
-          <Route path="library" element={<Library />}>
-            <Route path=":movieId" element={<MovieDetailsModal />} />
-          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="catalog" element={<Catalog />} />
+          <Route path="library" element={<Library />} />
         </Route>
       </Routes>
     </>

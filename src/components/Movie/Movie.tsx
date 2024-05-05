@@ -11,16 +11,15 @@ import useGenres from 'hooks/useGenres'
 import { MovieProps } from './Movie.types'
 import StarEmpty from 'icons/StarEmpty'
 import Star from 'icons/Star'
-import { Link } from 'react-router-dom'
 
-const Movie: FC<MovieProps> = ({ movie }) => {
+const Movie: FC<MovieProps> = ({ movie, selectMovie }) => {
   const genres = useGenres(movie.genre_ids)
 
   const year = new Date(movie.release_date).getFullYear()
 
   return (
     <MovieWrapper tabIndex={0} role="link">
-      <Link to={`${movie.id}`}>
+      <a onClick={() => selectMovie(movie)}>
         <img
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
           alt=""
@@ -48,7 +47,7 @@ const Movie: FC<MovieProps> = ({ movie }) => {
             }
           />
         </MovieInner>
-      </Link>
+      </a>
     </MovieWrapper>
   )
 }

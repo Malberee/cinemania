@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import {
   HeroWrapper,
   MoviePoster,
@@ -20,12 +20,10 @@ import {
   selectIsLoading,
   selectTrendingMovies,
 } from 'store/trendingMovies/trendingMovies.selectors'
-import { useNavigate } from 'react-router-dom'
 
-const Hero: FC<HeroProps> = () => {
+const Hero: FC<HeroProps> = memo(({ openModal }) => {
   const movies = useAppSelector(selectTrendingMovies)
   const isLoading = useAppSelector(selectIsLoading)
-  const navigate = useNavigate()
 
   const movie = movies[0]
 
@@ -63,7 +61,7 @@ const Hero: FC<HeroProps> = () => {
                   <Button
                     $isBordered
                     $isColorless
-                    onClick={() => navigate(movie.id.toString())}
+                    onClick={() => openModal(movie)}
                   >
                     More details
                   </Button>
@@ -74,6 +72,6 @@ const Hero: FC<HeroProps> = () => {
         ))}
     </HeroWrapper>
   )
-}
+})
 
 export default Hero

@@ -3,16 +3,13 @@ import { createPortal } from 'react-dom'
 import { Backdrop, ModalWrapper, CloseBtn } from './Modal.styled'
 import { ModalProps } from './Modal.types'
 import Close from 'icons/Close'
-import { useNavigate } from 'react-router-dom'
 
 const modalRoot = document.getElementById('modal-root')!
 
-const Modal: FC<ModalProps> = ({ children }) => {
-  const navigate = useNavigate()
-
+const Modal: FC<ModalProps> = ({ children, onClose }) => {
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     if (e.target !== e.currentTarget) return
-    navigate('..')
+    onClose()
   }
 
   useEffect(() => {
@@ -26,7 +23,7 @@ const Modal: FC<ModalProps> = ({ children }) => {
   return createPortal(
     <Backdrop onClick={handleClick}>
       <ModalWrapper>
-        <CloseBtn onClick={() => navigate('..')}>
+        <CloseBtn onClick={onClose}>
           <Close />
         </CloseBtn>
         {children}

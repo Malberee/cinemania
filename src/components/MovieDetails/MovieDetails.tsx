@@ -12,9 +12,10 @@ import {
 import { MovieDetailsProps } from './MovieDetails.types'
 import Button from 'components/Button'
 import VoteSpan from 'components/VoteSpan'
+import useGenres from 'hooks/useGenres'
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
-  const genres = movie.genres?.map((genre) => genre.name).join(' ')
+  const genres = useGenres(movie.genre_ids).join(' ')
 
   return (
     <MovieDetailsWrapper>

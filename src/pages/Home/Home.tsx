@@ -3,15 +3,33 @@ import WeeklyTrends from 'components/WeeklyTrends'
 import UpcomingMovie from 'components/UpcomingMovie'
 
 import Hero from 'components/Hero'
-import { Outlet } from 'react-router-dom'
+import { useCallback, useState } from 'react'
+import { Movie } from 'types'
+import Modal from 'components/Modal'
+import MovieDetails from 'components/MovieDetails'
 
 const Home = () => {
+  const [selectedMovie, setSelectedMovie] = useState<null | Movie>(null)
+
+  const toggleModal = useCallback((movie?: Movie) => {
+    if (movie) {
+      setSelectedMovie(movie)
+      return
+    }
+
+    setSelectedMovie(null)
+  }, [])
+
   return (
     <HomeWrapper>
-      <Hero />
-      <WeeklyTrends />
+      <Hero openModal={toggleModal} />
+      <WeeklyTrends selectMovie={toggleModal} />
       <UpcomingMovie />
-      <Outlet />
+      {selectedMovie && (
+        <Modal onClose={toggleModal}>
+          <MovieDetails movie={selectedMovie} />
+        </Modal>
+      )}
     </HomeWrapper>
   )
 }

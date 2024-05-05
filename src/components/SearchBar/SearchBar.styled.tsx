@@ -29,7 +29,7 @@ export const SearchBarWrapper = styled.div(() => {
     align-items: center;
     gap: 12px;
 
-    max-width: 510px;
+    max-width: 520px;
 
     & > div:nth-child(1) {
       flex: 2;

@@ -1,4 +1,4 @@
-import { FC, FormEvent, memo, useCallback, useReducer } from 'react'
+import { FC, FormEvent, memo, useReducer } from 'react'
 import {
   Input,
   SearchBarContainer,
@@ -55,20 +55,18 @@ const SearchBar: FC<SearchBarProps> = memo(() => {
           placeholder="Genre"
           isClearable
           options={optionsGenres}
-          onValueChange={useCallback(
-            (value: (number | string)[]) => handleChange('genre', value),
-            []
-          )}
+          onValueChange={(value: (number | string)[]) =>
+            handleChange('genre', value)
+          }
           key="genre"
         />
         <Select
           placeholder="Year"
           options={optionsYears}
           isSingleValue
-          onValueChange={useCallback(
-            (value: (number | string)[]) => handleChange('year', value),
-            []
-          )}
+          onValueChange={(value: (number | string)[]) =>
+            handleChange('year', value)
+          }
           key="year"
         />
         <Input

@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, memo, useEffect, useState } from 'react'
 import {
   UpcomingMovieWrapper,
   UpcomingTitle,
@@ -18,8 +18,7 @@ import VoteSpan from 'components/VoteSpan'
 import Container from 'components/Container'
 import Loader from 'components/Loader'
 
-const UpcomingMovie: FC<UpcomingMovieProps> = () => {
-  
+const UpcomingMovie: FC<UpcomingMovieProps> = memo(() => {
   const [upcomingMovie, setUpcomingMovie] = useState<null | Movie>(null)
   const [isLoading, setIsLoading] = useState(false)
   const genres = useGenres(upcomingMovie?.genre_ids || []).join(', ')
@@ -87,6 +86,6 @@ const UpcomingMovie: FC<UpcomingMovieProps> = () => {
       </Container>
     </UpcomingMovieWrapper>
   )
-}
+})
 
 export default UpcomingMovie

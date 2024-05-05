@@ -21,7 +21,10 @@ export const fetchMovies = async (
     queue: '',
     watched: '',
   }
-  const movies = (await axios.get(`${endpoints[type]}?page=${page || 1}` || 'undefined'))
+
+  const movies = await axios.get(`${endpoints[type]}` || 'undefined',  {
+    params: { page },
+  })
 
   return movies
 }

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import {
   MovieListWrapper,
   MovieListContainer,
@@ -8,11 +8,9 @@ import Movie from '../Movie/Movie'
 import { MovieListProps } from './MovieList.types'
 import Paginate from 'components/Paginate'
 import useAppSelector from 'hooks/useAppSelector'
-import {
-  selectTotalPages,
-} from 'store/movies/movies.selectors'
+import { selectTotalPages } from 'store/movies/movies.selectors'
 
-const MovieList: FC<MovieListProps> = ({ movies }) => {
+const MovieList: FC<MovieListProps> = memo(({ movies, selectMovie }) => {
   const totalPages = useAppSelector(selectTotalPages)
 
   return (
@@ -21,7 +19,7 @@ const MovieList: FC<MovieListProps> = ({ movies }) => {
         {movies.length > 0 ? (
           <MovieListWrapper>
             {movies.map((movie) => (
-              <Movie movie={movie} key={movie.id} />
+              <Movie movie={movie} key={movie.id} selectMovie={selectMovie} />
             ))}
           </MovieListWrapper>
         ) : (
@@ -34,6 +32,6 @@ const MovieList: FC<MovieListProps> = ({ movies }) => {
       <Paginate totalPages={totalPages} />
     </>
   )
-}
+})
 
 export default MovieList

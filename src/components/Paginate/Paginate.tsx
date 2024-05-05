@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import { PaginateWrapper, ArrowButton } from './Paginate.styled'
 import { PaginateProps } from './Paginate.types'
 import Chevron from 'icons/Chevron'
@@ -7,11 +7,21 @@ import { useSearchParams } from 'react-router-dom'
 
 const Paginate: FC<PaginateProps> = ({ totalPages }) => {
   const [searchParams, setSearchParams] = useSearchParams()
-  const currentPage = Number(searchParams.get('page')) || 1
+  const [currentPage, setCurrentPage] = useState(
+    Number(searchParams.get('page')) || 1
+  )
+  const params = useMemo(
+    () => Object.fromEntries([...searchParams]),
+    [searchParams]
+  )
 
   const handleChangePage = (page: number) => {
-    setSearchParams({ page: `${page + 1}` })
+    setCurrentPage(page + 1)
   }
+
+  useEffect(() => {
+    setSearchParams({ ...params, page: currentPage.toString() })
+  }, [currentPage])
 
   return (
     <PaginateWrapper>
