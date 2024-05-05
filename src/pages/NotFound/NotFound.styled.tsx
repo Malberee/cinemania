@@ -1,14 +1,18 @@
 import styled, { css } from 'styled-components'
 import { breakpoints, typography } from 'theme/theme'
 
-export const NotFoundWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-image: url('images/background-desktop.jpg');
-`
+export const NotFoundWrapper = styled.div(() => {
+  const { tablet, desktop } = breakpoints
+
+  return css`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/background-desktop.jpg');
+  `
+})
 
 export const NotFoundText = styled.h1(({ theme }) => {
   const {

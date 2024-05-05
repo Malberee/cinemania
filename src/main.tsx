@@ -4,16 +4,16 @@ import App from 'components/App.tsx'
 import { Provider } from 'react-redux'
 import store from 'store/store.ts'
 import ThemeProvider from 'components/ThemeProvider'
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter basename="/cinemania/">
       <ThemeProvider>
         <Provider store={store}>
           <App />
         </Provider>
       </ThemeProvider>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 )
