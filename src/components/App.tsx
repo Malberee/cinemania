@@ -31,7 +31,7 @@ const App = () => {
       <Suspense fallback={<MainLoader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Home />} />
+            <Route index element={<Home />} />
             <Route path="catalog" element={<Catalog />} />
             <Route path="library" element={<Library />} />
             <Route path="*" element={<NotFound />} />

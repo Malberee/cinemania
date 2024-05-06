@@ -55,9 +55,10 @@ const Select: FC<SelectProps> = ({
     setSelectedOptions(selectedOptions.filter((option) => option !== value))
   }
 
-  const formattedSelectedOptions = selectedOptions
-    .map((value) => options.find((option) => option.value === value)?.label)
-    .join(', ')
+  const formattedSelectedOptions = selectedOptions.map(
+    (value) => options.find((option) => option.value === value)?.label
+  )
+  console.log('formattedSelectedOptions: ', formattedSelectedOptions)
 
   useEffect(() => {
     onValueChange?.(selectedOptions)
@@ -66,7 +67,11 @@ const Select: FC<SelectProps> = ({
   return (
     <SelectWrapper ref={ref}>
       <SelectTrigger onClick={toggleOpen} role="combobox" type="button">
-        {selectedOptions.length ? formattedSelectedOptions : placeholder}
+        {selectedOptions.length > 1
+          ? formattedSelectedOptions.slice(0, 1) + '...'
+          : selectedOptions.length
+          ? formattedSelectedOptions.toString()
+          : placeholder}
         <IconsWrapper>
           {isClearable && selectedOptions.length > 0 && (
             <CloseWrapper onClick={clearSelected}>

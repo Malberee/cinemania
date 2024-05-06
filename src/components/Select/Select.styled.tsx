@@ -46,7 +46,7 @@ export const IconsWrapper = styled.div`
   gap: 8px;
 `
 
-export const CloseWrapper = styled.button`
+export const CloseWrapper = styled.a`
   width: 16px;
   height: 16px;
   padding: 0;
