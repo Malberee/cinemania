@@ -13,7 +13,7 @@ export const SelectTrigger = styled.button(({ theme }) => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 22px;
+    gap: 8px;
 
     width: 100%;
     padding: 11px 20px;

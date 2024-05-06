@@ -29,10 +29,8 @@ export const SearchBarWrapper = styled.div(() => {
     align-items: center;
     gap: 12px;
 
-    max-width: 550px;
-
     & > div:nth-child(1) {
-      flex: 2;
+      flex: 1;
     }
 
     @media (width >= ${desktop}) {
