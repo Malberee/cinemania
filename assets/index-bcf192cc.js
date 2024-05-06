@@ -1,4 +1,4 @@
-import{u as i,a as n,t as r,b as d,N as j,r as c,f as x,j as t,C as m,L as g,B as f,o as b}from"./index-d7e957d2.js";import{s as $,c as v,M as w,u as M,V as h,H as y,a as k,b as z}from"./MovieDetails-b12bbebc.js";const L=i.div`
+import{u as i,a as n,t as r,b as d,N as j,r as c,f as x,j as t,C as m,L as g,B as f,o as b}from"./index-ab161033.js";import{s as $,c as v,M as w,u as M,V as h,H as y,a as k,b as z}from"./MovieDetails-c08de37f.js";const L=i.div`
 
 `,T=i.div(()=>{const{desktop:e,tablet:o}=d;return n`
     padding: 40px 0 16px 0;
