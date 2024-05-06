@@ -113,6 +113,7 @@ export const OptionItem = styled.li<{ $isSelected: boolean }>(
 
       &:hover {
         color: ${theme.colors.accent};
+        cursor: pointer;
       }
     `
   }
