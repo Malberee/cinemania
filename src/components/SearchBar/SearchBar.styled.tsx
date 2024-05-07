@@ -1,7 +1,8 @@
 import Button from 'components/Button'
 import Container from 'components/Container'
+import Input from 'components/Input'
 import styled, { css } from 'styled-components'
-import { breakpoints, staticColors, typography } from 'theme/theme'
+import { breakpoints, staticColors } from 'theme/theme'
 
 export const SearchBarContainer = styled(Container)(() => {
   const { tablet } = breakpoints
@@ -39,33 +40,11 @@ export const SearchBarWrapper = styled.div(() => {
   `
 })
 
-export const Input = styled.input(({ theme }) => {
+export const QueryInput = styled(Input)(() => {
   const { tablet } = breakpoints
 
   return css`
     flex: 4;
-    padding: 11px 20px;
-
-    font-size: ${typography.mobile.md}px;
-    font-weight: 500;
-
-    border-radius: 8px;
-    border: 1px solid ${theme.colors.grey};
-    background-color: ${theme.colors.background};
-    color: ${theme.colors.text};
-
-    transition: border-color 100ms linear;
-
-    &:focus {
-      outline: none;
-      border-color: ${theme.colors.accent};
-    }
-
-    &::placeholder {
-      font-size: ${typography.mobile.md}px;
-      font-weight: 500;
-      color: ${theme.colors.grey};
-    }
 
     @media (width >= ${tablet}) {
       order: -1;

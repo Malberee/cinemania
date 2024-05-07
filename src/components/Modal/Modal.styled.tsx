@@ -28,19 +28,16 @@ export const ModalWrapper = styled.div(() => {
 
   return css`
     position: relative;
-    width: 280px;
     margin: auto;
     padding: 52px 16px;
     border-radius: 16px;
     background-color: ${({ theme }) => theme.colors.background};
 
     @media (width >= ${tablet}) {
-      width: 704px;
       padding: 44px;
     }
 
     @media (width >= ${desktop}) {
-      width: 846px;
       padding: 60px;
     }
   `

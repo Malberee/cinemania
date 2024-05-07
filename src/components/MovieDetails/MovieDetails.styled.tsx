@@ -2,14 +2,20 @@ import styled, { css } from 'styled-components'
 import { breakpoints, typography } from 'theme/theme'
 
 export const MovieDetailsWrapper = styled.div(() => {
-  const { tablet } = breakpoints
+  const { tablet, desktop } = breakpoints
 
   return css`
+    width: 264px;
     font-weight: 500;
 
     @media (width >= ${tablet}) {
       display: flex;
       gap: 16px;
+      width: 660px;
+    }
+
+    @media (width >= ${desktop}) {
+      width: 786px;
     }
   `
 })

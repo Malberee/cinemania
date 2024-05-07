@@ -13,9 +13,11 @@ import Loader from 'components/Loader'
 import { Movie } from 'types'
 import Modal from 'components/Modal'
 import MovieDetails from 'components/MovieDetails'
+import AuthForm from 'components/AuthForm'
 
 const Catalog: FC<CatalogProps> = memo(() => {
   const [selectedMovie, setSelectedMovie] = useState<null | Movie>(null)
+  const [authModalIsOpen, setAuthModalIsOpen] = useState(true)
   const dispatch = useAppDispatch()
   const [searchParams] = useSearchParams()
   const movies = useAppSelector(selectMovies)
@@ -54,6 +56,11 @@ const Catalog: FC<CatalogProps> = memo(() => {
       {selectedMovie && (
         <Modal onClose={() => setSelectedMovie(null)}>
           <MovieDetails movie={selectedMovie} />
+        </Modal>
+      )}
+      {authModalIsOpen && (
+        <Modal onClose={() => setAuthModalIsOpen(false)}>
+          <AuthForm />
         </Modal>
       )}
     </CatalogWrapper>

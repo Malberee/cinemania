@@ -21,7 +21,7 @@ const Paginate: FC<PaginateProps> = ({ totalPages }) => {
 
   useEffect(() => {
     setSearchParams({ ...params, page: currentPage.toString() })
-  }, [currentPage])
+  }, [currentPage, params])
 
   return (
     <PaginateWrapper>

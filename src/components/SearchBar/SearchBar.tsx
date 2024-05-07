@@ -1,6 +1,6 @@
 import { FC, FormEvent, memo, useReducer } from 'react'
 import {
-  Input,
+  QueryInput,
   SearchBarContainer,
   SearchBarWrapper,
   SearchButton,
@@ -69,7 +69,7 @@ const SearchBar: FC<SearchBarProps> = memo(() => {
           }
           key="year"
         />
-        <Input
+        <QueryInput
           placeholder="Search"
           name="query"
           defaultValue={searchParams.get('query') || ''}
