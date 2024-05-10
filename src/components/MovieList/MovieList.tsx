@@ -29,7 +29,7 @@ const MovieList = memo<MovieListProps>(({ movies, selectMovie }) => {
           </NotFoundText>
         )}
       </MovieListContainer>
-      <Paginate totalPages={totalPages} />
+      {movies.length && <Paginate totalPages={totalPages} />}
     </>
   )
 })

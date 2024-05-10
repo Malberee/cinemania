@@ -6,6 +6,7 @@ import ReactPaginate from 'react-paginate'
 import { useSearchParams } from 'react-router-dom'
 
 const Paginate: FC<PaginateProps> = ({ totalPages }) => {
+  console.log("totalPages: ", totalPages);
   const [searchParams, setSearchParams] = useSearchParams()
   const [currentPage, setCurrentPage] = useState(
     Number(searchParams.get('page')) || 1
@@ -26,7 +27,7 @@ const Paginate: FC<PaginateProps> = ({ totalPages }) => {
   return (
     <PaginateWrapper>
       <ReactPaginate
-        pageCount={totalPages > 1000 ? 1000 : totalPages}
+        pageCount={totalPages > 500 ? 500 : totalPages}
         initialPage={currentPage - 1}
         pageRangeDisplayed={3}
         marginPagesDisplayed={1}
