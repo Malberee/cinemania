@@ -22,6 +22,7 @@ export const InputStyles = styled.input<{
     border: 1px solid ${theme.colors.grey};
     background-color: ${theme.colors.background};
     color: ${theme.colors.text};
+    color-scheme: ${theme.current};
 
     transition: border-color 100ms linear;
 

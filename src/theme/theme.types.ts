@@ -14,6 +14,7 @@ export interface IColors {
 }
 
 export interface ITheme {
+  current: 'dark' | 'light'
   colors: IColors
   toggleTheme: () => void
 }

@@ -17,7 +17,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
   }, [theme])
 
   return (
-    <Provider theme={{ colors: themes[theme], toggleTheme }}>
+    <Provider theme={{ current: theme, colors: themes[theme], toggleTheme }}>
       {children}
     </Provider>
   )

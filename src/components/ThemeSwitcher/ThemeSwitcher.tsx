@@ -7,11 +7,15 @@ import Moon from 'icons/Moon'
 import { useTheme } from 'styled-components'
 
 const ThemeSwitcher: FC<ThemeSwitcherProps> = () => {
-  const { toggleTheme } = useTheme()
+  const { current, toggleTheme } = useTheme()
 
   return (
     <ThemeSwitcherWrapper>
-      <input type="checkbox" onChange={toggleTheme} />
+      <input
+        type="checkbox"
+        checked={current === 'dark'}
+        onChange={toggleTheme}
+      />
       <Moon />
       <Sun />
       <Thumb>
