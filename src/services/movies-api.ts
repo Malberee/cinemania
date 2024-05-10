@@ -1,9 +1,12 @@
 import axios from 'axios'
 import { PayloadCreatorProps } from 'store/movies/types'
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3'
-axios.defaults.params = {
-  api_key: '3cfc4cc3ed7c09ed117ed148c7a04c75',
+const defaultParams = {
+  baseURL: 'https://api.themoviedb.org/3',
+  headers: {
+    Authorization:
+      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ZjNGNjM2VkN2MwOWVkMTE3ZWQxNDhjN2EwNGM3NSIsInN1YiI6IjY0MjJhY2M1NmEzNDQ4MDExMmJhOTkxZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BW4UkY4p31hxoX77N5tnncr3h1ZYLNmH4U2aDoO43SI',
+  },
 }
 
 export const fetchMovies = async (
@@ -24,19 +27,20 @@ export const fetchMovies = async (
 
   const movies = await axios.get(`${endpoints[type]}` || 'undefined', {
     params: { page },
+    ...defaultParams,
   })
 
   return movies
 }
 
 export const fetchMovieById = async (id: string) => {
-  const movie = await axios.get(`movie/${id}`)
+  const movie = await axios.get(`movie/${id}`, { ...defaultParams })
 
   return movie.data
 }
 
 export const fetchGenres = async () => {
-  const genres = await axios.get('/genre/movie/list')
+  const genres = await axios.get('/genre/movie/list', {...defaultParams})
 
   return genres
 }

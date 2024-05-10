@@ -20,3 +20,11 @@ export type Genre = {
   id: number
   name: string
 }
+
+export type MoviesState = {
+  entities: Movie[]
+  genres: Genre[]
+  totalPages: number
+  isLoading: boolean
+  error: null | string
+}

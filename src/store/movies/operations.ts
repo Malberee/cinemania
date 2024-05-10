@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import * as moviesAPI from 'services/movies-api'
-import { MoviesResponse, PayloadCreatorProps } from './types'
+import { Genre, MoviesResponse, PayloadCreatorProps } from './types'
 import { AxiosError } from 'axios'
 
 export const fetchMovies = createAsyncThunk<
@@ -21,8 +21,17 @@ export const fetchMovies = createAsyncThunk<
   }
 )
 
-export const fetchGenres = createAsyncThunk('movies/fetchGenres', async () => {
-  const genres = await moviesAPI.fetchGenres()
+export const fetchGenres = createAsyncThunk<
+  Genre[],
+  undefined,
+  { rejectValue: string }
+>('movies/fetchGenres', async (_, { rejectWithValue }) => {
+  try {
+    const genres = await moviesAPI.fetchGenres()
 
-  return genres.data.genres
+    return genres.data.genres
+  } catch (error) {
+    const err = error as AxiosError
+    return rejectWithValue(err.message)
+  }
 })

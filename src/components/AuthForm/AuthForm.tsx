@@ -13,13 +13,18 @@ import Email from 'icons/Email'
 import Lock from 'icons/Lock'
 import Show from 'icons/Show'
 import Hide from 'icons/Hide'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { register } from 'store/auth/operations'
 
 const AuthForm: FC<AuthFormProps> = () => {
   const [isLogin, setIsLogin] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
+  const dispatch = useAppDispatch()
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const { email, password } = e.currentTarget
+    dispatch(register({ email: email.value, password: password.value }))
   }
 
   return (

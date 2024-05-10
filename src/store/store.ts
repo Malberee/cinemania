@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import authReducer from './auth/reducer'
-import moviesReducer from './movies/reducer'
-import trendingMoviesReducer from './trendingMovies/reducer'
+import { authReducer } from './auth/slice'
+import { moviesReducer } from './movies/slice'
+import { trendingMoviesReducer } from './trendingMovies/slice'
 
 const store = configureStore({
   reducer: {
-    // auth: authReducer,
+    auth: authReducer,
     movies: moviesReducer,
-    trendingMovies: trendingMoviesReducer
+    trendingMovies: trendingMoviesReducer,
   },
 })
 
