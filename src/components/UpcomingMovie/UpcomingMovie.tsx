@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import {
   UpcomingMovieWrapper,
   UpcomingTitle,
@@ -15,10 +15,10 @@ import { fetchMovies } from 'services/movies-api'
 import Button from 'components/Button'
 import useGenres from 'hooks/useGenres'
 import VoteSpan from 'components/VoteSpan'
-import Container from 'components/Container'
-import Loader from 'components/Loader'
+import Container from 'components/common/Container'
+import Loader from 'components/common/Loader'
 
-const UpcomingMovie: FC<UpcomingMovieProps> = memo(() => {
+const UpcomingMovie = memo<UpcomingMovieProps>(() => {
   const [upcomingMovie, setUpcomingMovie] = useState<null | Movie>(null)
   const [isLoading, setIsLoading] = useState(false)
   const genres = useGenres(upcomingMovie?.genre_ids || []).join(', ')

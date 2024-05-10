@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import {
   WeeklyTrendsWrapper,
   TrendsHeader,
@@ -9,15 +9,15 @@ import {
 import { WeeklyTrendsProps } from './WeeklyTrends.types'
 import useAppSelector from 'hooks/useAppSelector'
 
-import Movie from 'components/Movie'
-import Container from 'components/Container'
-import Loader from 'components/Loader'
+import Movie from 'components/common/Movie'
+import Container from 'components/common/Container'
+import Loader from 'components/common/Loader'
 import {
   selectIsLoading,
   selectTrendingMovies,
-} from 'store/trendingMovies/trendingMovies.selectors'
+} from 'store/trendingMovies/selectors'
 
-const WeeklyTrends: FC<WeeklyTrendsProps> = memo(({ selectMovie }) => {
+const WeeklyTrends = memo<WeeklyTrendsProps>(({ selectMovie }) => {
   const movies = useAppSelector(selectTrendingMovies).slice(0, 3)
   const isLoading = useAppSelector(selectIsLoading)
 

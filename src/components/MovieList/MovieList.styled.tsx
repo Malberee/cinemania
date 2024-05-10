@@ -1,4 +1,4 @@
-import Container from 'components/Container'
+import Container from 'components/common/Container'
 import styled, { css } from 'styled-components'
 import { breakpoints, typography } from 'theme/theme'
 

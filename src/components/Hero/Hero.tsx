@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import {
   HeroWrapper,
   MoviePoster,
@@ -11,17 +11,17 @@ import {
 } from './Hero.styled'
 import { HeroProps } from './Hero.types'
 import useAppSelector from 'hooks/useAppSelector'
-import Container from 'components/Container'
+import Container from 'components/common/Container'
 import Button from 'components/Button'
 import Star from 'icons/Star'
 import StarEmpty from 'icons/StarEmpty'
-import Loader from 'components/Loader'
+import Loader from 'components/common/Loader'
 import {
   selectIsLoading,
   selectTrendingMovies,
-} from 'store/trendingMovies/trendingMovies.selectors'
+} from 'store/trendingMovies/selectors'
 
-const Hero: FC<HeroProps> = memo(({ openModal }) => {
+const Hero = memo<HeroProps>(({ openModal }) => {
   const movies = useAppSelector(selectTrendingMovies)
   const isLoading = useAppSelector(selectIsLoading)
 

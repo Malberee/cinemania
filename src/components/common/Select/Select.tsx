@@ -58,7 +58,6 @@ const Select: FC<SelectProps> = ({
   const formattedSelectedOptions = selectedOptions.map(
     (value) => options.find((option) => option.value === value)?.label
   )
-  console.log('formattedSelectedOptions: ', formattedSelectedOptions)
 
   useEffect(() => {
     onValueChange?.(selectedOptions)

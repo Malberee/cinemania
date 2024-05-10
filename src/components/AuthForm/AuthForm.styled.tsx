@@ -1,13 +1,13 @@
 import Button from 'components/Button'
-import InputComponent from 'components/Input'
+import InputComponent from 'components/common/Input'
 import styled, { css } from 'styled-components'
 import { typography } from 'theme/theme'
 
-export const AuthFormWrapper = styled.div`
+export const AuthFormWrapper = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-top: 24px;
+  width: 280px;
 `
 
 export const AuthTitle = styled.h2(({ theme }) => {
@@ -22,9 +22,7 @@ export const AuthTitle = styled.h2(({ theme }) => {
   `
 })
 
-export const Input = styled(InputComponent)`
-  width: 300px;
-`
+export const Input = styled(InputComponent)``
 
 export const SubmitButton = styled(Button)`
   width: 100%;
@@ -42,6 +40,21 @@ export const Link = styled.a(({ theme }) => {
 
     &:hover {
       text-decoration: underline;
+    }
+  `
+})
+
+export const ToggleVisibilityButton = styled.button(({ theme }) => {
+  return css`
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    color: ${theme.colors.grey};
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
     }
   `
 })

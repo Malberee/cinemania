@@ -1,6 +1,6 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
 import { Movie } from 'types'
-import { fetchTrendingMovies } from './trendingMovies.operations'
+import { fetchTrendingMovies } from './operations'
 
 const trendingMovies = createReducer<Movie[]>([], (builder) =>
   builder.addCase(

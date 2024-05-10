@@ -1,2 +1,2 @@
-export * as moviesOperations from './movies.operations'
-export * as moviesSelectors from './movies.selectors'
+export * as moviesOperations from './operations'
+export * as moviesSelectors from './selectors'

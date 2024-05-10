@@ -1,16 +1,16 @@
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import {
   MovieListWrapper,
   MovieListContainer,
   NotFoundText,
 } from './MovieList.styled'
-import Movie from '../Movie/Movie'
+import Movie from '../common/Movie/Movie'
 import { MovieListProps } from './MovieList.types'
 import Paginate from 'components/Paginate'
 import useAppSelector from 'hooks/useAppSelector'
-import { selectTotalPages } from 'store/movies/movies.selectors'
+import { selectTotalPages } from 'store/movies/selectors'
 
-const MovieList: FC<MovieListProps> = memo(({ movies, selectMovie }) => {
+const MovieList = memo<MovieListProps>(({ movies, selectMovie }) => {
   const totalPages = useAppSelector(selectTotalPages)
 
   return (

@@ -1,6 +1,6 @@
 import Button from 'components/Button'
-import Container from 'components/Container'
-import Input from 'components/Input'
+import Container from 'components/common/Container'
+import Input from 'components/common/Input'
 import styled, { css } from 'styled-components'
 import { breakpoints, staticColors } from 'theme/theme'
 

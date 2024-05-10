@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, FormEvent, useState } from 'react'
 import {
   AuthFormWrapper,
   AuthTitle,
@@ -6,17 +6,45 @@ import {
   SubmitButton,
   Text,
   Link,
+  ToggleVisibilityButton,
 } from './AuthForm.styled'
 import { AuthFormProps } from './AuthForm.types'
+import Email from 'icons/Email'
+import Lock from 'icons/Lock'
+import Show from 'icons/Show'
+import Hide from 'icons/Hide'
 
 const AuthForm: FC<AuthFormProps> = () => {
   const [isLogin, setIsLogin] = useState(true)
+  const [showPassword, setShowPassword] = useState(false)
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
 
   return (
-    <AuthFormWrapper>
+    <AuthFormWrapper onSubmit={handleSubmit}>
       <AuthTitle>{isLogin ? 'Sign In' : 'Sign Up'}</AuthTitle>
-      <Input placeholder="E-mail" />
-      <Input placeholder="Password" />
+      <Input
+        placeholder="E-mail"
+        type="email"
+        name="email"
+        startContent={<Email />}
+      />
+      <Input
+        placeholder="Password"
+        type={showPassword ? 'text' : 'password'}
+        name="password"
+        startContent={<Lock />}
+        endContent={
+          <ToggleVisibilityButton
+            type="button"
+            onClick={() => setShowPassword((prevState) => !prevState)}
+          >
+            {showPassword ? <Show /> : <Hide />}
+          </ToggleVisibilityButton>
+        }
+      />
       <Text>
         {isLogin
           ? 'you don`t have an account yet?'
@@ -25,7 +53,7 @@ const AuthForm: FC<AuthFormProps> = () => {
           {isLogin ? 'Sign Up' : 'Sign In'}
         </Link>
       </Text>
-      <SubmitButton>Submit</SubmitButton>
+      <SubmitButton type="submit">Submit</SubmitButton>
     </AuthFormWrapper>
   )
 }

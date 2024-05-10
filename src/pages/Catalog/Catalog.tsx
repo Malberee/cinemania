@@ -1,21 +1,21 @@
-import { FC, memo, useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { CatalogWrapper } from './Catalog.styled'
 import { CatalogProps } from './Catalog.types'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { moviesOperations } from 'store/movies'
 import MovieList from 'components/MovieList'
-import { selectIsLoading, selectMovies } from 'store/movies/movies.selectors'
+import { selectIsLoading, selectMovies } from 'store/movies/selectors'
 import useAppSelector from 'hooks/useAppSelector'
 import SearchBar from 'components/SearchBar'
 import { useSearchParams } from 'react-router-dom'
 import Hero from 'components/Hero'
-import Loader from 'components/Loader'
+import Loader from 'components/common/Loader'
 import { Movie } from 'types'
-import Modal from 'components/Modal'
+import Modal from 'components/common/Modal'
 import MovieDetails from 'components/MovieDetails'
 import AuthForm from 'components/AuthForm'
 
-const Catalog: FC<CatalogProps> = memo(() => {
+const Catalog = memo<CatalogProps>(() => {
   const [selectedMovie, setSelectedMovie] = useState<null | Movie>(null)
   const [authModalIsOpen, setAuthModalIsOpen] = useState(true)
   const dispatch = useAppDispatch()

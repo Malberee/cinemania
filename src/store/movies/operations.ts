@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import * as moviesAPI from 'services/movies-api'
-import { MoviesResponse, PayloadCreatorProps } from './movies.types'
+import { MoviesResponse, PayloadCreatorProps } from './types'
 import { AxiosError } from 'axios'
 
 export const fetchMovies = createAsyncThunk<

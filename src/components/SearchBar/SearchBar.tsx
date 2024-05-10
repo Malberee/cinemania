@@ -1,4 +1,4 @@
-import { FC, FormEvent, memo, useReducer } from 'react'
+import { FormEvent, memo, useReducer } from 'react'
 import {
   QueryInput,
   SearchBarContainer,
@@ -7,8 +7,8 @@ import {
 } from './SearchBar.styled'
 import { Action, SearchBarProps, State } from './SearchBar.types'
 import useAppSelector from 'hooks/useAppSelector'
-import { selectGenreList } from 'store/movies/movies.selectors'
-import Select from 'components/Select'
+import { selectGenreList } from 'store/movies/selectors'
+import Select from 'components/common/Select'
 import Search from 'icons/Search'
 import useYears from 'hooks/useYears'
 import { useSearchParams } from 'react-router-dom'
@@ -17,7 +17,7 @@ const reducer = (state: State, action: Action) => {
   return { ...state, [action.type]: action.value }
 }
 
-const SearchBar: FC<SearchBarProps> = memo(() => {
+const SearchBar = memo<SearchBarProps>(() => {
   const [filters, dispatchFilters] = useReducer(reducer, {
     year: [],
     genre: [],

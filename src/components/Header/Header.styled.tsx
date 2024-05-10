@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { NavLink as NavLinkRouter } from 'react-router-dom'
-import Container from 'components/Container'
+import Container from 'components/common/Container'
 import { breakpoints } from 'theme/theme'
 
 export const HeaderWrapper = styled.header`

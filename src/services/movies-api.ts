@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { PayloadCreatorProps } from 'store/movies/movies.types'
+import { PayloadCreatorProps } from 'store/movies/types'
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3'
 axios.defaults.params = {
@@ -22,7 +22,7 @@ export const fetchMovies = async (
     watched: '',
   }
 
-  const movies = await axios.get(`${endpoints[type]}` || 'undefined',  {
+  const movies = await axios.get(`${endpoints[type]}` || 'undefined', {
     params: { page },
   })
 

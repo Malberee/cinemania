@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 import * as moviesAPI from 'services/movies-api'
-import { MoviesResponse } from 'store/movies/movies.types'
+import { MoviesResponse } from 'store/movies/types'
 
 export const fetchTrendingMovies = createAsyncThunk<
   MoviesResponse,

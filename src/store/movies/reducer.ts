@@ -1,7 +1,7 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit'
-import { fetchGenres, fetchMovies } from './movies.operations'
+import { fetchGenres, fetchMovies } from './operations'
 import { Movie } from 'types'
-import { Genre } from './movies.types'
+import { Genre } from './types'
 
 const entities = createReducer<Movie[]>([], (builder) =>
   builder.addCase(fetchMovies.fulfilled, (_, action) => action.payload.results)

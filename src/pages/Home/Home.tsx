@@ -5,7 +5,7 @@ import UpcomingMovie from 'components/UpcomingMovie'
 import Hero from 'components/Hero'
 import { useCallback, useState } from 'react'
 import { Movie } from 'types'
-import Modal from 'components/Modal'
+import Modal from 'components/common/Modal'
 import MovieDetails from 'components/MovieDetails'
 
 const Home = () => {

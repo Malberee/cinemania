@@ -1,2 +1,2 @@
-export * as trendingMoviesOperations from './trendingMovies.operations'
-export * as trendingMoviesSelectors from './trendingMovies.selectors'
+export * as trendingMoviesOperations from './operations'
+export * as trendingMoviesSelectors from './selectors'
