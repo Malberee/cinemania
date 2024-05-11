@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { PayloadCreatorProps } from 'store/movies/types'
+const API_KEY = import.meta.env.VITE_MOVIEDB_TOKEN
 
 const defaultParams = {
   baseURL: 'https://api.themoviedb.org/3',
   headers: {
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ZjNGNjM2VkN2MwOWVkMTE3ZWQxNDhjN2EwNGM3NSIsInN1YiI6IjY0MjJhY2M1NmEzNDQ4MDExMmJhOTkxZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BW4UkY4p31hxoX77N5tnncr3h1ZYLNmH4U2aDoO43SI',
+    Authorization: `Bearer ${API_KEY}`,
   },
 }
 
@@ -21,8 +21,7 @@ export const fetchMovies = async (
     }&primary_release_year=${filters?.year?.join(',') || ''}&with_text_query
 =${filters?.query}`,
     upcoming: '/movie/upcoming',
-    queue: '',
-    watched: '',
+    library: '',
   }
 
   const movies = await axios.get(`${endpoints[type]}` || 'undefined', {

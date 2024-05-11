@@ -80,3 +80,26 @@ export const NavLink = styled(NavLinkRouter)`
     color: ${({ theme }) => theme.colors.accent};
   }
 `
+
+export const AuthLink = styled.a(() => {
+  const { tablet } = breakpoints
+
+  return css`
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: ${({ theme }) => theme.colors.grey};
+
+    @media (width < ${tablet}) {
+      display: none;
+    }
+  `
+})
+
+export const HeaderInner = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 32px;
+`

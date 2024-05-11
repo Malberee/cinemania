@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import store from 'store/store.ts'
 import ThemeProvider from 'components/ThemeProvider'
 import { BrowserRouter } from 'react-router-dom'
+import 'services/firebase'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

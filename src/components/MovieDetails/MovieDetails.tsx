@@ -13,9 +13,19 @@ import { MovieDetailsProps } from './MovieDetails.types'
 import Button from 'components/Button'
 import VoteSpan from 'components/VoteSpan'
 import useGenres from 'hooks/useGenres'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { addMovieToLibrary } from 'store/user/operation'
+import useAppSelector from 'hooks/useAppSelector'
+import { selectId } from 'store/user/selectors'
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
+  const dispatch = useAppDispatch()
+  const userId = useAppSelector(selectId)
   const genres = useGenres(movie.genre_ids).join(' ')
+
+  const handleAddToLibrary = () => {
+    dispatch(addMovieToLibrary({ userId, movie }))
+  }
 
   return (
     <MovieDetailsWrapper>
@@ -45,7 +55,9 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
         </MovieInfoList>
         <AboutTitle>About</AboutTitle>
         <About>{movie.overview}</About>
-        <Button $isBordered>Add to library</Button>
+        <Button $isBordered onClick={handleAddToLibrary}>
+          Add to library
+        </Button>
       </div>
     </MovieDetailsWrapper>
   )

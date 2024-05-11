@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from 'react'
+import { FC, FormEvent, memo, useState } from 'react'
 import {
   AuthFormWrapper,
   AuthTitle,
@@ -14,29 +14,53 @@ import Lock from 'icons/Lock'
 import Show from 'icons/Show'
 import Hide from 'icons/Hide'
 import { useAppDispatch } from 'hooks/useAppDispatch'
-import { register } from 'store/auth/operations'
+import { auth } from 'store/user/operation'
+import useAppSelector from 'hooks/useAppSelector'
+import { selectIsLoading } from 'store/user/selectors'
 
-const AuthForm: FC<AuthFormProps> = () => {
+const AuthForm: FC<AuthFormProps> = memo(() => {
   const [isLogin, setIsLogin] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
+  const isLoading = useAppSelector(selectIsLoading)
   const dispatch = useAppDispatch()
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     const { email, password } = e.currentTarget
-    dispatch(register({ email: email.value, password: password.value }))
+    const credentials = { email: email.value, password: password.value }
+
+    if (isLogin) {
+      dispatch(
+        auth({
+          ...credentials,
+          action: 'login',
+        })
+      )
+
+      return
+    }
+
+    dispatch(
+      auth({
+        ...credentials,
+        action: 'register',
+      })
+    )
   }
 
   return (
     <AuthFormWrapper onSubmit={handleSubmit}>
       <AuthTitle>{isLogin ? 'Sign In' : 'Sign Up'}</AuthTitle>
       <Input
+        required
         placeholder="E-mail"
         type="email"
         name="email"
         startContent={<Email />}
       />
       <Input
+        required
         placeholder="Password"
         type={showPassword ? 'text' : 'password'}
         name="password"
@@ -58,9 +82,11 @@ const AuthForm: FC<AuthFormProps> = () => {
           {isLogin ? 'Sign Up' : 'Sign In'}
         </Link>
       </Text>
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <SubmitButton type="submit" disabled={isLoading}>
+        Submit
+      </SubmitButton>
     </AuthFormWrapper>
   )
-}
+})
 
 export default AuthForm

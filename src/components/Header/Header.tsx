@@ -7,6 +7,8 @@ import {
   NavList,
   NavLink,
   HeaderContainer,
+  AuthLink,
+  HeaderInner,
 } from './Header.styled'
 import { HeaderProps } from './Header.types'
 import ThemeSwitcher from 'components/ThemeSwitcher'
@@ -36,7 +38,10 @@ const Header: FC<HeaderProps> = () => {
             </li>
           </NavList>
         </Nav>
-        <ThemeSwitcher />
+        <HeaderInner>
+          <AuthLink>Sign In</AuthLink>
+          <ThemeSwitcher />
+        </HeaderInner>
       </HeaderContainer>
       {isOpen && <NavMenu closeMenu={() => setIsOpen(false)} />}
     </HeaderWrapper>

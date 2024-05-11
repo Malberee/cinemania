@@ -51,6 +51,14 @@ export const ButtonWrapper = styled.button<Omit<ButtonProps, 'children'>>(
       ${$isBordered && borderedStyles}
       ${$isColorless && colorlessStyles}
 
+      &:disabled {
+        opacity: 0.5;
+
+        &:hover {
+          cursor: default;
+        }
+      }
+
       @media (width >= ${tablet}) {
         font-size: ${typography.tablet.sm}px;
         line-height: 20px;

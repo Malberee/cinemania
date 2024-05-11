@@ -1,7 +1,7 @@
 import { Movie } from 'types'
 
 export type PayloadCreatorProps = {
-  type: 'popular' | 'byQuery' | 'upcoming' | 'queue' | 'watched'
+  type: 'popular' | 'byQuery' | 'upcoming' | 'library' 
   filters?: {
     query?: string
     genre?: string[]
