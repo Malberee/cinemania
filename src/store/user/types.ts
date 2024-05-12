@@ -1,4 +1,4 @@
-import { Movie } from "types"
+import { Movie } from 'types'
 
 export type AuthState = {
   email: string | null
@@ -19,4 +19,10 @@ export type AuthParams = {
   email: string
   password: string
   action: 'login' | 'register'
+}
+
+export type LibraryActionParams = {
+  userId: string
+  movie: Movie
+  action: 'add' | 'remove'
 }

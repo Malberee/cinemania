@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { AuthState } from './types'
-import { auth, fetchLibrary } from './operation'
+import { auth, fetchLibrary, libraryAction } from './operation'
 
 const initialState: AuthState = {
   email: null,
@@ -47,6 +47,17 @@ const authSlice = createSlice({
       .addCase(fetchLibrary.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload || null
+      })
+      .addCase(libraryAction.fulfilled, (state, action) => {
+        if (typeof action.payload === 'object') {
+          state.library = [action.payload, ...state.library]
+
+          return
+        }
+
+        state.library = state.library.filter(
+          (movie) => movie.id !== action.payload
+        )
       }),
 })
 

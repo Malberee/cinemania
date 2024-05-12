@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { child, get, getDatabase, push, ref, set } from 'firebase/database'
+import { child, get, getDatabase, ref, remove, set } from 'firebase/database'
+import { Movie } from 'types'
 
 type credentials = {
   email: string
@@ -28,17 +29,24 @@ export const fetchLibrary = async (userId: string) => {
   const library = await get(child(dbRef, `users/${userId}/library`))
 
   if (library.exists()) {
-    console.log(library.val())
-
     return library.val()
   }
 
-  throw new Error()
+  throw new Error('Error')
 }
 
-export const addMovieToLibrary = async (userId, movie) => {
+export const addMovieToLibrary = async (userId: string, movie: Movie) => {
   const db = getDatabase()
-  const userLibraryRef = ref(db, `users/${userId}/library`)
-  const newMovie = push(userLibraryRef)
-  set(newMovie, movie)
+  const userLibraryRef = ref(db, `users/${userId}/library/${movie.id}`)
+  set(userLibraryRef, movie)
+}
+
+export const removeMovieFromLibrary = async (
+  userId: string,
+  movieId: number
+) => {
+  const db = getDatabase()
+  const userLibraryRef = ref(db, `users/${userId}/library/${movieId}`)
+
+  await remove(userLibraryRef)
 }

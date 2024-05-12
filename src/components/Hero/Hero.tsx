@@ -12,7 +12,7 @@ import {
 import { HeroProps } from './Hero.types'
 import useAppSelector from 'hooks/useAppSelector'
 import Container from 'components/common/Container'
-import Button from 'components/Button'
+import Button from 'components/common/Button'
 import Star from 'icons/Star'
 import StarEmpty from 'icons/StarEmpty'
 import Loader from 'components/common/Loader'

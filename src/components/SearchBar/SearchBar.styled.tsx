@@ -1,4 +1,4 @@
-import Button from 'components/Button'
+import Button from 'components/common/Button'
 import Container from 'components/common/Container'
 import Input from 'components/common/Input'
 import styled, { css } from 'styled-components'

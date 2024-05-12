@@ -7,6 +7,7 @@ import {
   Text,
   Link,
   ToggleVisibilityButton,
+  LoaderWrapper,
 } from './AuthForm.styled'
 import { AuthFormProps } from './AuthForm.types'
 import Email from 'icons/Email'
@@ -17,6 +18,7 @@ import { useAppDispatch } from 'hooks/useAppDispatch'
 import { auth } from 'store/user/operation'
 import useAppSelector from 'hooks/useAppSelector'
 import { selectIsLoading } from 'store/user/selectors'
+import Loader from 'components/common/Loader'
 
 const AuthForm: FC<AuthFormProps> = memo(() => {
   const [isLogin, setIsLogin] = useState(true)
@@ -51,6 +53,11 @@ const AuthForm: FC<AuthFormProps> = memo(() => {
 
   return (
     <AuthFormWrapper onSubmit={handleSubmit}>
+      {isLoading && (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      )}
       <AuthTitle>{isLogin ? 'Sign In' : 'Sign Up'}</AuthTitle>
       <Input
         required
@@ -76,7 +83,7 @@ const AuthForm: FC<AuthFormProps> = memo(() => {
       />
       <Text>
         {isLogin
-          ? 'you don`t have an account yet?'
+          ? 'You don`t have an account yet?'
           : 'Already have an account?'}{' '}
         <Link onClick={() => setIsLogin((prevState) => !prevState)}>
           {isLogin ? 'Sign Up' : 'Sign In'}

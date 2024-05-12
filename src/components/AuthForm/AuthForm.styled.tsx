@@ -1,4 +1,4 @@
-import Button from 'components/Button'
+import Button from 'components/common/Button'
 import InputComponent from 'components/common/Input'
 import styled, { css } from 'styled-components'
 import { typography } from 'theme/theme'
@@ -58,3 +58,13 @@ export const ToggleVisibilityButton = styled.button(({ theme }) => {
     }
   `
 })
+
+export const LoaderWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.backdrop};
+`

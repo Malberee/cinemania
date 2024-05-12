@@ -12,7 +12,7 @@ import {
 import { UpcomingMovieProps } from './UpcomingMovie.types'
 import { Movie } from 'types'
 import { fetchMovies } from 'services/movies-api'
-import Button from 'components/Button'
+import Button from 'components/common/Button'
 import useGenres from 'hooks/useGenres'
 import VoteSpan from 'components/VoteSpan'
 import Container from 'components/common/Container'

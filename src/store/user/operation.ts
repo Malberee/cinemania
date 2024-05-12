@@ -3,8 +3,9 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   getAuth,
+  signOut,
 } from 'firebase/auth'
-import { AuthParams, User } from './types'
+import { LibraryActionParams, AuthParams, User } from './types'
 import { AxiosError } from 'axios'
 import { Movie } from 'types'
 import * as userAPI from 'services/user-api'
@@ -37,6 +38,21 @@ export const auth = createAsyncThunk<User, AuthParams, { rejectValue: string }>(
   }
 )
 
+export const logOut = createAsyncThunk<
+  undefined,
+  undefined,
+  { rejectValue: string }
+>('user/logOut', async (_, { rejectWithValue }) => {
+  try {
+    const auth = getAuth()
+
+    await signOut(auth)
+  } catch (error) {
+    const err = error as AxiosError
+    return rejectWithValue(err.message)
+  }
+})
+
 export const fetchLibrary = createAsyncThunk<
   Movie[],
   string,
@@ -52,9 +68,26 @@ export const fetchLibrary = createAsyncThunk<
   }
 })
 
-export const addMovieToLibrary = createAsyncThunk<any, {userId: string, movie: Movie}>(
-  'user/addMovieToLibrary',
-  async ({ userId, movie }) => {
-    userAPI.addMovieToLibrary(userId, movie)
+export const libraryAction = createAsyncThunk<
+  Movie | number,
+  LibraryActionParams,
+  { rejectValue: string }
+>(
+  'user/libraryAction',
+  async ({ userId, movie, action }, { rejectWithValue }) => {
+    try {
+      if (action === 'add') {
+        await userAPI.addMovieToLibrary(userId, movie)
+
+        return movie
+      }
+
+      await userAPI.removeMovieFromLibrary(userId, movie.id)
+
+      return movie.id
+    } catch (error) {
+      const err = error as AxiosError
+      return rejectWithValue(err.message)
+    }
   }
 )

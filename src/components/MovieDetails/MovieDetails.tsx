@@ -10,21 +10,33 @@ import {
   About,
 } from './MovieDetails.styled'
 import { MovieDetailsProps } from './MovieDetails.types'
-import Button from 'components/Button'
+import Button from 'components/common/Button'
 import VoteSpan from 'components/VoteSpan'
 import useGenres from 'hooks/useGenres'
 import { useAppDispatch } from 'hooks/useAppDispatch'
-import { addMovieToLibrary } from 'store/user/operation'
-import useAppSelector from 'hooks/useAppSelector'
-import { selectId } from 'store/user/selectors'
+import { libraryAction } from 'store/user/operation'
+import useUser from 'hooks/useUser'
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
   const dispatch = useAppDispatch()
-  const userId = useAppSelector(selectId)
+  const { userId, library, isLoggedIn } = useUser()
   const genres = useGenres(movie.genre_ids).join(' ')
+  const alreadyInLibrary = !!library.find((item) => item.id === movie.id)
 
-  const handleAddToLibrary = () => {
-    dispatch(addMovieToLibrary({ userId, movie }))
+  const handleClick = () => {
+    if (isLoggedIn && userId) {
+      dispatch(
+        libraryAction({
+          userId,
+          movie,
+          action: alreadyInLibrary ? 'remove' : 'add',
+        })
+      )
+
+      return
+    }
+
+    console.log('you are not logged in')
   }
 
   return (
@@ -55,8 +67,8 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
         </MovieInfoList>
         <AboutTitle>About</AboutTitle>
         <About>{movie.overview}</About>
-        <Button $isBordered onClick={handleAddToLibrary}>
-          Add to library
+        <Button $isBordered onClick={handleClick}>
+          {alreadyInLibrary ? 'Remove from library' : 'Add to library'}
         </Button>
       </div>
     </MovieDetailsWrapper>

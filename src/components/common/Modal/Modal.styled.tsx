@@ -32,6 +32,7 @@ export const ModalWrapper = styled.div(() => {
     padding: 52px 16px;
     border-radius: 16px;
     background-color: ${({ theme }) => theme.colors.background};
+    overflow: hidden;
 
     @media (width >= ${tablet}) {
       padding: 44px;
