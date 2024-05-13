@@ -4,26 +4,29 @@ import Layout from './Layout'
 import { lazy, Suspense, useEffect } from 'react'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { moviesOperations } from 'store/movies'
-import useAppSelector from 'hooks/useAppSelector'
-import { selectGenreList } from 'store/movies/selectors'
 import { trendingMoviesOperations } from 'store/trendingMovies'
 import MainLoader from './MainLoader'
 import NotFound from 'pages/NotFound'
+import { Toaster } from 'react-hot-toast'
+import { initAuth } from 'store/user/operation'
 const Catalog = lazy(() => import('pages/Catalog'))
 const Home = lazy(() => import('pages/Home'))
 const Library = lazy(() => import('pages/Library'))
 
 const App = () => {
   const dispatch = useAppDispatch()
-  const genres = useAppSelector(selectGenreList)
 
   useEffect(() => {
-    dispatch(trendingMoviesOperations.fetchTrendingMovies())
+    // Such a decision is related to this problem: https://stackoverflow.com/questions/62025911/redux-hooks-usedispatch-in-useeffect-calling-action-twice
 
-    if (!genres.length) {
+    const init = setTimeout(() => {
+      dispatch(initAuth())
+      dispatch(trendingMoviesOperations.fetchTrendingMovies())
       dispatch(moviesOperations.fetchGenres())
-    }
-  }, [dispatch])
+    }, 0)
+
+    return () => clearTimeout(init)
+  }, [])
 
   return (
     <>
@@ -38,6 +41,7 @@ const App = () => {
           </Route>
         </Routes>
       </Suspense>
+      <Toaster position="top-right" />
     </>
   )
 }

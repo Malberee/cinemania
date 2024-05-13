@@ -34,7 +34,7 @@ export const NavList = styled.ul`
 export const NavLink = styled(NavLinkRouter)`
   display: block;
   padding: 12px;
-  
+
   text-transform: uppercase;
   text-decoration: none;
 
@@ -44,4 +44,8 @@ export const NavLink = styled(NavLinkRouter)`
   &.active {
     color: ${({ theme }) => theme.colors.accent};
   }
+`
+
+export const AuthLink = styled.a`
+  ${NavLink.componentStyle.rules.join('')}
 `

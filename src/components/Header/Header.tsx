@@ -14,9 +14,28 @@ import { HeaderProps } from './Header.types'
 import ThemeSwitcher from 'components/ThemeSwitcher'
 import NavMenu from 'components/NavMenu'
 import Logo from 'icons/Logo'
+import Modal from 'components/common/Modal'
+import AuthForm from 'components/AuthForm'
+import useUser from 'hooks/useUser'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { logOut } from 'store/user/operation'
 
 const Header: FC<HeaderProps> = () => {
+  const [authModalIsOpen, setAuthModalIsOpen] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
+  const { isLoggedIn } = useUser()
+
+  const dispatch = useAppDispatch()
+
+  const handleAuthClick = () => {
+    if (isLoggedIn) {
+      dispatch(logOut())
+
+      return
+    }
+
+    setAuthModalIsOpen(true)
+  }
 
   return (
     <HeaderWrapper>
@@ -39,11 +58,23 @@ const Header: FC<HeaderProps> = () => {
           </NavList>
         </Nav>
         <HeaderInner>
-          <AuthLink>Sign In</AuthLink>
+          <AuthLink onClick={handleAuthClick}>
+            {isLoggedIn ? 'Sign Out' : 'Sign In'}
+          </AuthLink>
           <ThemeSwitcher />
         </HeaderInner>
       </HeaderContainer>
-      {isOpen && <NavMenu closeMenu={() => setIsOpen(false)} />}
+      {isOpen && (
+        <NavMenu
+          closeMenu={() => setIsOpen(false)}
+          handleAuthClick={handleAuthClick}
+        />
+      )}
+      {authModalIsOpen && !isLoggedIn && (
+        <Modal onClose={() => setAuthModalIsOpen(false)}>
+          <AuthForm />
+        </Modal>
+      )}
     </HeaderWrapper>
   )
 }

@@ -32,7 +32,7 @@ export const fetchLibrary = async (userId: string) => {
     return library.val()
   }
 
-  throw new Error('Error')
+  return []
 }
 
 export const addMovieToLibrary = async (userId: string, movie: Movie) => {

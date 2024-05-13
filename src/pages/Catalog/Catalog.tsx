@@ -13,11 +13,9 @@ import Loader from 'components/common/Loader'
 import { Movie } from 'types'
 import Modal from 'components/common/Modal'
 import MovieDetails from 'components/MovieDetails'
-import AuthForm from 'components/AuthForm'
 
 const Catalog = memo<CatalogProps>(() => {
   const [selectedMovie, setSelectedMovie] = useState<null | Movie>(null)
-  const [authModalIsOpen, setAuthModalIsOpen] = useState(true)
   const dispatch = useAppDispatch()
   const [searchParams] = useSearchParams()
   const movies = useAppSelector(selectMovies)
@@ -29,19 +27,25 @@ const Catalog = memo<CatalogProps>(() => {
   const genre = searchParams.get('genre')?.split(',')
 
   useEffect(() => {
-    if (!query && !year?.length && !genre?.length) {
-      dispatch(moviesOperations.fetchMovies({ type: 'popular', page }))
+    // Such a decision is related to this problem: https://stackoverflow.com/questions/62025911/redux-hooks-usedispatch-in-useeffect-calling-action-twice
 
-      return
-    }
+    const fetch = setTimeout(() => {
+      if (!query && !year?.length && !genre?.length) {
+        dispatch(moviesOperations.fetchMovies({ type: 'popular', page }))
 
-    dispatch(
-      moviesOperations.fetchMovies({
-        type: 'byQuery',
-        filters: { query: query || '', year, genre },
-        page,
-      })
-    )
+        return
+      }
+
+      dispatch(
+        moviesOperations.fetchMovies({
+          type: 'byQuery',
+          filters: { query: query || '', year, genre },
+          page,
+        })
+      )
+    }, 0)
+
+    return () => clearTimeout(fetch)
   }, [searchParams, dispatch])
 
   return (
@@ -56,11 +60,6 @@ const Catalog = memo<CatalogProps>(() => {
       {selectedMovie && (
         <Modal onClose={() => setSelectedMovie(null)}>
           <MovieDetails movie={selectedMovie} />
-        </Modal>
-      )}
-      {authModalIsOpen && (
-        <Modal onClose={() => setAuthModalIsOpen(false)}>
-          <AuthForm />
         </Modal>
       )}
     </CatalogWrapper>

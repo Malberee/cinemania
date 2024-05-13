@@ -39,16 +39,14 @@ const AuthForm: FC<AuthFormProps> = memo(() => {
           action: 'login',
         })
       )
-
-      return
+    } else {
+      dispatch(
+        auth({
+          ...credentials,
+          action: 'register',
+        })
+      )
     }
-
-    dispatch(
-      auth({
-        ...credentials,
-        action: 'register',
-      })
-    )
   }
 
   return (
