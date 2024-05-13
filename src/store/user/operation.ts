@@ -13,7 +13,7 @@ import * as userAPI from 'services/user-api'
 import toast from 'react-hot-toast'
 
 export const initAuth = createAsyncThunk<
-  User & Movie[],
+  User & { library: Movie[] },
   undefined,
   { rejectValue: string }
 >('user/initAuthorization', async (_, { rejectWithValue }) => {
@@ -34,7 +34,7 @@ export const initAuth = createAsyncThunk<
       })
     })
 
-    return data as User & Movie[]
+    return data as User & { library: Movie[] }
   } catch (error) {
     const err = error as AxiosError
     return rejectWithValue(err.message)
