@@ -20,13 +20,13 @@ const NavMenu: FC<NavMenuProps> = ({ closeMenu, handleAuthClick }) => {
         <nav>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" onClick={closeMenu}>Home</NavLink>
             </li>
             <li>
-              <NavLink to="/catalog">Catalog</NavLink>
+              <NavLink to="/catalog" onClick={closeMenu}>Catalog</NavLink>
             </li>
             <li>
-              <NavLink to="/library">My library</NavLink>
+              <NavLink to="/library" onClick={closeMenu}>My library</NavLink>
             </li>
             <li>
               <AuthLink onClick={handleAuthClick} as="a">
