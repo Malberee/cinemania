@@ -8,19 +8,21 @@ import { trendingMoviesOperations } from 'store/trendingMovies'
 import MainLoader from './MainLoader'
 import NotFound from 'pages/NotFound'
 import { Toaster } from 'react-hot-toast'
-import { initAuth } from 'store/user/operation'
+import { userOperations } from 'store/user'
+import { useTheme } from 'styled-components'
 const Catalog = lazy(() => import('pages/Catalog'))
 const Home = lazy(() => import('pages/Home'))
 const Library = lazy(() => import('pages/Library'))
 
 const App = () => {
   const dispatch = useAppDispatch()
+  const { colors } = useTheme()
 
   useEffect(() => {
     // Such a decision is related to this problem: https://stackoverflow.com/questions/62025911/redux-hooks-usedispatch-in-useeffect-calling-action-twice
 
     const init = setTimeout(() => {
-      dispatch(initAuth())
+      dispatch(userOperations.initAuth())
       dispatch(trendingMoviesOperations.fetchTrendingMovies())
       dispatch(moviesOperations.fetchGenres())
     }, 0)
@@ -41,7 +43,16 @@ const App = () => {
           </Route>
         </Routes>
       </Suspense>
-      <Toaster position="top-right" />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            backgroundColor: colors.background,
+            color: colors.text,
+          },
+        }}
+      />
     </>
   )
 }

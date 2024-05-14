@@ -6,13 +6,8 @@ import {
 } from './MovieList.styled'
 import Movie from '../common/Movie/Movie'
 import { MovieListProps } from './MovieList.types'
-import Paginate from 'components/Paginate'
-import useAppSelector from 'hooks/useAppSelector'
-import { selectTotalPages } from 'store/movies/selectors'
 
 const MovieList = memo<MovieListProps>(({ movies, selectMovie }) => {
-  const totalPages = useAppSelector(selectTotalPages)
-
   return (
     <>
       <MovieListContainer>
@@ -29,7 +24,6 @@ const MovieList = memo<MovieListProps>(({ movies, selectMovie }) => {
           </NotFoundText>
         )}
       </MovieListContainer>
-      {movies.length && <Paginate totalPages={totalPages} />}
     </>
   )
 })

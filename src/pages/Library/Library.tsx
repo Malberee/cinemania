@@ -1,35 +1,60 @@
-import { FC, memo, useEffect, useState } from 'react'
+import { FC, memo, useState } from 'react'
 import { LibraryWrapper } from './Library.styled'
 import { LibraryProps } from './Library.types'
-import { useAppDispatch } from 'hooks/useAppDispatch'
-import { fetchLibrary } from 'store/user/operation'
 import useAppSelector from 'hooks/useAppSelector'
-import { selectId, selectIsLoading, selectLibrary } from 'store/user/selectors'
+import { userSelectors } from 'store/user'
 import MovieList from 'components/MovieList'
 import Loader from 'components/common/Loader'
 import { Movie } from 'types'
 import Modal from 'components/common/Modal'
 import MovieDetails from 'components/MovieDetails'
+import Paginate from 'components/common/Paginate'
+import { useSearchParams } from 'react-router-dom'
+import chunk from 'lodash.chunk'
+import useUser from 'hooks/useUser'
 
 const Library: FC<LibraryProps> = memo(() => {
   const [selectedMovie, setSelectedMovie] = useState<null | Movie>(null)
-  const dispatch = useAppDispatch()
-  const userId = useAppSelector(selectId)
-  const isLoading = useAppSelector(selectIsLoading)
-  const movies = useAppSelector(selectLibrary)
+  const isLoading = useAppSelector(userSelectors.selectIsLoading)
+  const { isLoggedIn } = useUser()
+  const movies = useAppSelector(userSelectors.selectLibrary)
+  console.log('movies: ', movies)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const currentPage = Number(searchParams.get('page') || 1)
 
-  useEffect(() => {
-    if (userId) {
-      dispatch(fetchLibrary(userId))
-    }
-  }, [dispatch])
+  const moviesChunks = chunk(movies, 21)
+  console.log('moviesChunks: ', moviesChunks)
+  const params = Object.fromEntries([...searchParams])
+
+  if (moviesChunks.length < currentPage) {
+    setSearchParams({ ...params, page: moviesChunks.length.toString() })
+  }
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({ ...params, page: (page + 1).toString() })
+  }
 
   return (
     <LibraryWrapper>
       {isLoading ? (
         <Loader />
       ) : (
-        <MovieList movies={movies} selectMovie={setSelectedMovie} />
+        isLoggedIn &&
+        moviesChunks.length > 0 && (
+          <>
+            <MovieList
+              movies={moviesChunks[currentPage - 1]}
+              selectMovie={setSelectedMovie}
+            />
+            {moviesChunks.length > 1 && (
+              <Paginate
+                totalPages={moviesChunks.length}
+                currentPage={currentPage - 1}
+                onPageChange={handlePageChange}
+              />
+            )}
+          </>
+        )
       )}
       {selectedMovie && (
         <Modal onClose={() => setSelectedMovie(null)}>

@@ -1177,6 +1177,18 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
 
+"@types/lodash.chunk@^4.2.9":
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/@types/lodash.chunk/-/lodash.chunk-4.2.9.tgz#60da44c404dfa8b01b426034c1183e5eb9b09727"
+  integrity sha512-Z9VtFUSnmT0No/QymqfG9AGbfOA4O5qB/uyP89xeZBqDAsKsB4gQFTqt7d0pHjbsTwtQ4yZObQVHuKlSOhIJ5Q==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.17.1"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.1.tgz#0fabfcf2f2127ef73b119d98452bd317c4a17eb8"
+  integrity sha512-X+2qazGS3jxLAIz5JDXDzglAF3KpijdhFxlf/V1+hEsOUc+HnWi81L/uv/EvGuV90WY+7mPGFCUDGfQC3Gj95Q==
+
 "@types/node@>=12.12.47", "@types/node@>=13.7.0":
   version "20.12.11"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.11.tgz#c4ef00d3507000d17690643278a60dc55a9dc9be"
@@ -2599,6 +2611,11 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==
+
+lodash.chunk@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.chunk/-/lodash.chunk-4.2.0.tgz#66e5ce1f76ed27b4303d8c6512e8d1216e8106bc"
+  integrity sha512-ZzydJKfUHJwHa+hF5X66zLFCBrWn5GeF28OHEr4WVWtNDXlQ/IjWKPBiikqKo2ne0+v6JgCgJ0GzJp8k8bHC7w==
 
 lodash.merge@^4.6.2:
   version "4.6.2"

@@ -20,7 +20,7 @@ import useAppSelector from 'hooks/useAppSelector'
 import { selectIsLoading } from 'store/user/selectors'
 import Loader from 'components/common/Loader'
 
-const AuthForm: FC<AuthFormProps> = memo(() => {
+const AuthForm: FC<AuthFormProps> = memo(({ closeModal }) => {
   const [isLogin, setIsLogin] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
   const isLoading = useAppSelector(selectIsLoading)
@@ -39,6 +39,8 @@ const AuthForm: FC<AuthFormProps> = memo(() => {
           action: 'login',
         })
       )
+        .unwrap()
+        .then(closeModal)
     } else {
       dispatch(
         auth({
@@ -46,6 +48,8 @@ const AuthForm: FC<AuthFormProps> = memo(() => {
           action: 'register',
         })
       )
+        .unwrap()
+        .then(closeModal)
     }
   }
 

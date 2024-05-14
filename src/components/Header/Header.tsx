@@ -50,10 +50,10 @@ const Header: FC<HeaderProps> = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/catalog">Catalog</NavLink>
+              <NavLink to="/catalog?page=1">Catalog</NavLink>
             </li>
             <li>
-              <NavLink to="/library">My library</NavLink>
+              <NavLink to="/library?page=1">My library</NavLink>
             </li>
           </NavList>
         </Nav>
@@ -72,7 +72,7 @@ const Header: FC<HeaderProps> = () => {
       )}
       {authModalIsOpen && !isLoggedIn && (
         <Modal onClose={() => setAuthModalIsOpen(false)}>
-          <AuthForm />
+          <AuthForm closeModal={() => setAuthModalIsOpen(false)} />
         </Modal>
       )}
     </HeaderWrapper>

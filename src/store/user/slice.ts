@@ -2,15 +2,15 @@ import {
   createSlice,
   isFulfilled,
   isPending,
-  isRejected,
+  isRejectedWithValue,
 } from '@reduxjs/toolkit'
 import { AuthState } from './types'
 import {
-  auth,
-  fetchLibrary,
   initAuth,
-  libraryAction,
+  auth,
   logOut,
+  fetchLibrary,
+  libraryAction,
 } from './operation'
 
 const initialState: AuthState = {
@@ -24,14 +24,7 @@ const initialState: AuthState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {
-    signIn: (state, action) => {
-      console.log(action)
-
-      state.email = action.payload.email
-      state.id = action.payload.id
-    },
-  },
+  reducers: {},
   extraReducers: (builder) =>
     builder
       .addCase(initAuth.fulfilled, (state, action) => {
@@ -42,7 +35,6 @@ const userSlice = createSlice({
         state.library = library
       })
       .addCase(auth.fulfilled, (state, action) => {
-        state.isLoading = false
         state.email = action.payload.email
         state.id = action.payload.id
       })
@@ -52,7 +44,6 @@ const userSlice = createSlice({
         state.library = []
       })
       .addCase(fetchLibrary.fulfilled, (state, action) => {
-        state.isLoading = false
         state.library = action.payload
       })
       .addCase(libraryAction.fulfilled, (state, action) => {
@@ -66,17 +57,34 @@ const userSlice = createSlice({
           (movie) => movie.id !== action.payload
         )
       })
-      .addMatcher(isPending, (state) => {
-        state.isLoading = true
-      })
-      .addMatcher(isFulfilled, (state) => {
-        state.isLoading = false
-      })
-      .addMatcher(isRejected, (state) => {
-        state.isLoading = false
-        state.error = 'Error 1234'
-      }),
+      .addMatcher(
+        isPending(initAuth, auth, logOut, fetchLibrary, libraryAction),
+        (state) => {
+          state.error = null
+          state.isLoading = true
+        }
+      )
+      .addMatcher(
+        isFulfilled(initAuth, auth, logOut, fetchLibrary, libraryAction),
+        (state) => {
+          state.isLoading = false
+        }
+      )
+      .addMatcher(
+        isRejectedWithValue(
+          initAuth,
+          auth,
+          logOut,
+          fetchLibrary,
+          libraryAction
+        ),
+        (state, action) => {
+          console.log('text')
+
+          state.isLoading = false
+          state.error = action.payload
+        }
+      ),
 })
 
 export const userReducer = userSlice.reducer
-export const { signIn } = userSlice.actions

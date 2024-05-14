@@ -7,6 +7,12 @@ export const MovieListWrapper = styled.ul`
   flex-wrap: wrap;
   column-gap: 16px;
   row-gap: 28px;
+
+  margin-top: 16px;
+
+  @media (width >= ${breakpoints.tablet}) {
+    margin-top: 32px;
+  }
 `
 
 export const MovieListContainer = styled(Container)`

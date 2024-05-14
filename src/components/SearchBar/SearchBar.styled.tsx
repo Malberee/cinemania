@@ -12,11 +12,9 @@ export const SearchBarContainer = styled(Container)(() => {
     justify-content: center;
 
     margin-top: 40px;
-    margin-bottom: 16px;
 
     @media (width >= ${tablet}) {
       margin-top: 60px;
-      margin-bottom: 32px;
     }
   `
 })

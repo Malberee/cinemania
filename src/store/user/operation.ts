@@ -20,6 +20,7 @@ export const initAuth = createAsyncThunk<
   try {
     const data = await new Promise((resolve, reject) => {
       onAuthStateChanged(getAuth(), async (user) => {
+        console.log(user)
         if (user) {
           const library: Movie[] = await userAPI.fetchLibrary(user.uid)
 
@@ -36,8 +37,8 @@ export const initAuth = createAsyncThunk<
 
     return data as User & { library: Movie[] }
   } catch (error) {
-    const err = error as AxiosError
-    return rejectWithValue(err.message)
+    const err = error as string
+    return rejectWithValue(err)
   }
 })
 
