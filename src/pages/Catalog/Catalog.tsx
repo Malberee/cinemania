@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { CatalogWrapper } from './Catalog.styled'
 import { CatalogProps } from './Catalog.types'
 import { useAppDispatch } from 'hooks/useAppDispatch'
@@ -15,13 +15,13 @@ import Modal from 'components/common/Modal'
 import MovieDetails from 'components/MovieDetails'
 import Paginate from 'components/common/Paginate'
 
-const Catalog = memo<CatalogProps>(() => {
+const Catalog: FC<CatalogProps> = () => {
   const [selectedMovie, setSelectedMovie] = useState<null | Movie>(null)
-  const dispatch = useAppDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const movies = useAppSelector(moviesSelectors.selectMovies)
   const isLoading = useAppSelector(moviesSelectors.selectIsLoading)
   const totalPages = useAppSelector(moviesSelectors.selectTotalPages)
+  const dispatch = useAppDispatch()
   const currentPage = Number(searchParams.get('page') || 1)
 
   const query = searchParams.get('query')
@@ -31,7 +31,9 @@ const Catalog = memo<CatalogProps>(() => {
   const handleChangePage = (page: number) => {
     const params = Object.fromEntries([...searchParams])
 
-    setSearchParams({ ...params, page: (page + 1).toString() })
+    if (page + 1 !== currentPage) {
+      setSearchParams({ ...params, page: (page + 1).toString() })
+    }
   }
 
   useEffect(() => {
@@ -66,12 +68,18 @@ const Catalog = memo<CatalogProps>(() => {
         <Loader />
       ) : (
         <>
-          <MovieList movies={movies} selectMovie={setSelectedMovie} />
-          {totalPages > 1 && <Paginate
-            totalPages={totalPages > 500 ? 500 : totalPages}
-            onPageChange={handleChangePage}
-            currentPage={currentPage - 1}
-          />}
+          <MovieList
+            movies={movies}
+            selectMovie={setSelectedMovie}
+            errorMessage="We don’t have any results matching your search."
+          />
+          {totalPages > 1 && (
+            <Paginate
+              totalPages={totalPages > 500 ? 500 : totalPages}
+              onPageChange={handleChangePage}
+              currentPage={currentPage - 1}
+            />
+          )}
         </>
       )}
       {selectedMovie && (
@@ -81,6 +89,6 @@ const Catalog = memo<CatalogProps>(() => {
       )}
     </CatalogWrapper>
   )
-})
+}
 
 export default Catalog

@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components'
 import { NavLink as NavLinkRouter } from 'react-router-dom'
 import Container from 'components/common/Container'
-import { breakpoints } from 'theme/theme'
+import { breakpoints, typography } from 'theme/theme'
+
+const { tablet } = breakpoints
 
 export const HeaderWrapper = styled.header`
   background-color: ${({ theme }) => theme.colors.secondaryBackground};
@@ -16,52 +18,53 @@ export const HeaderContainer = styled(Container)`
   padding-bottom: 15px;
 `
 
-export const LogoWrapper = styled(NavLinkRouter)(() => {
-  const { tablet } = breakpoints
-
+export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {
   return css`
-    width: 32px;
-    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
     cursor: pointer;
 
-    @media (width >= ${tablet}) {
-      width: 48px;
-      height: 48px;
+    color: ${theme.colors.logoText};
+
+    font-size: ${typography.tablet.lg}px;
+    text-decoration: none;
+
+    svg {
+      height: 32px;
+      width: 32px;
+
+      @media (width >= ${tablet}) {
+        height: 48px;
+        width: 48px;
+      }
     }
   `
 })
 
-export const MenuBtn = styled.button(() => {
-  const { tablet } = breakpoints
+export const MenuBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.grey};
 
-  return css`
-    border: none;
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.grey};
+  text-transform: uppercase;
+  font-weight: 500;
 
-    text-transform: uppercase;
-    font-weight: 500;
+  cursor: pointer;
 
-    cursor: pointer;
-
-    @media (width >= ${tablet}) {
-      display: none;
-    }
-  `
-})
-
-export const Nav = styled.nav(() => {
-  const { tablet } = breakpoints
-
-  return css`
+  @media (width >= ${tablet}) {
     display: none;
+  }
+`
 
-    @media (width >= ${tablet}) {
-      display: flex;
-    }
-  `
-})
+export const Nav = styled.nav`
+  display: none;
+
+  @media (width >= ${tablet}) {
+    display: flex;
+  }
+`
 
 export const NavList = styled.ul`
   display: flex;
@@ -81,22 +84,18 @@ export const NavLink = styled(NavLinkRouter)`
   }
 `
 
-export const AuthLink = styled.a(() => {
-  const { tablet } = breakpoints
+export const AuthLink = styled.a`
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
 
-  return css`
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    text-decoration: none;
+  color: ${({ theme }) => theme.colors.grey};
 
-    color: ${({ theme }) => theme.colors.grey};
-
-    @media (width < ${tablet}) {
-      display: none;
-    }
-  `
-})
+  @media (width < ${tablet}) {
+    display: none;
+  }
+`
 
 export const HeaderInner = styled.div`
   display: flex;

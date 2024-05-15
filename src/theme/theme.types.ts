@@ -11,6 +11,7 @@ export interface IColors {
   voteSpanBackground: string
   selectBackground: string
   arrowPaginate: string
+  logoText: string
 }
 
 export interface ITheme {

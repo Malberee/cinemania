@@ -1,50 +1,42 @@
 import styled, { css } from 'styled-components'
 import { breakpoints, typography } from 'theme/theme'
 
-export const MovieDetailsWrapper = styled.div(() => {
-  const { tablet, desktop } = breakpoints
+const { tablet, desktop } = breakpoints
 
-  return css`
-    width: 264px;
-    font-weight: 500;
+export const MovieDetailsWrapper = styled.div`
+  width: 264px;
+  font-weight: 500;
 
-    @media (width >= ${tablet}) {
-      display: flex;
-      gap: 16px;
-      width: 660px;
-    }
+  @media (width >= ${tablet}) {
+    display: flex;
+    gap: 16px;
+    width: 660px;
+  }
 
-    @media (width >= ${desktop}) {
-      width: 786px;
-    }
-  `
-})
+  @media (width >= ${desktop}) {
+    width: 786px;
+  }
+`
 
-export const MoviePoster = styled.img(() => {
-  const { desktop, tablet } = breakpoints
+export const MoviePoster = styled.img`
+  height: 315px;
+  margin-bottom: 22px;
+  border-radius: 5px;
+  object-fit: cover;
 
-  return css`
-    height: 315px;
-    margin-bottom: 22px;
-    border-radius: 5px;
-    object-fit: cover;
+  @media (width >= ${tablet}) {
+    height: 400px;
+    min-width: 294px;
+    margin-bottom: 0;
+  }
 
-    @media (width >= ${tablet}) {
-      height: 400px;
-      min-width: 294px;
-      margin-bottom: 0;
-    }
-
-    @media (width >= ${desktop}) {
-      min-width: 375px;
-      height: 478px;
-    }
-  `
-})
+  @media (width >= ${desktop}) {
+    min-width: 375px;
+    height: 478px;
+  }
+`
 
 export const MovieTitle = styled.h2(({ theme }) => {
-  const { tablet } = breakpoints
-
   return css`
     margin-bottom: 29px;
     font-size: ${typography.mobile.lg}px;
@@ -57,21 +49,17 @@ export const MovieTitle = styled.h2(({ theme }) => {
   `
 })
 
-export const MovieInfoList = styled.ul(() => {
-  const { desktop } = breakpoints
+export const MovieInfoList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: ${typography.mobile.md}px;
 
-  return css`
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
-    font-size: ${typography.mobile.md}px;
-
-    @media (width >= ${desktop}) {
-      font-size: ${typography.desktop.sm}px;
-    }
-  `
-})
+  @media (width >= ${desktop}) {
+    font-size: ${typography.desktop.sm}px;
+  }
+`
 
 export const MovieInfoRow = styled.li`
   display: flex;
@@ -86,8 +74,6 @@ export const MovieInfoItem = styled.p<{ color: 'grey' | 'white' }>`
 `
 
 export const AboutTitle = styled.h3(({ theme }) => {
-  const { desktop } = breakpoints
-
   return css`
     margin-bottom: 12px;
     text-transform: uppercase;
@@ -101,8 +87,6 @@ export const AboutTitle = styled.h3(({ theme }) => {
 })
 
 export const About = styled.p(({ theme }) => {
-  const { desktop } = breakpoints
-
   return css`
     margin-bottom: 16px;
     font-weight: 400;

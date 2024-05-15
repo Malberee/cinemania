@@ -7,25 +7,26 @@ import {
 import Movie from '../common/Movie/Movie'
 import { MovieListProps } from './MovieList.types'
 
-const MovieList = memo<MovieListProps>(({ movies, selectMovie }) => {
-  return (
-    <>
-      <MovieListContainer>
-        {movies.length > 0 ? (
-          <MovieListWrapper>
-            {movies.map((movie) => (
-              <Movie movie={movie} key={movie.id} selectMovie={selectMovie} />
-            ))}
-          </MovieListWrapper>
-        ) : (
-          <NotFoundText>
-            OOPS... <br /> We are very sorry! <br /> We don’t have any results
-            matching your search.
-          </NotFoundText>
-        )}
-      </MovieListContainer>
-    </>
-  )
-})
+const MovieList = memo<MovieListProps>(
+  ({ movies, selectMovie, errorMessage }) => {
+    return (
+      <>
+        <MovieListContainer>
+          {movies.length > 0 ? (
+            <MovieListWrapper>
+              {movies.map((movie) => (
+                <Movie movie={movie} key={movie.id} selectMovie={selectMovie} />
+              ))}
+            </MovieListWrapper>
+          ) : (
+            <NotFoundText>
+              OOPS... <br /> We are very sorry! <br /> {errorMessage}
+            </NotFoundText>
+          )}
+        </MovieListContainer>
+      </>
+    )
+  }
+)
 
 export default MovieList

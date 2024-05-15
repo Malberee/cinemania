@@ -2,9 +2,9 @@ import Container from 'components/common/Container'
 import styled, { css } from 'styled-components'
 import { breakpoints, gradients, typography } from 'theme/theme'
 
-export const PaginateWrapper = styled(Container)(({ theme }) => {
-  const { tablet, desktop } = breakpoints
+const { tablet, desktop } = breakpoints
 
+export const PaginateWrapper = styled(Container)(({ theme }) => {
   return css`
     display: flex;
     justify-content: center;
@@ -84,8 +84,6 @@ export const PaginateWrapper = styled(Container)(({ theme }) => {
 
 export const ArrowButton = styled.button<{ direction: 'prev' | 'next' }>(
   ({ direction, theme }) => {
-    const { tablet } = breakpoints
-
     return css`
       width: 20px;
       height: 20px;

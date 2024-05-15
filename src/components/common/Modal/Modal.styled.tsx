@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components'
 import { breakpoints } from 'theme/theme'
 
+const { desktop, tablet } = breakpoints
+
 export const Backdrop = styled.div`
   position: fixed;
   top: 0;
@@ -24,58 +26,50 @@ export const Backdrop = styled.div`
   }
 `
 
-export const ModalWrapper = styled.div(() => {
-  const { desktop, tablet } = breakpoints
+export const ModalWrapper = styled.div`
+  position: relative;
+  margin: auto;
+  padding: 52px 16px;
+  border-radius: 16px;
+  background-color: ${({ theme }) => theme.colors.background};
+  overflow: hidden;
 
-  return css`
-    position: relative;
-    margin: auto;
-    padding: 52px 16px;
-    border-radius: 16px;
-    background-color: ${({ theme }) => theme.colors.background};
-    overflow: hidden;
+  @media (width >= ${tablet}) {
+    padding: 44px;
+  }
 
-    @media (width >= ${tablet}) {
-      padding: 44px;
-    }
+  @media (width >= ${desktop}) {
+    padding: 60px;
+  }
+`
 
-    @media (width >= ${desktop}) {
-      padding: 60px;
-    }
-  `
-})
+export const CloseBtn = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 16px;
 
-export const CloseBtn = styled.button(() => {
-  const { desktop, tablet } = breakpoints
+  width: 24px;
+  height: 24px;
+  padding: 0;
 
-  return css`
-    position: absolute;
-    top: 20px;
-    right: 16px;
+  border: none;
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.secondaryText};
 
-    width: 24px;
-    height: 24px;
-    padding: 0;
+  transition: color 100ms linear;
 
-    border: none;
-    background-color: transparent;
-    color: ${({ theme }) => theme.colors.secondaryText};
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent};
+    cursor: pointer;
+  }
 
-    transition: color 100ms linear;
+  @media (width >= ${tablet}) {
+    top: 24px;
+    right: 24px;
+  }
 
-    &:hover {
-      color: ${({ theme }) => theme.colors.accent};
-      cursor: pointer;
-    }
-
-    @media (width >= ${tablet}) {
-      top: 24px;
-      right: 24px;
-    }
-
-    @media (width >= ${desktop}) {
-      top: 40px;
-      right: 40px;
-    }
-  `
-})
+  @media (width >= ${desktop}) {
+    top: 40px;
+    right: 40px;
+  }
+`

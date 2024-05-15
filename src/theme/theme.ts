@@ -33,7 +33,8 @@ export const gradients = {
 export const staticColors = {
   grey: '#b7b7b7',
   white: '#ffffff',
-  darkBg: '#111111'
+  darkBg: '#111111',
+  secondaryText: '#f8f8f8'
 }
 
 export const breakpoints = {
@@ -54,7 +55,8 @@ export const light: IColors = {
   black: '#000000',
   voteSpanBackground: '#f8f8f8',
   selectBackground: '#f8f8f8',
-  arrowPaginate: '#595959'
+  arrowPaginate: '#595959',
+  logoText: '#282828'
 }
 
 export const dark: IColors = {
@@ -70,4 +72,5 @@ export const dark: IColors = {
   voteSpanBackground: '#ffffff',
   selectBackground: '#1c1c1c',
   arrowPaginate: '#f8f8f8',
+  logoText: '#ffffff',
 }

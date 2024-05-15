@@ -47,6 +47,7 @@ const Header: FC<HeaderProps> = () => {
       <HeaderContainer>
         <LogoWrapper to="/">
           <Logo />
+          <span>Cinemania</span>
         </LogoWrapper>
         <MenuBtn onClick={() => setIsOpen(true)}>Menu</MenuBtn>
         <Nav>

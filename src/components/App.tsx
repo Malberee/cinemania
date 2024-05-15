@@ -10,6 +10,7 @@ import NotFound from 'pages/NotFound'
 import { Toaster } from 'react-hot-toast'
 import { userOperations } from 'store/user'
 import { useTheme } from 'styled-components'
+import PrivateRoute from './PrivateRoute'
 const Catalog = lazy(() => import('pages/Catalog'))
 const Home = lazy(() => import('pages/Home'))
 const Library = lazy(() => import('pages/Library'))
@@ -38,7 +39,14 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="catalog" element={<Catalog />} />
-            <Route path="library" element={<Library />} />
+            <Route
+              path="library"
+              element={
+                <PrivateRoute>
+                  <Library />
+                </PrivateRoute>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
@@ -46,7 +54,7 @@ const App = () => {
       <Toaster
         position="top-right"
         toastOptions={{
-          duration: 5000,
+          duration: 2000,
           style: {
             backgroundColor: colors.background,
             color: colors.text,

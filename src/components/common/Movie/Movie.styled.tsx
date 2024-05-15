@@ -2,40 +2,38 @@ import styled, { css } from 'styled-components'
 import { Rating } from 'react-simple-star-rating'
 import { breakpoints, staticColors, typography } from 'theme/theme'
 
-export const MovieWrapper = styled.li(() => {
-  const { desktop, tablet } = breakpoints
+const { desktop, tablet } = breakpoints
 
-  return css`
-    position: relative;
+export const MovieWrapper = styled.li`
+  position: relative;
 
-    min-width: 100%;
-    height: 406px;
+  min-width: 100%;
+  height: 406px;
 
-    border-radius: 5px;
-    overflow: hidden;
+  border-radius: 5px;
+  overflow: hidden;
 
-    transition: scale 100ms linear;
+  transition: scale 100ms linear;
 
-    &:hover {
-      scale: 1.02;
-    }
+  &:hover {
+    scale: 1.02;
+  }
 
-    img {
-      object-fit: cover;
-    }
+  img {
+    object-fit: cover;
+  }
 
-    @media (width >= ${tablet}) {
-      min-width: auto;
-      max-width: 224px;
-      height: 325px;
-    }
+  @media (width >= ${tablet}) {
+    min-width: auto;
+    max-width: 224px;
+    height: 325px;
+  }
 
-    @media (width >= ${desktop}) {
-      max-width: 394px;
-      height: 574px;
-    }
-  `
-})
+  @media (width >= ${desktop}) {
+    max-width: 394px;
+    height: 574px;
+  }
+`
 
 export const MovieInner = styled.div`
   position: absolute;
@@ -57,51 +55,39 @@ export const MovieInner = styled.div`
   );
 `
 
-export const StarWrapper = styled.span(() => {
-  const { desktop, tablet } = breakpoints
+export const StarWrapper = styled.span`
+  display: inline-block;
+  padding: 0 2px;
+  width: 18px;
+  height: 14px;
 
-  return css`
-    display: inline-block;
-    padding: 0 2px;
-    width: 18px;
-    height: 14px;
+  @media (width >= ${tablet}) {
+    width: 14px;
+    height: 10px;
+  }
 
-    @media (width >= ${tablet}) {
-      width: 14px;
-      height: 10px;
-    }
+  @media (width >= ${desktop}) {
+    width: 22px;
+    height: 18px;
+  }
+`
 
-    @media (width >= ${desktop}) {
-      width: 22px;
-      height: 18px;
-    }
-  `
-})
+export const RatingStars = styled(Rating)`
+  height: 14px;
 
-export const RatingStars = styled(Rating)(() => {
-  const { desktop } = breakpoints
+  @media (width >= ${desktop}) {
+    height: 18px;
+  }
+`
 
-  return css`
-    height: 14px;
+export const InfoWrapper = styled.div`
+  font-size: ${typography.mobile.sm}px;
+  font-weight: 500;
 
-    @media (width >= ${desktop}) {
-      height: 18px;
-    }
-  `
-})
-
-export const InfoWrapper = styled.div(() => {
-  const { desktop } = breakpoints
-
-  return css`
-    font-size: ${typography.mobile.sm}px;
-    font-weight: 500;
-
-    @media (width >= ${desktop}) {
-      font-size: ${typography.desktop.md}px;
-    }
-  `
-})
+  @media (width >= ${desktop}) {
+    font-size: ${typography.desktop.md}px;
+  }
+`
 
 export const GreyText = styled.p`
   color: ${staticColors.grey};

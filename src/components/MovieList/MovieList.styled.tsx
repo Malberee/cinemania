@@ -2,6 +2,8 @@ import Container from 'components/common/Container'
 import styled, { css } from 'styled-components'
 import { breakpoints, typography } from 'theme/theme'
 
+const { desktop, tablet } = breakpoints
+
 export const MovieListWrapper = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -10,7 +12,7 @@ export const MovieListWrapper = styled.ul`
 
   margin-top: 16px;
 
-  @media (width >= ${breakpoints.tablet}) {
+  @media (width >= ${tablet}) {
     margin-top: 32px;
   }
 `
@@ -23,9 +25,10 @@ export const MovieListContainer = styled(Container)`
 `
 
 export const NotFoundText = styled.p(({ theme }) => {
-  const { desktop, tablet } = breakpoints
-
   return css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     line-height: 28px;
     font-size: ${typography.mobile.lg}px;
@@ -37,6 +40,7 @@ export const NotFoundText = styled.p(({ theme }) => {
     }
 
     @media (width >= ${desktop}) {
+      padding: 120px 0 20px 0;
       line-height: 36px;
       font-size: 32px;
     }
