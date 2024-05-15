@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { LibraryHeroWrapper, HeroTitle, HeroText } from './LibraryHero.styled'
 import { LibraryHeroProps } from './LibraryHero.types'
 import Container from 'components/common/Container'
