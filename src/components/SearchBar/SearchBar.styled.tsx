@@ -1,7 +1,7 @@
 import Button from 'components/common/Button'
 import Container from 'components/common/Container'
 import Input from 'components/common/Input'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { breakpoints, staticColors } from 'theme/theme'
 
 const { tablet, desktop } = breakpoints

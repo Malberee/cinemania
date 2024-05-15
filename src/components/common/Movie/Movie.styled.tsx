@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Rating } from 'react-simple-star-rating'
 import { breakpoints, staticColors, typography } from 'theme/theme'
 

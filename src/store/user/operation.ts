@@ -11,7 +11,6 @@ import { AxiosError } from 'axios'
 import { Movie } from 'types'
 import * as userAPI from 'services/user-api'
 import toast from 'react-hot-toast'
-import { FirebaseError } from 'firebase/app'
 
 export const initAuth = createAsyncThunk<
   User & { library: Movie[] },
