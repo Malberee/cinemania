@@ -1,4 +1,4 @@
-import{u as V,b as ae,a as se,t as F,C as ge,r as de,j as h,n as he,o as ve,i as xe}from"./index-33e55bc9.js";import{d as ye}from"./MovieDetails-799a8ac2.js";const Ce=V.ul`
+import{u as V,b as ae,a as se,t as F,C as ge,r as de,j as h,n as he,o as ve,i as xe}from"./index-fef9ee57.js";import{d as ye}from"./MovieDetails-10d28e4b.js";const Ce=V.ul`
   display: flex;
   flex-wrap: wrap;
   column-gap: 16px;
