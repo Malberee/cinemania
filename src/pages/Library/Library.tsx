@@ -1,4 +1,4 @@
-import { FC, memo, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { LibraryWrapper } from './Library.styled'
 import { LibraryProps } from './Library.types'
 import useAppSelector from 'hooks/useAppSelector'
@@ -13,26 +13,36 @@ import { useSearchParams } from 'react-router-dom'
 import chunk from 'lodash.chunk'
 import useUser from 'hooks/useUser'
 
-const Library: FC<LibraryProps> = memo(() => {
+const Library: FC<LibraryProps> = () => {
   const [selectedMovie, setSelectedMovie] = useState<null | Movie>(null)
   const isLoading = useAppSelector(userSelectors.selectIsLoading)
   const { isLoggedIn } = useUser()
   const movies = useAppSelector(userSelectors.selectLibrary)
-  console.log('movies: ', movies)
   const [searchParams, setSearchParams] = useSearchParams()
   const currentPage = Number(searchParams.get('page') || 1)
 
   const moviesChunks = chunk(movies, 21)
-  console.log('moviesChunks: ', moviesChunks)
   const params = Object.fromEntries([...searchParams])
-
-  if (moviesChunks.length < currentPage) {
-    setSearchParams({ ...params, page: moviesChunks.length.toString() })
-  }
 
   const handlePageChange = (page: number) => {
     setSearchParams({ ...params, page: (page + 1).toString() })
   }
+
+  useEffect(() => {
+    if (currentPage < 1) {
+      setSearchParams({
+        ...params,
+        page: '1',
+      })
+    }
+
+    if (moviesChunks.length < currentPage) {
+      setSearchParams({
+        ...params,
+        page: moviesChunks.length.toString(),
+      })
+    }
+  }, [movies])
 
   return (
     <LibraryWrapper>
@@ -40,10 +50,10 @@ const Library: FC<LibraryProps> = memo(() => {
         <Loader />
       ) : (
         isLoggedIn &&
-        moviesChunks.length > 0 && (
+        moviesChunks.length && (
           <>
             <MovieList
-              movies={moviesChunks[currentPage - 1]}
+              movies={moviesChunks[currentPage - 1] || []}
               selectMovie={setSelectedMovie}
             />
             {moviesChunks.length > 1 && (
@@ -63,6 +73,6 @@ const Library: FC<LibraryProps> = memo(() => {
       )}
     </LibraryWrapper>
   )
-})
+}
 
 export default Library

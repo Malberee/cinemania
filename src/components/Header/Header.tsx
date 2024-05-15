@@ -18,7 +18,8 @@ import Modal from 'components/common/Modal'
 import AuthForm from 'components/AuthForm'
 import useUser from 'hooks/useUser'
 import { useAppDispatch } from 'hooks/useAppDispatch'
-import { logOut } from 'store/user/operation'
+import { userOperations } from 'store/user'
+import toast from 'react-hot-toast'
 
 const Header: FC<HeaderProps> = () => {
   const [authModalIsOpen, setAuthModalIsOpen] = useState(false)
@@ -29,7 +30,11 @@ const Header: FC<HeaderProps> = () => {
 
   const handleAuthClick = () => {
     if (isLoggedIn) {
-      dispatch(logOut())
+      toast.promise(dispatch(userOperations.logOut()).unwrap(), {
+        loading: 'Loading',
+        success: 'Logged out',
+        error: 'Error',
+      })
 
       return
     }

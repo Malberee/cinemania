@@ -67,11 +67,11 @@ const Catalog = memo<CatalogProps>(() => {
       ) : (
         <>
           <MovieList movies={movies} selectMovie={setSelectedMovie} />
-          <Paginate
+          {totalPages > 1 && <Paginate
             totalPages={totalPages > 500 ? 500 : totalPages}
             onPageChange={handleChangePage}
             currentPage={currentPage - 1}
-          />
+          />}
         </>
       )}
       {selectedMovie && (

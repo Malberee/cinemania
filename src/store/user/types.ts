@@ -11,6 +11,7 @@ export type AuthState = {
 export type User = {
   email: string
   id: string
+  library: Movie[]
 }
 
 export type AuthParams = {

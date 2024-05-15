@@ -27,17 +27,6 @@ const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
-      .addCase(initAuth.fulfilled, (state, action) => {
-        const { email, id, library } = action.payload
-
-        state.email = email
-        state.id = id
-        state.library = library
-      })
-      .addCase(auth.fulfilled, (state, action) => {
-        state.email = action.payload.email
-        state.id = action.payload.id
-      })
       .addCase(logOut.fulfilled, (state) => {
         state.email = null
         state.id = null
@@ -64,6 +53,13 @@ const userSlice = createSlice({
           state.isLoading = true
         }
       )
+      .addMatcher(isFulfilled(initAuth, auth), (state, action) => {
+        const { email, id, library } = action.payload
+
+        state.email = email
+        state.id = id
+        state.library = library
+      })
       .addMatcher(
         isFulfilled(initAuth, auth, logOut, fetchLibrary, libraryAction),
         (state) => {
@@ -79,8 +75,6 @@ const userSlice = createSlice({
           libraryAction
         ),
         (state, action) => {
-          console.log('text')
-
           state.isLoading = false
           state.error = action.payload
         }

@@ -16,6 +16,7 @@ import useGenres from 'hooks/useGenres'
 import { useAppDispatch } from 'hooks/useAppDispatch'
 import { libraryAction } from 'store/user/operation'
 import useUser from 'hooks/useUser'
+import toast from 'react-hot-toast'
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
   const dispatch = useAppDispatch()
@@ -25,18 +26,29 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
 
   const handleClick = () => {
     if (isLoggedIn && userId) {
-      dispatch(
-        libraryAction({
-          userId,
-          movie,
-          action: alreadyInLibrary ? 'remove' : 'add',
-        })
+      toast.promise(
+        dispatch(
+          libraryAction({
+            userId,
+            movie,
+            action: alreadyInLibrary ? 'remove' : 'add',
+          })
+        ).unwrap(),
+        {
+          loading: alreadyInLibrary
+            ? 'Removing from the library...'
+            : 'Adding to the library...',
+          success: alreadyInLibrary
+            ? 'Successfully removed from the library'
+            : 'Successfully added to library',
+          error: 'Error!',
+        }
       )
 
       return
     }
 
-    console.log('you are not logged in')
+    toast.error('You are not logged in')
   }
 
   return (

@@ -20,7 +20,6 @@ export const initAuth = createAsyncThunk<
   try {
     const data = await new Promise((resolve, reject) => {
       onAuthStateChanged(getAuth(), async (user) => {
-        console.log(user)
         if (user) {
           const library: Movie[] = await userAPI.fetchLibrary(user.uid)
 
@@ -51,9 +50,13 @@ export const auth = createAsyncThunk<User, AuthParams, { rejectValue: string }>(
       if (action === 'login') {
         const { user } = await signInWithEmailAndPassword(auth, email, password)
 
-        toast.success('You are logged in!')
+        const library: Movie[] = await userAPI.fetchLibrary(user.uid)
 
-        return { email: user.email, id: user.uid } as User
+        return {
+          email: user.email,
+          id: user.uid,
+          library: Object.values(library),
+        } as User
       }
 
       const { user } = await createUserWithEmailAndPassword(
@@ -62,12 +65,8 @@ export const auth = createAsyncThunk<User, AuthParams, { rejectValue: string }>(
         password
       )
 
-      toast.success('You are logged in!')
-
-      return { email: user.email, id: user.uid } as User
+      return { email: user.email, id: user.uid, library: [] } as User
     } catch (error) {
-      toast.error('Error!')
-
       const err = error as AxiosError
       return rejectWithValue(err.message)
     }
@@ -83,10 +82,7 @@ export const logOut = createAsyncThunk<
     const auth = getAuth()
 
     await signOut(auth)
-    toast.success('You are logged out!')
   } catch (error) {
-    toast.error('Error!')
-
     const err = error as AxiosError
     return rejectWithValue(err.message)
   }
@@ -120,19 +116,13 @@ export const libraryAction = createAsyncThunk<
       if (action === 'add') {
         await userAPI.addMovieToLibrary(userId, movie)
 
-        toast.success('Successfully added to library')
-
         return movie
       }
 
       await userAPI.removeMovieFromLibrary(userId, movie.id)
 
-      toast.success('Successfully removed from the library')
-
       return movie.id
     } catch (error) {
-      toast.error('Error!')
-
       const err = error as AxiosError
       return rejectWithValue(err.message)
     }
