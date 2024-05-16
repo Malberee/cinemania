@@ -1,6 +1,6 @@
 import { Movie } from 'types'
 
-export type AuthState = {
+export type UserState = {
   email: string | null
   id: string | null
   library: Movie[]
@@ -21,7 +21,6 @@ export type AuthParams = {
 }
 
 export type LibraryActionParams = {
-  userId: string
   movie: Movie
   action: 'add' | 'remove'
 }

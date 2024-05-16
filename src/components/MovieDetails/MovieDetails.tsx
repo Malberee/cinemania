@@ -20,16 +20,15 @@ import toast from 'react-hot-toast'
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
   const dispatch = useAppDispatch()
-  const { userId, library, isLoggedIn } = useUser()
+  const { library, isLoggedIn } = useUser()
   const genres = useGenres(movie.genre_ids).join(' ')
   const alreadyInLibrary = !!library.find((item) => item.id === movie.id)
 
   const handleClick = () => {
-    if (isLoggedIn && userId) {
+    if (isLoggedIn) {
       toast.promise(
         dispatch(
           libraryAction({
-            userId,
             movie,
             action: alreadyInLibrary ? 'remove' : 'add',
           })

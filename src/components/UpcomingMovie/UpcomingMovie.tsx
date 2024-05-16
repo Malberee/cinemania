@@ -17,11 +17,49 @@ import useGenres from 'hooks/useGenres'
 import VoteSpan from 'components/VoteSpan'
 import Container from 'components/common/Container'
 import Loader from 'components/common/Loader'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import useUser from 'hooks/useUser'
+import toast from 'react-hot-toast'
+import useAppSelector from 'hooks/useAppSelector'
+import { selectLibrary } from 'store/user/selectors'
+import { userOperations } from 'store/user'
 
 const UpcomingMovie = memo<UpcomingMovieProps>(() => {
   const [upcomingMovie, setUpcomingMovie] = useState<null | Movie>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const dispatch = useAppDispatch()
+  const { isLoggedIn } = useUser()
+  const library = useAppSelector(selectLibrary)
   const genres = useGenres(upcomingMovie?.genre_ids || []).join(', ')
+  const alreadyInLibrary = !!library.find(
+    (item) => item.id === upcomingMovie?.id
+  )
+
+  const handleAddToLibrary = () => {
+    if (isLoggedIn) {
+      toast.promise(
+        dispatch(
+          userOperations.libraryAction({
+            movie: upcomingMovie!,
+            action: alreadyInLibrary ? 'remove' : 'add',
+          })
+        ).unwrap(),
+        {
+          loading: alreadyInLibrary
+            ? 'Removing from the library...'
+            : 'Adding to the library...',
+          success: alreadyInLibrary
+            ? 'Successfully removed from the library'
+            : 'Successfully added to library',
+          error: 'Error!',
+        }
+      )
+
+      return
+    }
+
+    toast.error('You are not logged in')
+  }
 
   useEffect(() => {
     const getMovie = async () => {
@@ -32,7 +70,7 @@ const UpcomingMovie = memo<UpcomingMovieProps>(() => {
 
         setUpcomingMovie(movies.data.results[1])
       } catch (error) {
-        console.error(error)
+        toast.error('Error loading upcoming movie')
       } finally {
         setIsLoading(false)
       }
@@ -79,7 +117,11 @@ const UpcomingMovie = memo<UpcomingMovieProps>(() => {
                   <h4>About</h4>
                   <p>{upcomingMovie.overview}</p>
                 </MovieAbout>
-                <Button>Add to my library</Button>
+                <Button onClick={handleAddToLibrary}>
+                  {alreadyInLibrary
+                    ? 'Remove from library'
+                    : 'Add to my library'}
+                </Button>
               </div>
             </UpcomingMovieInner>
           ))}

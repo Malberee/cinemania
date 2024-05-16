@@ -10,7 +10,7 @@ import { LibraryActionParams, AuthParams, User } from './types'
 import { AxiosError } from 'axios'
 import { Movie } from 'types'
 import * as userAPI from 'services/user-api'
-import toast from 'react-hot-toast'
+import { RootState } from 'store/types'
 
 export const initAuth = createAsyncThunk<
   User & { library: Movie[] },
@@ -88,38 +88,23 @@ export const logOut = createAsyncThunk<
   }
 })
 
-export const fetchLibrary = createAsyncThunk<
-  Movie[],
-  string,
-  { rejectValue: string }
->('user/fetchLibrary', async (userId, { rejectWithValue }) => {
-  try {
-    const library = await userAPI.fetchLibrary(userId)
-
-    return Object.values(library)
-  } catch (error) {
-    toast.error('Error!')
-
-    const err = error as AxiosError
-    return rejectWithValue(err.message)
-  }
-})
-
 export const libraryAction = createAsyncThunk<
   Movie | number,
   LibraryActionParams,
   { rejectValue: string }
 >(
   'user/libraryAction',
-  async ({ userId, movie, action }, { rejectWithValue }) => {
+  async ({ movie, action }, { rejectWithValue, getState }) => {
     try {
+      const { user } = getState() as RootState
+
       if (action === 'add') {
-        await userAPI.addMovieToLibrary(userId, movie)
+        await userAPI.addMovieToLibrary(user.id!, movie)
 
         return movie
       }
 
-      await userAPI.removeMovieFromLibrary(userId, movie.id)
+      await userAPI.removeMovieFromLibrary(user.id!, movie.id)
 
       return movie.id
     } catch (error) {

@@ -6,5 +6,5 @@ export const MainLoaderWrapper = styled.div`
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: ${({ theme }) => theme.colors.backdrop};
+  background-color: ${({ theme }) => theme.colors.background};
 `

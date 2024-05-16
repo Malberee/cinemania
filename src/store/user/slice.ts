@@ -4,20 +4,14 @@ import {
   isPending,
   isRejectedWithValue,
 } from '@reduxjs/toolkit'
-import { AuthState } from './types'
-import {
-  initAuth,
-  auth,
-  logOut,
-  fetchLibrary,
-  libraryAction,
-} from './operation'
+import { UserState } from './types'
+import { initAuth, auth, logOut, libraryAction } from './operation'
 
-const initialState: AuthState = {
+const initialState: UserState = {
   email: null,
   id: null,
   library: [],
-  isLoading: false,
+  isLoading: true,
   error: null,
 }
 
@@ -32,9 +26,6 @@ const userSlice = createSlice({
         state.id = null
         state.library = []
       })
-      .addCase(fetchLibrary.fulfilled, (state, action) => {
-        state.library = action.payload
-      })
       .addCase(libraryAction.fulfilled, (state, action) => {
         if (typeof action.payload === 'object') {
           state.library = [action.payload, ...state.library]
@@ -46,13 +37,10 @@ const userSlice = createSlice({
           (movie) => movie.id !== action.payload
         )
       })
-      .addMatcher(
-        isPending(initAuth, auth, logOut, fetchLibrary, libraryAction),
-        (state) => {
-          state.error = null
-          state.isLoading = true
-        }
-      )
+      .addMatcher(isPending(initAuth, auth, logOut, libraryAction), (state) => {
+        state.error = null
+        state.isLoading = true
+      })
       .addMatcher(isFulfilled(initAuth, auth), (state, action) => {
         const { email, id, library } = action.payload
 
@@ -61,19 +49,13 @@ const userSlice = createSlice({
         state.library = library
       })
       .addMatcher(
-        isFulfilled(initAuth, auth, logOut, fetchLibrary, libraryAction),
+        isFulfilled(initAuth, auth, logOut, libraryAction),
         (state) => {
           state.isLoading = false
         }
       )
       .addMatcher(
-        isRejectedWithValue(
-          initAuth,
-          auth,
-          logOut,
-          fetchLibrary,
-          libraryAction
-        ),
+        isRejectedWithValue(initAuth, auth, logOut, libraryAction),
         (state, action) => {
           state.isLoading = false
           state.error = action.payload
