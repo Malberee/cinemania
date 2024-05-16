@@ -56,11 +56,12 @@ export const CloseBtn = styled.button`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.secondaryText};
 
+  cursor: pointer;
+
   transition: color 100ms linear;
 
   &:hover {
     color: ${({ theme }) => theme.colors.accent};
-    cursor: pointer;
   }
 
   @media (width >= ${tablet}) {

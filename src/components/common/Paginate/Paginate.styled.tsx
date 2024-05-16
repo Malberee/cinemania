@@ -95,9 +95,7 @@ export const ArrowButton = styled.button<{ direction: 'prev' | 'next' }>(
 
       rotate: ${direction === 'prev' ? 90 : 270}deg;
 
-      &:hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
 
       @media (width >= ${tablet}) {
         width: 28px;

@@ -53,9 +53,7 @@ export const ToggleVisibilityButton = styled.button(({ theme }) => {
     background-color: transparent;
     border: none;
 
-    &:hover {
-      cursor: pointer;
-    }
+    cursor: pointer;
   `
 })
 

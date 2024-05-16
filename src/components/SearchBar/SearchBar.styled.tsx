@@ -43,7 +43,7 @@ export const QueryInput = styled(Input)`
 
 export const SearchButton = styled(Button)`
   padding: 11px;
-  color: ${staticColors.white};
+  color: ${({ theme }) => theme.colors.text};
 
   @media (width >= ${tablet}) {
     padding: 13px;

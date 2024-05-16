@@ -36,27 +36,23 @@ const App = () => {
   return (
     <>
       <GlobalStyles />
-      {isLoading ? (
-        <MainLoader />
-      ) : (
-        <Suspense fallback={<MainLoader />}>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="catalog" element={<Catalog />} />
-              <Route
-                path="library"
-                element={
-                  <PrivateRoute>
-                    <Library />
-                  </PrivateRoute>
-                }
-              />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      )}
+      <Suspense fallback={<MainLoader />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="catalog" element={<Catalog />} />
+            <Route
+              path="library"
+              element={
+                <PrivateRoute>
+                  <Library />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
       <Toaster
         position="bottom-right"
         toastOptions={{
