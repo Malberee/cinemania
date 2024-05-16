@@ -1,4 +1,4 @@
-import{u as c,b as j,B as S,i as C,s as $,t as f,j as n,C as P,r as u,d as l,k as T,e as E,l as F,m as N,n as A,L as O,M as B}from"./index-827c5813.js";import{M as H,P as v}from"./Paginate-e1e19018.js";import{M as _}from"./MovieDetails-fc302948.js";const{tablet:z,desktop:G}=j,R=c.div`
+import{u as c,b as j,B as S,m as C,k as $,t as f,j as n,C as P,r as u,d as l,n as T,e as E,s as F,h as N,o as A,L as O,M as B}from"./index-e394d5df.js";import{M as H,P as v}from"./Paginate-780794ae.js";import{M as _}from"./MovieDetails-bed61edd.js";const{tablet:z,desktop:G}=j,R=c.div`
   display: flex;
   flex-direction: column;
   height: 100%;

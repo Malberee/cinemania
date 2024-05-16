@@ -1,4 +1,4 @@
-import{u as Y,a as se,t as U,b as ge,C as de,r as fe,j as h,o as xe,p as ye,i as Ce}from"./index-827c5813.js";import{d as Pe}from"./MovieDetails-fc302948.js";const{desktop:ke,tablet:be}=ge,Le=Y.ul`
+import{u as Y,a as se,t as U,b as ge,C as de,r as fe,j as h,p as xe,q as ye,m as Ce}from"./index-e394d5df.js";import{d as Pe}from"./MovieDetails-bed61edd.js";const{desktop:ke,tablet:be}=ge,Le=Y.ul`
   display: flex;
   flex-wrap: wrap;
   column-gap: 16px;
@@ -118,9 +118,7 @@ import{u as Y,a as se,t as U,b as ge,C as de,r as fe,j as h,o as xe,p as ye,i as
 
       rotate: ${v==="prev"?90:270}deg;
 
-      &:hover {
-        cursor: pointer;
-      }
+      cursor: pointer;
 
       @media (width >= ${J}) {
         width: 28px;
