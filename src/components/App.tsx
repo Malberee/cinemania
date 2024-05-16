@@ -8,17 +8,15 @@ import { trendingMoviesOperations } from 'store/trendingMovies'
 import MainLoader from './MainLoader'
 import NotFound from 'pages/NotFound'
 import { Toaster } from 'react-hot-toast'
-import { userOperations, userSelectors } from 'store/user'
+import { userOperations } from 'store/user'
 import { useTheme } from 'styled-components'
 import PrivateRoute from './PrivateRoute'
-import useAppSelector from 'hooks/useAppSelector'
 const Catalog = lazy(() => import('pages/Catalog'))
 const Home = lazy(() => import('pages/Home'))
 const Library = lazy(() => import('pages/Library'))
 
 const App = () => {
   const dispatch = useAppDispatch()
-  const isLoading = useAppSelector(userSelectors.selectIsLoading)
   const { colors } = useTheme()
 
   useEffect(() => {
