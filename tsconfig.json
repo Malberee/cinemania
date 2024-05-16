@@ -28,7 +28,8 @@
       "store/*": ["store/*"],
       "hooks/*": ["hooks/*"],
       "icons/*": ["icons/*"],
-      "theme/*": ["theme/*"]
+      "theme/*": ["theme/*"],
+      "constants/*": ["constants/*"]
     }
   },
   "include": ["src"],

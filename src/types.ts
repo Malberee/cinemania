@@ -14,3 +14,8 @@ export interface Movie {
   vote_average: number
   vote_count: number
 }
+
+export type AuthErrorCodes =
+  | 'auth/user-not-found'
+  | 'auth/wrong-password'
+  | 'auth/too-many-requests'

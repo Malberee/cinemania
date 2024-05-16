@@ -20,6 +20,8 @@ import useAppSelector from 'hooks/useAppSelector'
 import { selectIsLoading } from 'store/user/selectors'
 import Loader from 'components/common/Loader'
 import toast from 'react-hot-toast'
+import { errorCodes } from 'constants/errorCodes'
+import { AuthErrorCodes } from 'types'
 
 const AuthForm: FC<AuthFormProps> = memo(({ closeModal }) => {
   const [isLogin, setIsLogin] = useState(true)
@@ -42,7 +44,11 @@ const AuthForm: FC<AuthFormProps> = memo(({ closeModal }) => {
               action: 'login',
             })
           ).unwrap(),
-          { loading: 'Loading...', success: 'You are signed in!', error: 'Error!' }
+          {
+            loading: 'Loading...',
+            success: 'You are signed in!',
+            error: (error: AuthErrorCodes) => errorCodes[error] || 'Error!',
+          }
         )
         .then(closeModal)
     } else {

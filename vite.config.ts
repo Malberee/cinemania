@@ -15,6 +15,7 @@ export default defineConfig({
       hooks: '/src/hooks',
       icons: '/src/icons',
       theme: '/src/theme',
+      constants: '/src/constants',
     },
   },
 })

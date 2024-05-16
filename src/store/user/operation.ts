@@ -68,7 +68,8 @@ export const auth = createAsyncThunk<User, AuthParams, { rejectValue: string }>(
       return { email: user.email, id: user.uid, library: [] } as User
     } catch (error) {
       const err = error as AxiosError
-      return rejectWithValue(err.message)
+
+      return rejectWithValue(err.code!)
     }
   }
 )
