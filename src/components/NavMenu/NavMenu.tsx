@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import { NavMenuWrapper, Backdrop, AuthLink, NavLink } from './NavMenu.styled'
 import { NavMenuProps } from './NavMenu.types'
 import Logo from 'icons/Logo'
