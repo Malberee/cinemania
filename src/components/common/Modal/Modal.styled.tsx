@@ -3,29 +3,6 @@ import { breakpoints } from 'theme/theme'
 
 const { desktop, tablet } = breakpoints
 
-export const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100vw;
-  height: 100vh;
-  padding: 20px;
-
-  background-color: ${({ theme }) => theme.colors.backdrop};
-  backdrop-filter: blur(2px);
-  overflow-y: auto;
-
-  @media (width >= 768px) {
-    padding: 32px;
-  }
-`
-
 export const ModalWrapper = styled.div`
   position: relative;
   margin: auto;

@@ -6,6 +6,7 @@ const borderedStyles = css`
   padding: 1px;
 
   transition: all 100ms linear;
+  transition-property: background-color, color, scale;
 
   &:hover,
   &:focus {
@@ -32,6 +33,7 @@ const colorlessStyles = css`
   border: 1px solid ${staticColors.white};
 
   transition: all 100ms linear;
+  transition-property: background-color, color, scale;
 
   &:hover,
   &:focus {
@@ -73,8 +75,16 @@ export const ButtonWrapper = styled.button<Omit<ButtonProps, 'children'>>(
 
       cursor: pointer;
 
+      transition: scale 100ms linear;
+
+      &:hover,
+      &:focus {
+        scale: 1.03;
+      }
+
       ${$isBordered && borderedStyles}
       ${$isColorless && colorlessStyles}
+
 
       &:disabled {
         opacity: 0.5;

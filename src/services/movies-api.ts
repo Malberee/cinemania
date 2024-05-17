@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { PayloadCreatorProps } from 'store/movies/types'
+import { MovieVideo } from 'types'
 const API_KEY = import.meta.env.VITE_MOVIEDB_TOKEN
 
 const defaultParams = {
@@ -39,7 +40,15 @@ export const fetchMovieById = async (id: string) => {
 }
 
 export const fetchGenres = async () => {
-  const genres = await axios.get('/genre/movie/list', {...defaultParams})
+  const genres = await axios.get('/genre/movie/list', { ...defaultParams })
 
   return genres
+}
+
+export const fetchMovieVideos = async (movieId: number) => {
+  const { data } = await axios.get(`movie/${movieId}/videos`, {
+    ...defaultParams,
+  })
+
+  return data.results as MovieVideo[]
 }

@@ -36,6 +36,10 @@ const Catalog: FC<CatalogProps> = () => {
     }
   }
 
+  const handleMovieSelect = (movie?: Movie) => {
+    setSelectedMovie(movie || null)
+  }
+
   useEffect(() => {
     // Such a decision is related to this problem: https://stackoverflow.com/questions/62025911/redux-hooks-usedispatch-in-useeffect-calling-action-twice
 
@@ -62,7 +66,7 @@ const Catalog: FC<CatalogProps> = () => {
 
   return (
     <CatalogWrapper>
-      <Hero openModal={setSelectedMovie} />
+      <Hero openModal={handleMovieSelect} />
       <SearchBar />
       {isLoading ? (
         <Loader />
@@ -87,6 +91,7 @@ const Catalog: FC<CatalogProps> = () => {
           <MovieDetails movie={selectedMovie} />
         </Modal>
       )}
+
     </CatalogWrapper>
   )
 }

@@ -72,6 +72,8 @@ export const NavList = styled.ul`
 `
 
 export const NavLink = styled(NavLinkRouter)`
+  position: relative;
+
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
@@ -79,8 +81,39 @@ export const NavLink = styled(NavLinkRouter)`
 
   color: ${({ theme }) => theme.colors.grey};
 
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    background-color: ${({ theme }) => theme.colors.grey};
+    height: 2px;
+    width: 100%;
+    transform: scaleX(0);
+
+    transition: transform 100ms linear;
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
   &.active {
     color: ${({ theme }) => theme.colors.accent};
+
+    &::after {
+      background-color: ${({ theme }) => theme.colors.accent};
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        background-color: ${({ theme }) => theme.colors.accent};
+      }
+    }
   }
 `
 

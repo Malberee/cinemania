@@ -99,3 +99,8 @@ export const About = styled.p(({ theme }) => {
     }
   `
 })
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+`

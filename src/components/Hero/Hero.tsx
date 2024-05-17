@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import {
   HeroWrapper,
   MoviePoster,
@@ -20,8 +20,10 @@ import {
   selectIsLoading,
   selectTrendingMovies,
 } from 'store/trendingMovies/selectors'
+import TrailerPlayer from 'components/common/TrailerPlayer'
 
 const Hero = memo<HeroProps>(({ openModal }) => {
+  const [trailerIsOpen, setTrailerIsOpen] = useState(false)
   const movies = useAppSelector(selectTrendingMovies)
   const isLoading = useAppSelector(selectIsLoading)
 
@@ -57,7 +59,9 @@ const Hero = memo<HeroProps>(({ openModal }) => {
                   {movie.overview.split(' ').slice(0, 25).join(' ')}..
                 </MovieOverview>
                 <ButtonsWrapper>
-                  <Button>Watch trailer</Button>
+                  <Button onClick={() => setTrailerIsOpen(true)}>
+                    Watch trailer
+                  </Button>
                   <Button
                     $isBordered
                     $isColorless
@@ -70,6 +74,12 @@ const Hero = memo<HeroProps>(({ openModal }) => {
             </HeroInner>
           </>
         ))}
+      {trailerIsOpen && (
+        <TrailerPlayer
+          movieId={movie.id}
+          closeTrailer={() => setTrailerIsOpen(false)}
+        />
+      )}
     </HeroWrapper>
   )
 })

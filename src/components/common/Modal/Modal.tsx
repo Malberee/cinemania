@@ -1,16 +1,15 @@
-import { FC, MouseEvent, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import { createPortal } from 'react-dom'
-import { Backdrop, ModalWrapper, CloseBtn } from './Modal.styled'
+import { ModalWrapper, CloseBtn } from './Modal.styled'
 import { ModalProps } from './Modal.types'
 import Close from 'icons/Close'
+import useOutsideClick from 'hooks/useOutsideClick'
+import Backdrop from '../Backdrop'
 
 const modalRoot = document.getElementById('modal-root')!
 
 const Modal: FC<ModalProps> = ({ children, onClose }) => {
-  const handleClick = (e: MouseEvent<HTMLElement>) => {
-    if (e.target !== e.currentTarget) return
-    onClose()
-  }
+  const ref = useOutsideClick(onClose)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -21,9 +20,9 @@ const Modal: FC<ModalProps> = ({ children, onClose }) => {
   }, [])
 
   return createPortal(
-    <Backdrop onClick={handleClick}>
-      <ModalWrapper>
-        <CloseBtn onClick={onClose}>
+    <Backdrop>
+      <ModalWrapper ref={ref}>
+        <CloseBtn onClick={() => onClose()} type="button">
           <Close />
         </CloseBtn>
         {children}

@@ -12,12 +12,7 @@ const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState<null | Movie>(null)
 
   const toggleModal = useCallback((movie?: Movie) => {
-    if (movie) {
-      setSelectedMovie(movie)
-      return
-    }
-
-    setSelectedMovie(null)
+    setSelectedMovie(movie || null)
   }, [])
 
   return (
@@ -26,7 +21,7 @@ const Home = () => {
       <WeeklyTrends selectMovie={toggleModal} />
       <UpcomingMovie />
       {selectedMovie && (
-        <Modal onClose={toggleModal}>
+        <Modal onClose={() => setSelectedMovie(null)}>
           <MovieDetails movie={selectedMovie} />
         </Modal>
       )}

@@ -19,3 +19,8 @@ export type AuthErrorCodes =
   | 'auth/user-not-found'
   | 'auth/wrong-password'
   | 'auth/too-many-requests'
+
+export type MovieVideo = {
+  key: string
+  type: string
+}

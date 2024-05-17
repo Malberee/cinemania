@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import {
   MovieDetailsWrapper,
   MoviePoster,
@@ -8,6 +8,7 @@ import {
   MovieInfoItem,
   AboutTitle,
   About,
+  ButtonsWrapper,
 } from './MovieDetails.styled'
 import { MovieDetailsProps } from './MovieDetails.types'
 import Button from 'components/common/Button'
@@ -17,8 +18,10 @@ import { useAppDispatch } from 'hooks/useAppDispatch'
 import { libraryAction } from 'store/user/operation'
 import useUser from 'hooks/useUser'
 import toast from 'react-hot-toast'
+import TrailerPlayer from 'components/common/TrailerPlayer'
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
+  const [showTrailer, setShowTrailer] = useState(false)
   const dispatch = useAppDispatch()
   const { library, isLoggedIn } = useUser()
   const genres = useGenres(movie.genre_ids).join(' ')
@@ -78,10 +81,19 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movie }) => {
         </MovieInfoList>
         <AboutTitle>About</AboutTitle>
         <About>{movie.overview}</About>
-        <Button $isBordered onClick={handleClick}>
-          {alreadyInLibrary ? 'Remove from library' : 'Add to library'}
-        </Button>
+        <ButtonsWrapper>
+          <Button onClick={() => setShowTrailer(true)}>Watch trailer</Button>
+          <Button $isBordered={!alreadyInLibrary} onClick={handleClick}>
+            {alreadyInLibrary ? 'Remove from library' : 'Add to library'}
+          </Button>
+        </ButtonsWrapper>
       </div>
+      {showTrailer && (
+        <TrailerPlayer
+          movieId={movie.id}
+          closeTrailer={() => setShowTrailer(false)}
+        />
+      )}
     </MovieDetailsWrapper>
   )
 }
