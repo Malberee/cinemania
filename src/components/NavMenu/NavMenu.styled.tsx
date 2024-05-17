@@ -47,5 +47,6 @@ export const NavLink = styled(NavLinkRouter)`
 `
 
 export const AuthLink = styled.a`
+  margin-top: auto;
   ${NavLink.componentStyle.rules.join('')}
 `

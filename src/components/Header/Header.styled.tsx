@@ -40,6 +40,14 @@ export const LogoWrapper = styled(NavLinkRouter)(({ theme }) => {
         width: 48px;
       }
     }
+
+    span {
+      display: none;
+
+      @media (width >= ${tablet}) {
+        display: inline;
+      }
+    }
   `
 })
 

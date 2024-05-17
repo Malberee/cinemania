@@ -1,21 +1,25 @@
-import { FC, MouseEvent } from 'react'
+import { FC, MouseEvent, useEffect } from 'react'
 import { NavMenuWrapper, Backdrop, AuthLink, NavLink } from './NavMenu.styled'
 import { NavMenuProps } from './NavMenu.types'
 import Logo from 'icons/Logo'
 import useUser from 'hooks/useUser'
+import useOutsideClick from 'hooks/useOutsideClick'
 
 const NavMenu: FC<NavMenuProps> = ({ closeMenu, handleAuthClick }) => {
+  const ref = useOutsideClick(closeMenu)
   const { isLoggedIn } = useUser()
 
-  const handleBackdropClick = (e: MouseEvent<HTMLElement>) => {
-    if (e.target !== e.currentTarget) return
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
 
-    closeMenu()
-  }
+    return () => {
+      document.body.style.overflow = 'visible'
+    }
+  }, [])
 
   return (
-    <Backdrop onClick={handleBackdropClick}>
-      <NavMenuWrapper>
+    <Backdrop>
+      <NavMenuWrapper ref={ref}>
         <Logo width={32} height={32} />
         <nav>
           <ul>
@@ -34,13 +38,11 @@ const NavMenu: FC<NavMenuProps> = ({ closeMenu, handleAuthClick }) => {
                 My library
               </NavLink>
             </li>
-            <li>
-              <AuthLink onClick={handleAuthClick} as="a">
-                {isLoggedIn ? 'Sign Out' : 'Sign In'}
-              </AuthLink>
-            </li>
           </ul>
         </nav>
+        <AuthLink onClick={handleAuthClick} as="a">
+          {isLoggedIn ? 'Sign Out' : 'Sign In'}
+        </AuthLink>
       </NavMenuWrapper>
     </Backdrop>
   )
