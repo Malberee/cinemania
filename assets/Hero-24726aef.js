@@ -1,4 +1,4 @@
-import{u as i,m as x,t as r,b as w,r as d,e as p,j as t,L as $,C as f,B as h}from"./index-d55e5d20.js";import{R as j,S as v,e as b,T as u}from"./MovieDetails-800b20d7.js";const k=a=>a.trendingMovies.entities,y=a=>a.trendingMovies.isLoading,{desktop:e,tablet:s}=w,M=i.div`
+import{u as i,m as x,t as r,b as w,r as d,e as p,j as t,L as $,C as f,B as h}from"./index-9621549d.js";import{R as j,S as v,e as b,T as u}from"./MovieDetails-0a3031c2.js";const k=a=>a.trendingMovies.entities,y=a=>a.trendingMovies.isLoading,{desktop:e,tablet:s}=w,M=i.div`
   position: relative;
   height: 380px;
   overflow: hidden;
